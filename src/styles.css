@@ -198,6 +198,17 @@ a {
   fill: #f7eee3;
 }
 
+.hero-proof-chip {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  border: 1px solid rgba(253, 248, 242, 0.22);
+  background: rgba(253, 248, 242, 0.1);
+  color: rgba(253, 248, 242, 0.9);
+  font-size: 0.73rem;
+  padding: 0.28rem 0.58rem;
+}
+
 .stamp-badge {
   position: absolute;
   z-index: 20;
@@ -371,6 +382,16 @@ a {
   outline-offset: 2px;
 }
 
+.form-trust-chip {
+  border-radius: 999px;
+  border: 1px solid rgba(62, 35, 72, 0.16);
+  background: rgba(253, 248, 242, 0.8);
+  color: rgba(32, 20, 38, 0.76);
+  font-size: 0.74rem;
+  font-weight: 600;
+  padding: 0.24rem 0.58rem;
+}
+
 .testimonial-card {
   position: relative;
   overflow: hidden;
@@ -395,6 +416,20 @@ a {
   line-height: 1;
   color: rgba(62, 35, 72, 0.12);
   pointer-events: none;
+}
+
+.testimonial-avatar {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 999px;
+  background: linear-gradient(145deg, rgba(230, 0, 141, 0.12), rgba(200, 101, 45, 0.18));
+  border: 1px solid rgba(62, 35, 72, 0.2);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #3e2348;
 }
 
 .starburst {

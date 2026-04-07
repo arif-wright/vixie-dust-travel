@@ -77,6 +77,12 @@ const tripStats = [
   { value: '24hr', label: 'Typical Response Window' },
 ]
 
+const proofChips = [
+  'Authorized destination planning support',
+  'Promo monitoring included',
+  'No extra planning fee',
+]
+
 function App() {
   const [isSubmitted, setIsSubmitted] = useState(false)
 
@@ -109,7 +115,7 @@ function App() {
           <a href="#" className="flex items-center gap-3" aria-label="Vixie Dust Travel home">
             <div className="grid h-11 w-11 place-items-center overflow-hidden rounded-full border border-gold/40 bg-mist/15">
               <img
-                src="/658027553_26629397506697359_3250149431792289541_n.jpg"
+                src="/logo.svg"
                 alt="Vixie Dust fox logo"
                 className="h-8 w-8 rounded-full object-cover"
               />
@@ -180,6 +186,14 @@ function App() {
                 Most Popular
               </div>
 
+              <ul className="mt-4 space-y-2">
+                {proofChips.map((chip) => (
+                  <li key={chip} className="hero-proof-chip">
+                    {chip}
+                  </li>
+                ))}
+              </ul>
+
               <div className="stat-strip mt-8 grid max-w-xl grid-cols-3 gap-2">
                 {tripStats.map((item) => (
                   <div key={item.label} className="stat-chip">
@@ -209,18 +223,9 @@ function App() {
                 <p className="mt-1 font-display text-2xl text-plum">Planned Better</p>
               </aside>
 
-              <aside className="hero-tool-card hidden md:block">
-                <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-hotpink">Trip Toolkit</p>
-                <ul className="mt-2 space-y-1.5 text-xs text-ink/85">
-                  <li>Park-day pacing plan</li>
-                  <li>Dining + budget strategy</li>
-                  <li>Pre-travel checklist</li>
-                </ul>
-              </aside>
-
               <div className="hero-fox-badge">
                 <img
-                  src="/658027553_26629397506697359_3250149431792289541_n.jpg"
+                  src="/logo.svg"
                   alt=""
                   aria-hidden="true"
                   className="h-10 w-10 rounded-full object-cover"
@@ -236,9 +241,9 @@ function App() {
 
         <section className="relative mx-auto -mt-14 w-full max-w-6xl px-5 md:-mt-16 md:px-8">
           <div className="grid gap-4 md:grid-cols-3">
-            <TrustItem title="Authority" detail="Authorized Planner" />
-            <TrustItem title="Cost" detail="Free Planning Services" />
-            <TrustItem title="Social Proof" detail="Trusted by Families" />
+            <TrustItem title="Authorization" detail="Authorized Disney + Universal Planning Support" />
+            <TrustItem title="Value" detail="Free Planning, Offer Monitoring, Concierge Guidance" />
+            <TrustItem title="Service Promise" detail="Response Within 1 Business Day" />
           </div>
         </section>
 
@@ -272,7 +277,12 @@ function App() {
                 We keep planning first, but yes, there are limited-run tees and park-day extras for clients and fans who want the full Vixie vibe.
               </p>
             </div>
-            <div className="mt-5 flex items-center gap-3 md:mt-0">
+            <div className="mt-5 flex items-center gap-3 md:mt-0 md:w-[280px]">
+              <img
+                src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=500&q=80"
+                alt="Vixie Dust branded travel merch preview"
+                className="h-20 w-20 rounded-xl border border-plum/15 object-cover"
+              />
               <Button href="#" variant="secondary" onClick={() => handleCtaClick('Shop Merch', 'merch_promo')}>
                 Shop Merch
               </Button>
@@ -291,8 +301,11 @@ function App() {
             />
 
             <div className="space-y-4">
-              {services.map((service) => (
+              {services.map((service, index) => (
                 <article key={service.title} className="rounded-[1.45rem] border border-plum/10 bg-cream p-5 shadow-card transition hover:-translate-y-0.5">
+                  <p className="mb-2 text-xs font-semibold uppercase tracking-[0.22em] text-hotpink">
+                    Step {String(index + 1).padStart(2, '0')}
+                  </p>
                   <h3 className="font-display text-2xl text-ink">{service.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-ink/80">{service.text}</p>
                 </article>
@@ -324,7 +337,10 @@ function App() {
               description="This short form helps us build your first quote and planning roadmap."
             />
 
-            <form className="mt-8 grid gap-4 md:grid-cols-2" onSubmit={handleLeadSubmit}>
+            <form className="mt-8 grid gap-6 md:grid-cols-2" onSubmit={handleLeadSubmit}>
+              <div className="md:col-span-2">
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-plum/70">Step 1: Contact Details</p>
+              </div>
               <div>
                 <label htmlFor="fullName" className="block text-sm font-semibold text-ink">
                   Full name
@@ -339,6 +355,9 @@ function App() {
                 <input id="email" name="email" type="email" required className="input-field" autoComplete="email" />
               </div>
 
+              <div className="md:col-span-2 mt-2">
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-plum/70">Step 2: Trip Preferences</p>
+              </div>
               <div>
                 <label htmlFor="destination" className="block text-sm font-semibold text-ink">
                   Dream destination
@@ -397,6 +416,11 @@ function App() {
                   Start Planning My Trip
                 </button>
                 <p className="text-sm text-ink/65">By submitting, you agree to be contacted about your trip plan.</p>
+              </div>
+              <div className="md:col-span-2 flex flex-wrap gap-2">
+                <span className="form-trust-chip">No obligation</span>
+                <span className="form-trust-chip">Free planning service</span>
+                <span className="form-trust-chip">Response within 1 business day</span>
               </div>
             </form>
 
