@@ -21,6 +21,16 @@ const adventurePortals = [
     className: 'portal-card--castle',
   },
   {
+    id: 'signature',
+    eyebrow: 'Signature Energy',
+    title: 'A Vacation That Feels Curated From The Start',
+    text: 'Not just where you stay or what you book, but the rhythm, anticipation, and atmosphere of the whole trip.',
+    image:
+      'https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=1400&q=80',
+    accent: 'Boutique, fandom-aware, and polished',
+    className: 'portal-card--signature',
+  },
+  {
     id: 'cruise',
     eyebrow: 'Ocean Story',
     title: 'Magical Cruises',
@@ -97,6 +107,8 @@ function App() {
   const [showCelebrate, setShowCelebrate] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
   const sparkleLayerRef = useRef(null)
+  const heroRef = useRef(null)
+  const adventureRef = useRef(null)
 
   useEffect(() => {
     const hideLoader = () => setIsLoading(false)
@@ -174,6 +186,69 @@ function App() {
 
     sections.forEach((section) => observer.observe(section))
     return () => observer.disconnect()
+  }, [])
+
+  useEffect(() => {
+    const elements = Array.from(document.querySelectorAll('[data-reveal]'))
+    if (!elements.length) return undefined
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible')
+          }
+        })
+      },
+      {
+        rootMargin: '0px 0px -14% 0px',
+        threshold: 0.16,
+      },
+    )
+
+    elements.forEach((element) => observer.observe(element))
+    return () => observer.disconnect()
+  }, [])
+
+  useEffect(() => {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (prefersReducedMotion) return undefined
+
+    let frameId = 0
+
+    const updateParallax = () => {
+      frameId = 0
+
+      const hero = heroRef.current
+      const adventure = adventureRef.current
+
+      if (hero) {
+        const rect = hero.getBoundingClientRect()
+        const shift = Math.max(-28, Math.min(28, rect.top * -0.045))
+        hero.style.setProperty('--hero-shift', `${shift}px`)
+      }
+
+      if (adventure) {
+        const rect = adventure.getBoundingClientRect()
+        const shift = Math.max(-22, Math.min(22, rect.top * -0.03))
+        adventure.style.setProperty('--adventure-shift', `${shift}px`)
+      }
+    }
+
+    const onScroll = () => {
+      if (frameId) return
+      frameId = window.requestAnimationFrame(updateParallax)
+    }
+
+    updateParallax()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('resize', onScroll)
+
+    return () => {
+      if (frameId) window.cancelAnimationFrame(frameId)
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', onScroll)
+    }
   }, [])
 
   const handleCtaClick = (label, location) => {
@@ -272,17 +347,18 @@ function App() {
       </header>
 
       <main id="main-content" className="site-grit">
-        <section className="invitation-hero">
+        <section ref={heroRef} className="invitation-hero">
           <div className="hero-backdrop" aria-hidden="true" />
           <div className="hero-orb hero-orb--left" aria-hidden="true" />
           <div className="hero-orb hero-orb--right" aria-hidden="true" />
           <div className="hero-particles" aria-hidden="true" />
+          <div className="hero-shimmer" aria-hidden="true" />
 
           <div className="hero-frame">
             <div className="hero-depth hero-depth--rear" aria-hidden="true" />
             <div className="hero-depth hero-depth--front" aria-hidden="true" />
 
-            <div className="hero-copy">
+            <div className="hero-copy reveal-up" data-reveal>
               <p className="hero-kicker">The invitation</p>
               <h1 className="hero-title">
                 The trip should start
@@ -319,7 +395,7 @@ function App() {
               </div>
             </div>
 
-            <div className="hero-stage">
+            <div className="hero-stage reveal-up" data-reveal style={{ '--reveal-delay': '140ms' }}>
               <div className="hero-stage-image">
                 <img
                   src="https://images.unsplash.com/photo-1496417263034-38ec4f0b665a?auto=format&fit=crop&w=1800&q=80"
@@ -346,9 +422,9 @@ function App() {
           <div className="threshold-copy">Step past the invitation</div>
         </section>
 
-        <section id="adventure" className="adventure-scene">
+        <section id="adventure" ref={adventureRef} className="adventure-scene">
           <div className="scene-shell scene-shell--wide">
-            <div className="section-heading section-heading--split">
+            <div className="section-heading section-heading--split reveal-up" data-reveal>
               <p className="section-kicker">Choose your adventure</p>
               <div>
                 <h2 className="section-title">A collage of vacation moods instead of a list of services.</h2>
@@ -359,8 +435,14 @@ function App() {
             </div>
 
             <div className="portal-collage">
-              {adventurePortals.map((portal) => (
-                <article key={portal.id} className={`portal-card ${portal.className}`}>
+              <div className="portal-light-trail" aria-hidden="true" />
+              {adventurePortals.map((portal, index) => (
+                <article
+                  key={portal.id}
+                  className={`portal-card ${portal.className} reveal-up`}
+                  data-reveal
+                  style={{ '--reveal-delay': `${index * 90}ms` }}
+                >
                   <div className="portal-image">
                     <img src={portal.image} alt={portal.title} className="h-full w-full object-cover" loading="lazy" />
                   </div>
@@ -376,9 +458,9 @@ function App() {
           </div>
         </section>
 
-        <section id="path" className="journey-path-scene">
+        <section id="path" className="journey-path-scene section-overlap-top">
           <div className="scene-shell">
-            <div className="section-heading section-heading--center">
+            <div className="section-heading section-heading--center reveal-up" data-reveal>
               <p className="section-kicker">From dream to departure</p>
               <h2 className="section-title">A travel path that flows like a story arc, not a checklist.</h2>
               <p className="section-copy">
@@ -389,7 +471,12 @@ function App() {
             <div className="journey-flow">
               <div className="journey-path-line" aria-hidden="true" />
               {pathMoments.map((moment, index) => (
-                <article key={moment.title} className={`journey-node journey-node--${index + 1}`}>
+                <article
+                  key={moment.title}
+                  className={`journey-node journey-node--${index + 1} reveal-up`}
+                  data-reveal
+                  style={{ '--reveal-delay': `${index * 90}ms` }}
+                >
                   <span className="journey-node-index">0{index + 1}</span>
                   <h3>{moment.title}</h3>
                   <p>{moment.text}</p>
@@ -399,9 +486,9 @@ function App() {
           </div>
         </section>
 
-        <section id="proof" className="proof-scene">
+        <section id="proof" className="proof-scene section-overlap-top">
           <div className="scene-shell proof-layout">
-            <div className="proof-copy">
+            <div className="proof-copy reveal-up" data-reveal>
               <p className="section-kicker">Social proof</p>
               <h2 className="section-title">Real travelers describing the feeling we are actually trying to create.</h2>
               <p className="section-copy">
@@ -410,8 +497,13 @@ function App() {
             </div>
 
             <div className="quote-editorial">
-              {layeredQuotes.map((quote) => (
-                <figure key={quote.name} className={`quote-layer ${quote.className}`}>
+              {layeredQuotes.map((quote, index) => (
+                <figure
+                  key={quote.name}
+                  className={`quote-layer ${quote.className} reveal-up`}
+                  data-reveal
+                  style={{ '--reveal-delay': `${index * 110}ms` }}
+                >
                   <blockquote>{quote.quote}</blockquote>
                   <figcaption>
                     <strong>{quote.name}</strong>
@@ -423,10 +515,10 @@ function App() {
           </div>
         </section>
 
-        <section id="consultation" className="decision-scene">
+        <section id="consultation" className="decision-scene section-overlap-top">
           <div className="decision-backdrop" aria-hidden="true" />
           <div className="scene-shell decision-layout">
-            <div className="decision-copy">
+            <div className="decision-copy reveal-up" data-reveal>
               <p className="section-kicker section-kicker--light">The decision moment</p>
               <h2 className="decision-title">If the trip matters, the planning should feel elevated too.</h2>
               <p className="decision-text">
@@ -434,7 +526,7 @@ function App() {
               </p>
             </div>
 
-            <div className="decision-form-frame">
+            <div className="decision-form-frame reveal-up" data-reveal style={{ '--reveal-delay': '120ms' }}>
               <form className="decision-form" onSubmit={handleLeadSubmit}>
                 <div>
                   <label htmlFor="fullName" className="block text-sm font-semibold text-mist">

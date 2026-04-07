@@ -19,6 +19,8 @@
   --section-space: clamp(4.75rem, 8vw, 7rem);
   --hero-size: clamp(4.4rem, 9vw, 7.6rem);
   --title-size: clamp(2.9rem, 5vw, 5.2rem);
+  --hero-shift: 0px;
+  --adventure-shift: 0px;
 }
 
 * {
@@ -65,6 +67,20 @@ a {
     radial-gradient(circle at 76% 34%, rgba(53, 30, 52, 0.85) 0.8px, transparent 1px),
     radial-gradient(circle at 42% 78%, rgba(211, 125, 83, 0.75) 0.8px, transparent 1px);
   background-size: 220px 220px, 180px 180px, 210px 210px;
+}
+
+.reveal-up {
+  opacity: 0;
+  transform: translate3d(0, 28px, 0) var(--base-transform, none);
+  transition:
+    opacity 700ms ease,
+    transform 700ms ease;
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.reveal-up.is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) var(--base-transform, none);
 }
 
 .sparkle-layer {
@@ -387,7 +403,8 @@ a {
 .hero-backdrop,
 .hero-orb,
 .hero-particles,
-.hero-depth {
+.hero-depth,
+.hero-shimmer {
   position: absolute;
   pointer-events: none;
 }
@@ -428,6 +445,19 @@ a {
     radial-gradient(circle at 76% 16%, rgba(255, 243, 216, 0.72) 1px, transparent 1.4px),
     radial-gradient(circle at 48% 72%, rgba(244, 211, 94, 0.58) 1px, transparent 1.4px);
   background-size: 190px 190px, 160px 160px, 210px 210px;
+  animation: particles-drift 22s linear infinite;
+}
+
+@keyframes particles-drift {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -12px, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
 }
 
 .hero-frame {
@@ -441,6 +471,26 @@ a {
   display: grid;
   gap: 2.5rem;
   align-items: center;
+}
+
+.hero-shimmer {
+  inset: 0;
+  background:
+    linear-gradient(110deg, transparent 30%, rgba(255, 249, 242, 0.08) 46%, transparent 60%);
+  mix-blend-mode: screen;
+  transform: translateX(-14%);
+  animation: shimmer-sweep 11s ease-in-out infinite;
+}
+
+@keyframes shimmer-sweep {
+  0%, 100% {
+    transform: translateX(-18%);
+    opacity: 0.2;
+  }
+  50% {
+    transform: translateX(18%);
+    opacity: 0.45;
+  }
 }
 
 .hero-depth {
@@ -528,6 +578,8 @@ a {
 
 .hero-stage {
   position: relative;
+  transform: translateY(var(--hero-shift));
+  transition: transform 140ms linear;
 }
 
 .hero-stage-image {
@@ -538,6 +590,16 @@ a {
   border-radius: 18rem 3rem 1rem 3rem;
   clip-path: polygon(0 0, 100% 0, 100% 88%, 92% 100%, 0 100%);
   box-shadow: 0 46px 90px -36px rgba(6, 4, 10, 0.94);
+}
+
+.hero-stage-image::after {
+  content: '';
+  position: absolute;
+  inset: -8% -6% auto auto;
+  width: 12rem;
+  height: 12rem;
+  background: radial-gradient(circle, rgba(244, 211, 94, 0.16), transparent 66%);
+  filter: blur(12px);
 }
 
 .hero-stage-image::before {
@@ -574,6 +636,7 @@ a {
   color: #3d233f;
   border: 1px solid rgba(74, 44, 58, 0.08);
   box-shadow: 0 24px 56px -28px rgba(6, 4, 10, 0.92);
+  backdrop-filter: blur(8px);
 }
 
 .hero-ticket--main {
@@ -609,6 +672,7 @@ a {
   position: relative;
   padding: 1.2rem 0 0.8rem;
   background: linear-gradient(180deg, rgba(248, 237, 224, 1), rgba(247, 236, 223, 0.92));
+  overflow: hidden;
 }
 
 .threshold-line {
@@ -634,17 +698,35 @@ a {
   color: rgba(86, 45, 79, 0.62);
 }
 
+.section-overlap-top {
+  margin-top: -2.2rem;
+  padding-top: 2.2rem;
+}
+
 .adventure-scene {
   position: relative;
   background:
     radial-gradient(34% 24% at 78% 0%, rgba(86, 45, 79, 0.12), transparent 72%),
     linear-gradient(180deg, rgba(248, 237, 224, 0.98), rgba(242, 224, 211, 0.98));
+  overflow: hidden;
 }
 
 .portal-collage {
   position: relative;
   min-height: 54rem;
   margin-top: 3rem;
+  transform: translateY(var(--adventure-shift));
+  transition: transform 140ms linear;
+}
+
+.portal-light-trail {
+  position: absolute;
+  inset: 8% 10% auto 8%;
+  height: 16rem;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 320' preserveAspectRatio='none'%3E%3Cpath d='M40 210C170 20 320 24 430 132C540 242 646 266 772 184C884 110 1018 106 1160 188' fill='none' stroke='%23f2a05f' stroke-width='5' stroke-linecap='round' stroke-dasharray='1 18'/%3E%3C/svg%3E")
+    center / 100% 100% no-repeat;
+  opacity: 0.72;
+  pointer-events: none;
 }
 
 .portal-card {
@@ -654,12 +736,18 @@ a {
   background: rgba(255, 249, 242, 0.82);
   box-shadow: 0 26px 54px -34px rgba(23, 13, 28, 0.5);
   transition: transform 220ms ease, box-shadow 220ms ease, filter 220ms ease;
+  will-change: transform;
+  --portal-lift: translate3d(0, 0, 0);
 }
 
 .portal-card:hover {
-  transform: translateY(-6px) scale(1.01);
-  box-shadow: 0 34px 66px -36px rgba(23, 13, 28, 0.58);
-  filter: brightness(1.01);
+  --portal-lift: translate3d(0, -8px, 0) scale(1.02);
+  transform: var(--portal-lift) var(--base-transform, none);
+  box-shadow:
+    0 34px 66px -36px rgba(23, 13, 28, 0.58),
+    0 0 0 1px rgba(244, 211, 94, 0.14),
+    0 0 44px rgba(242, 160, 95, 0.12);
+  filter: brightness(1.03);
 }
 
 .portal-image {
@@ -672,6 +760,15 @@ a {
   position: absolute;
   inset: 0;
   background: linear-gradient(180deg, rgba(15, 9, 17, 0.08), rgba(15, 9, 17, 0.58));
+}
+
+.portal-card::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0;
+  height: 42%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0), rgba(22, 12, 28, 0.74));
+  pointer-events: none;
 }
 
 .portal-overlay {
@@ -716,6 +813,7 @@ a {
 }
 
 .portal-card--castle {
+  --base-transform: rotate(-1.5deg);
   left: 0;
   top: 3rem;
   width: min(54%, 38rem);
@@ -724,22 +822,33 @@ a {
   clip-path: polygon(0 0, 100% 0, 100% 92%, 90% 100%, 0 100%);
 }
 
+.portal-card--signature {
+  --base-transform: rotate(-4deg);
+  left: 30%;
+  top: 7.5rem;
+  width: min(30%, 22rem);
+  height: 19rem;
+  z-index: 3;
+  border-radius: 2rem 2rem 1rem 2rem;
+  clip-path: polygon(0 18px, 18px 0, 100% 0, 100% 100%, 0 100%);
+}
+
 .portal-card--cruise {
+  --base-transform: rotate(2deg);
   right: 0;
   top: 0;
   width: min(42%, 28rem);
   height: 22rem;
-  transform: rotate(2deg);
   border-radius: 2rem 13rem 1rem 2rem;
   clip-path: polygon(18px 0, 100% 0, 100% calc(100% - 18px), calc(100% - 18px) 100%, 0 100%, 0 18px);
 }
 
 .portal-card--sun {
+  --base-transform: rotate(-2deg);
   right: 8%;
   bottom: 2rem;
   width: min(44%, 30rem);
   height: 24rem;
-  transform: rotate(-2deg);
   border-radius: 14rem 14rem 1rem 2rem;
   clip-path: polygon(0 16px, 16px 0, 100% 0, 100% 100%, 0 100%);
 }
@@ -747,6 +856,7 @@ a {
 .journey-path-scene {
   position: relative;
   background: linear-gradient(180deg, rgba(242, 225, 212, 0.98), rgba(238, 218, 205, 0.98));
+  overflow: hidden;
 }
 
 .journey-flow {
@@ -771,6 +881,11 @@ a {
     linear-gradient(180deg, rgba(255, 249, 242, 0.98), rgba(241, 227, 214, 0.98));
   border: 1px solid rgba(86, 45, 79, 0.14);
   box-shadow: 0 24px 44px -32px rgba(23, 13, 28, 0.44);
+}
+
+.journey-node:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 28px 52px -34px rgba(23, 13, 28, 0.48);
 }
 
 .journey-node::before {
@@ -838,6 +953,18 @@ a {
     linear-gradient(180deg, rgba(242, 224, 210, 0.98), rgba(236, 214, 199, 0.98));
 }
 
+.proof-scene::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -2rem;
+  height: 5rem;
+  background: linear-gradient(180deg, rgba(238, 218, 205, 0), rgba(236, 214, 199, 0.9));
+  filter: blur(18px);
+  pointer-events: none;
+}
+
 .proof-layout {
   display: grid;
   gap: 2.4rem;
@@ -856,6 +983,14 @@ a {
   background:
     linear-gradient(180deg, rgba(255, 249, 242, 0.98), rgba(241, 227, 214, 0.98));
   box-shadow: 0 22px 40px -28px rgba(29, 16, 35, 0.42);
+  transition: transform 220ms ease, box-shadow 220ms ease;
+  --quote-lift: translate3d(0, 0, 0);
+}
+
+.quote-layer:hover {
+  --quote-lift: translate3d(0, -5px, 0);
+  transform: var(--quote-lift) var(--base-transform, none);
+  box-shadow: 0 28px 48px -32px rgba(29, 16, 35, 0.46);
 }
 
 .quote-layer blockquote {
@@ -879,23 +1014,27 @@ a {
 }
 
 .quote-layer--one {
+  --base-transform: rotate(-1.8deg);
   left: 0;
   top: 3rem;
   clip-path: polygon(0 14px, 14px 0, calc(100% - 18px) 0, 100% 18px, 100% 100%, 18px 100%, 0 calc(100% - 18px));
-  transform: rotate(-1.8deg);
+  transform: var(--quote-lift) var(--base-transform);
 }
 
 .quote-layer--two {
+  --base-transform: rotate(1.8deg);
   right: 1rem;
   top: 0;
   clip-path: polygon(18px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 18px);
-  transform: rotate(1.8deg);
+  transform: var(--quote-lift) var(--base-transform);
 }
 
 .quote-layer--three {
+  --base-transform: none;
   left: 20%;
   bottom: 0;
   clip-path: polygon(0 18px, 18px 0, 100% 0, 100% 100%, 0 100%);
+  transform: var(--quote-lift) var(--base-transform);
 }
 
 .decision-scene {
@@ -904,6 +1043,19 @@ a {
   background:
     linear-gradient(180deg, rgba(25, 13, 23, 0.08), rgba(25, 13, 23, 0.3)),
     linear-gradient(135deg, #241321 0%, #4f2949 48%, #21111e 100%);
+}
+
+.decision-scene::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: -2rem;
+  width: min(76rem, 96%);
+  height: 4rem;
+  transform: translateX(-50%);
+  background: radial-gradient(circle, rgba(244, 211, 94, 0.16), rgba(244, 211, 94, 0));
+  filter: blur(20px);
+  pointer-events: none;
 }
 
 .decision-backdrop {
@@ -1077,6 +1229,11 @@ a {
     min-height: auto;
     display: grid;
     gap: 1rem;
+    transform: none;
+  }
+
+  .portal-light-trail {
+    display: none;
   }
 
   .portal-card {
@@ -1174,6 +1331,11 @@ a {
     transform: none;
   }
 
+  .section-overlap-top {
+    margin-top: -1rem;
+    padding-top: 1rem;
+  }
+
   .scene-threshold {
     padding-top: 0.7rem;
   }
@@ -1194,7 +1356,9 @@ a {
   }
 
   .loading-logo,
-  .hero-stage-image img {
+  .hero-stage-image img,
+  .hero-particles,
+  .hero-shimmer {
     animation: none;
   }
 
@@ -1204,7 +1368,15 @@ a {
 
   .portal-card,
   .nav-link,
-  .btn-primary {
+  .btn-primary,
+  .journey-node,
+  .quote-layer,
+  .reveal-up {
     transition: none;
+  }
+
+  .hero-stage,
+  .portal-collage {
+    transform: none;
   }
 }
