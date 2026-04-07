@@ -26,8 +26,8 @@ html {
 body {
   font-family: 'IBM Plex Sans', sans-serif;
   background:
-    radial-gradient(45% 30% at 50% 0%, rgba(244, 211, 94, 0.2), transparent 70%),
-    linear-gradient(180deg, #f6ecdf 0%, #f7efe6 16%, #f3e5da 37%, #f4e9ef 58%, #efe0d4 78%, #41243f 100%);
+    radial-gradient(42% 26% at 50% 0%, rgba(244, 211, 94, 0.16), transparent 70%),
+    linear-gradient(180deg, #f4e7d9 0%, #f4e8db 14%, #efddcf 34%, #e9d1c6 56%, #5a304f 84%, #271425 100%);
   color: #2e2e2e;
 }
 
@@ -221,14 +221,15 @@ a {
   font-weight: 700;
   letter-spacing: 0.24em;
   text-transform: uppercase;
-  color: #8c5467;
+  color: #8a4a63;
 }
 
 .scene-title {
   margin: 0.9rem 0 0;
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(2.6rem, 4.6vw, 4.6rem);
-  line-height: 0.92;
+  line-height: 0.88;
+  letter-spacing: -0.025em;
   color: #3d233f;
 }
 
@@ -252,18 +253,29 @@ a {
   position: relative;
   color: #fff9f2;
   background:
-    linear-gradient(180deg, rgba(59, 30, 63, 0.1), rgba(59, 30, 63, 0.04)),
-    linear-gradient(135deg, #46274a 0%, #6f4668 42%, #d28a6a 100%);
+    linear-gradient(180deg, rgba(12, 7, 17, 0.04), rgba(12, 7, 17, 0.18)),
+    linear-gradient(128deg, #1f1225 0%, #542b52 30%, #8b5365 62%, #d08a67 100%);
 }
 
 .hero-atmosphere {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(40% 40% at 18% 22%, rgba(248, 220, 167, 0.24), transparent 70%),
-    radial-gradient(40% 55% at 84% 28%, rgba(255, 244, 231, 0.23), transparent 72%),
-    linear-gradient(180deg, rgba(255, 249, 242, 0.08), rgba(32, 12, 38, 0.1));
+    radial-gradient(34% 42% at 20% 18%, rgba(248, 220, 167, 0.2), transparent 72%),
+    radial-gradient(34% 52% at 84% 24%, rgba(255, 244, 231, 0.18), transparent 76%),
+    linear-gradient(180deg, rgba(255, 249, 242, 0.04), rgba(12, 7, 17, 0.22));
   pointer-events: none;
+}
+
+.hero-scene::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(255, 247, 238, 0.08) 0, rgba(255, 247, 238, 0) 15%, rgba(255, 247, 238, 0) 85%, rgba(255, 247, 238, 0.08) 100%),
+    linear-gradient(180deg, rgba(255, 247, 238, 0.12), rgba(255, 247, 238, 0) 18%, rgba(255, 247, 238, 0) 82%, rgba(255, 247, 238, 0.1));
+  opacity: 0.55;
 }
 
 .hero-dust {
@@ -297,10 +309,10 @@ a {
   margin: 1rem 0 0;
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(4rem, 8vw, 6.7rem);
-  line-height: 0.86;
-  letter-spacing: -0.03em;
+  line-height: 0.8;
+  letter-spacing: -0.045em;
   color: #fff6ef;
-  text-shadow: 0 14px 40px rgba(44, 21, 49, 0.28);
+  text-shadow: 0 18px 46px rgba(14, 8, 19, 0.46);
 }
 
 .hero-description {
@@ -308,7 +320,7 @@ a {
   max-width: 40rem;
   font-size: 1.05rem;
   line-height: 1.85;
-  color: rgba(255, 245, 236, 0.9);
+  color: rgba(255, 245, 236, 0.82);
 }
 
 .hero-trust-strip {
@@ -326,8 +338,8 @@ a {
   font-size: 0.78rem;
   font-weight: 600;
   color: rgba(255, 249, 242, 0.92);
-  border: 1px solid rgba(255, 249, 242, 0.2);
-  background: rgba(255, 249, 242, 0.09);
+  border: 1px solid rgba(255, 249, 242, 0.18);
+  background: rgba(26, 14, 30, 0.18);
   backdrop-filter: blur(5px);
   clip-path: polygon(0 10px, 10px 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px));
 }
@@ -352,13 +364,25 @@ a {
   opacity: 0.55;
 }
 
+.hero-portal::after {
+  content: '';
+  position: absolute;
+  inset: 3rem -1.2rem -0.5rem 3rem;
+  background: linear-gradient(135deg, rgba(20, 11, 24, 0.42), rgba(20, 11, 24, 0));
+  clip-path: polygon(14% 0, 100% 0, 100% 88%, 84% 100%, 0 100%, 0 16%);
+  filter: blur(16px);
+  opacity: 0.55;
+  z-index: 0;
+}
+
 .hero-portal-image {
   position: relative;
   overflow: hidden;
   min-height: 30rem;
-  border: 1px solid rgba(255, 244, 231, 0.28);
-  border-radius: 18rem 18rem 2.2rem 2.2rem;
-  box-shadow: 0 36px 70px -32px rgba(21, 11, 28, 0.88);
+  border: 1px solid rgba(255, 244, 231, 0.22);
+  border-radius: 18rem 18rem 1.4rem 3rem;
+  box-shadow: 0 44px 86px -34px rgba(6, 4, 10, 0.95);
+  clip-path: polygon(0 0, 100% 0, 100% 90%, 92% 100%, 0 100%);
 }
 
 .hero-portal-image::before {
@@ -367,9 +391,18 @@ a {
   inset: 0;
   z-index: 1;
   background:
-    radial-gradient(circle at 50% 12%, rgba(255, 245, 230, 0.58), transparent 32%),
-    linear-gradient(180deg, rgba(59, 30, 63, 0.1), rgba(24, 14, 31, 0.48));
+    radial-gradient(circle at 50% 12%, rgba(255, 245, 230, 0.46), transparent 28%),
+    linear-gradient(180deg, rgba(59, 30, 63, 0.02), rgba(11, 7, 16, 0.58));
   pointer-events: none;
+}
+
+.hero-portal-image::after {
+  content: '';
+  position: absolute;
+  inset: 1rem;
+  z-index: 1;
+  border: 1px solid rgba(255, 245, 230, 0.18);
+  border-radius: 16rem 16rem 1rem 2.5rem;
 }
 
 .hero-portal-image img {
@@ -391,10 +424,11 @@ a {
   max-width: 17rem;
   padding: 1rem 1rem 1.05rem;
   background:
-    linear-gradient(180deg, rgba(255, 248, 240, 0.97), rgba(247, 235, 223, 0.95)),
+    linear-gradient(180deg, rgba(255, 248, 240, 0.98), rgba(241, 227, 213, 0.96)),
     repeating-linear-gradient(0deg, rgba(74, 44, 58, 0.04) 0, rgba(74, 44, 58, 0.04) 1px, transparent 1px, transparent 9px);
   color: #3d233f;
-  box-shadow: 0 18px 40px -24px rgba(21, 11, 28, 0.9);
+  box-shadow: 0 24px 56px -28px rgba(6, 4, 10, 0.95);
+  border: 1px solid rgba(74, 44, 58, 0.08);
 }
 
 .hero-ticket::before,
@@ -419,13 +453,14 @@ a {
 .hero-ticket--planner {
   left: -1rem;
   bottom: 2.25rem;
+  transform: rotate(-2.8deg);
   clip-path: polygon(0 0, calc(100% - 22px) 0, 100% 22px, 100% 100%, 24px 100%, 0 calc(100% - 22px));
 }
 
 .hero-ticket--route {
   right: -0.6rem;
-  top: 4rem;
-  transform: rotate(3deg);
+  top: 3rem;
+  transform: rotate(5.5deg);
   clip-path: polygon(18px 0, 100% 0, 100% calc(100% - 18px), calc(100% - 18px) 100%, 0 100%, 0 18px);
 }
 
@@ -456,11 +491,12 @@ a {
   height: 4.2rem;
   border-radius: 999px;
   border: 1px solid rgba(255, 244, 231, 0.28);
-  background: rgba(255, 249, 242, 0.12);
+  background: rgba(18, 10, 23, 0.28);
   font-size: 1.4rem;
   color: #f4d35e;
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(10px);
   animation: floaty 4.5s ease-in-out infinite;
+  box-shadow: 0 16px 34px -20px rgba(0, 0, 0, 0.9);
 }
 
 @keyframes floaty {
@@ -498,7 +534,7 @@ a {
 
 .scene-section--welcome {
   background:
-    linear-gradient(180deg, rgba(245, 237, 226, 0.96), rgba(249, 241, 234, 0.98));
+    linear-gradient(180deg, rgba(244, 234, 223, 0.98), rgba(246, 235, 228, 0.98));
 }
 
 .welcome-portrait {
@@ -516,10 +552,11 @@ a {
   aspect-ratio: 0.9;
   background:
     radial-gradient(circle at 50% 28%, rgba(244, 211, 94, 0.26), transparent 34%),
-    linear-gradient(180deg, rgba(255, 250, 245, 0.98), rgba(244, 232, 219, 0.95));
-  border: 1px solid rgba(122, 86, 111, 0.18);
-  border-radius: 15rem 15rem 2.5rem 2.5rem;
-  box-shadow: 0 30px 60px -34px rgba(62, 35, 72, 0.45);
+    linear-gradient(180deg, rgba(255, 250, 245, 0.98), rgba(237, 220, 205, 0.96));
+  border: 1px solid rgba(95, 54, 72, 0.22);
+  border-radius: 15rem 15rem 1.1rem 3rem;
+  box-shadow: 0 34px 68px -34px rgba(34, 18, 41, 0.56);
+  clip-path: polygon(0 0, 100% 0, 100% 88%, 90% 100%, 0 100%);
 }
 
 .welcome-portrait-frame::before {
@@ -545,11 +582,12 @@ a {
   line-height: 1.5;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #6b4156;
+  color: #5b3143;
   border-radius: 999px;
   border: 1px dashed rgba(107, 65, 86, 0.45);
-  background: rgba(255, 247, 241, 0.86);
-  transform: rotate(-10deg);
+  background: rgba(255, 247, 241, 0.9);
+  transform: rotate(-13deg);
+  box-shadow: 0 18px 38px -24px rgba(34, 18, 41, 0.45);
 }
 
 .journey-script {
@@ -600,8 +638,8 @@ a {
 
 .scene-section--services {
   background:
-    radial-gradient(40% 40% at 50% 0%, rgba(216, 195, 226, 0.28), transparent 74%),
-    linear-gradient(180deg, #faf2e8 0%, #f4eadf 100%);
+    radial-gradient(40% 40% at 50% 0%, rgba(143, 88, 109, 0.18), transparent 74%),
+    linear-gradient(180deg, #f8ecdf 0%, #f0e0d2 100%);
 }
 
 .journey-map {
@@ -629,7 +667,7 @@ a {
   grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
   align-items: center;
   gap: 0;
-  min-height: 28rem;
+  min-height: 29rem;
 }
 
 .journey-stop::before {
@@ -655,14 +693,15 @@ a {
   z-index: 1;
   min-height: 24rem;
   overflow: hidden;
-  box-shadow: 0 30px 60px -36px rgba(38, 23, 45, 0.6);
+  box-shadow: 0 36px 70px -34px rgba(17, 10, 22, 0.72);
+  transform: translateY(0);
 }
 
 .journey-stop-media::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(255, 251, 245, 0.12), rgba(52, 30, 58, 0.24));
+  background: linear-gradient(180deg, rgba(255, 251, 245, 0.06), rgba(22, 12, 28, 0.44));
   pointer-events: none;
 }
 
@@ -671,17 +710,17 @@ a {
   margin: 1.5rem 0;
   padding: 2.4rem 2rem;
   background:
-    linear-gradient(180deg, rgba(255, 249, 242, 0.96), rgba(245, 236, 227, 0.95)),
+    linear-gradient(180deg, rgba(255, 248, 241, 0.98), rgba(240, 227, 216, 0.98)),
     repeating-linear-gradient(0deg, rgba(74, 44, 58, 0.04) 0, rgba(74, 44, 58, 0.04) 1px, transparent 1px, transparent 10px);
-  border: 1px solid rgba(74, 44, 58, 0.12);
-  box-shadow: 0 22px 44px -30px rgba(62, 35, 72, 0.35);
+  border: 1px solid rgba(74, 44, 58, 0.14);
+  box-shadow: 0 30px 58px -38px rgba(24, 13, 30, 0.52);
 }
 
 .journey-stop-copy h3 {
   margin: 0.55rem 0 0;
   font-family: 'DM Serif Display', serif;
   font-size: clamp(2rem, 3vw, 3rem);
-  line-height: 1;
+  line-height: 0.92;
   color: #3d233f;
 }
 
@@ -714,8 +753,8 @@ a {
   font-size: 0.82rem;
   font-weight: 600;
   color: #5b3a53;
-  background: rgba(255, 250, 245, 0.82);
-  border: 1px solid rgba(91, 58, 83, 0.14);
+  background: rgba(255, 250, 245, 0.7);
+  border: 1px solid rgba(91, 58, 83, 0.18);
   clip-path: polygon(0 10px, 10px 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
 }
 
@@ -738,7 +777,7 @@ a {
   font-family: 'DM Serif Display', serif;
   font-size: 1rem;
   color: #fff9f2;
-  background: rgba(61, 35, 63, 0.48);
+  background: rgba(24, 14, 29, 0.56);
   backdrop-filter: blur(5px);
   clip-path: polygon(0 10px, 10px 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px));
 }
@@ -748,7 +787,7 @@ a {
 }
 
 .journey-stop--castle .journey-stop-copy {
-  margin-left: -3rem;
+  margin-left: -4.25rem;
   clip-path: polygon(24px 0, 100% 0, 100% calc(100% - 24px), calc(100% - 24px) 100%, 0 100%, 0 24px);
 }
 
@@ -763,7 +802,7 @@ a {
 
 .journey-stop--cruise .journey-stop-copy {
   order: 1;
-  margin-right: -3rem;
+  margin-right: -4.25rem;
   clip-path: polygon(0 0, calc(100% - 24px) 0, 100% 24px, 100% 100%, 24px 100%, 0 calc(100% - 24px));
 }
 
@@ -772,13 +811,13 @@ a {
 }
 
 .journey-stop--sun .journey-stop-copy {
-  margin-left: -2rem;
+  margin-left: -3.5rem;
   clip-path: polygon(0 18px, 18px 0, calc(100% - 22px) 0, 100% 22px, 100% 100%, 0 100%);
 }
 
 .scene-section--merch {
   background:
-    linear-gradient(180deg, rgba(247, 237, 228, 0.98), rgba(243, 230, 219, 0.98));
+    linear-gradient(180deg, rgba(241, 227, 217, 0.98), rgba(235, 218, 205, 0.98));
 }
 
 .boutique-shell {
@@ -794,9 +833,10 @@ a {
   padding: 2rem 1.6rem;
   background:
     radial-gradient(circle at 18% 18%, rgba(244, 211, 94, 0.2), transparent 34%),
-    linear-gradient(180deg, rgba(255, 249, 242, 0.98), rgba(244, 233, 224, 0.95));
-  border: 1px solid rgba(74, 44, 58, 0.12);
+    linear-gradient(180deg, rgba(255, 249, 242, 0.98), rgba(236, 220, 208, 0.96));
+  border: 1px solid rgba(74, 44, 58, 0.16);
   clip-path: polygon(0 20px, 20px 0, calc(100% - 30px) 0, 100% 30px, 100% 100%, 24px 100%, 0 calc(100% - 24px));
+  box-shadow: 0 28px 54px -40px rgba(21, 12, 27, 0.48);
 }
 
 .boutique-gallery {
@@ -811,9 +851,17 @@ a {
   grid-template-columns: 12rem minmax(0, 1fr);
   padding: 1rem;
   background:
-    linear-gradient(180deg, rgba(255, 249, 242, 0.94), rgba(247, 239, 230, 0.96));
-  border: 1px solid rgba(74, 44, 58, 0.12);
-  box-shadow: 0 18px 34px -28px rgba(62, 35, 72, 0.35);
+    linear-gradient(180deg, rgba(255, 249, 242, 0.95), rgba(240, 228, 217, 0.98));
+  border: 1px solid rgba(74, 44, 58, 0.16);
+  box-shadow: 0 24px 46px -34px rgba(22, 13, 28, 0.5);
+}
+
+.boutique-item:nth-child(2) {
+  transform: translateX(-1.5rem);
+}
+
+.boutique-item:nth-child(3) {
+  transform: translateX(1.5rem);
 }
 
 .boutique-item:nth-child(1) {
@@ -860,8 +908,8 @@ a {
 
 .scene-section--memories {
   background:
-    radial-gradient(36% 28% at 80% 10%, rgba(216, 195, 226, 0.35), transparent 80%),
-    linear-gradient(180deg, #f7ede4 0%, #f3e6da 100%);
+    radial-gradient(36% 28% at 80% 10%, rgba(98, 53, 83, 0.18), transparent 80%),
+    linear-gradient(180deg, #f2e3d7 0%, #ead6ca 100%);
 }
 
 .memory-wall {
@@ -881,7 +929,7 @@ a {
 .memory-card {
   position: relative;
   padding: 1.5rem 1.25rem 1.3rem;
-  box-shadow: 0 20px 36px -28px rgba(62, 35, 72, 0.42);
+  box-shadow: 0 26px 42px -28px rgba(29, 16, 35, 0.46);
 }
 
 .memory-card blockquote {
@@ -917,14 +965,14 @@ a {
 
 .memory-card--one {
   background:
-    linear-gradient(180deg, rgba(255, 248, 239, 0.96), rgba(248, 237, 228, 0.96));
+    linear-gradient(180deg, rgba(255, 248, 239, 0.98), rgba(243, 228, 216, 0.98));
   clip-path: polygon(0 14px, 14px 0, calc(100% - 18px) 0, 100% 18px, 100% 100%, 18px 100%, 0 calc(100% - 18px));
   transform: rotate(-1.5deg);
 }
 
 .memory-card--two {
   background:
-    linear-gradient(180deg, rgba(249, 241, 234, 0.98), rgba(241, 230, 239, 0.94));
+    linear-gradient(180deg, rgba(241, 231, 225, 0.98), rgba(228, 212, 224, 0.96));
   clip-path: polygon(18px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 18px);
   transform: translateY(2rem) rotate(1.4deg);
 }
@@ -932,7 +980,7 @@ a {
 .memory-card--three {
   grid-column: 1 / span 2;
   background:
-    linear-gradient(180deg, rgba(255, 249, 242, 0.98), rgba(241, 230, 221, 0.96));
+    linear-gradient(180deg, rgba(255, 249, 242, 0.98), rgba(232, 216, 204, 0.98));
   clip-path: polygon(0 20px, 20px 0, 100% 0, 100% 100%, 0 100%);
 }
 
@@ -943,11 +991,11 @@ a {
 .trust-column-inner {
   padding: 2rem 1.6rem;
   background:
-    radial-gradient(circle at 18% 20%, rgba(244, 211, 94, 0.22), transparent 30%),
-    linear-gradient(180deg, rgba(61, 35, 63, 0.96), rgba(88, 55, 84, 0.96));
+    radial-gradient(circle at 18% 20%, rgba(244, 211, 94, 0.16), transparent 30%),
+    linear-gradient(180deg, rgba(31, 18, 37, 0.98), rgba(74, 40, 64, 0.98));
   color: #fff7ee;
-  border-radius: 1.8rem 1.8rem 1.8rem 5rem;
-  box-shadow: 0 24px 48px -32px rgba(26, 16, 32, 0.8);
+  border-radius: 1.2rem 1.2rem 1.2rem 5rem;
+  box-shadow: 0 30px 56px -34px rgba(6, 4, 10, 0.9);
 }
 
 .trust-kicker {
@@ -984,7 +1032,7 @@ a {
 
 .scene-section--booking {
   background:
-    linear-gradient(180deg, rgba(245, 237, 226, 0.98), rgba(242, 229, 218, 0.98));
+    linear-gradient(180deg, rgba(238, 223, 211, 0.98), rgba(232, 214, 200, 0.98));
 }
 
 .booking-shell {
@@ -1033,10 +1081,10 @@ a {
 .booking-form-frame {
   padding: 1.35rem;
   background:
-    linear-gradient(180deg, rgba(255, 250, 245, 0.98), rgba(244, 233, 224, 0.98));
-  border: 1px solid rgba(74, 44, 58, 0.14);
+    linear-gradient(180deg, rgba(255, 250, 245, 0.98), rgba(237, 220, 208, 0.98));
+  border: 1px solid rgba(74, 44, 58, 0.18);
   clip-path: polygon(0 18px, 18px 0, calc(100% - 28px) 0, 100% 28px, 100% 100%, 22px 100%, 0 calc(100% - 22px));
-  box-shadow: 0 24px 48px -34px rgba(62, 35, 72, 0.38);
+  box-shadow: 0 28px 56px -36px rgba(22, 12, 27, 0.54);
 }
 
 .booking-form {
@@ -1148,8 +1196,8 @@ a {
 
 .scene-section--final {
   background:
-    radial-gradient(36% 24% at 50% 8%, rgba(244, 211, 94, 0.2), transparent 72%),
-    linear-gradient(180deg, #4d2b4a 0%, #3f223d 100%);
+    radial-gradient(36% 24% at 50% 8%, rgba(244, 211, 94, 0.14), transparent 72%),
+    linear-gradient(180deg, #251421 0%, #4a2745 56%, #1c0f19 100%);
   color: #fff7ee;
 }
 
@@ -1157,11 +1205,14 @@ a {
   position: relative;
   padding: 3rem 1.5rem 3.5rem;
   background:
-    radial-gradient(circle at 50% 10%, rgba(255, 245, 230, 0.12), transparent 35%),
-    linear-gradient(180deg, rgba(255, 249, 242, 0.08), rgba(255, 249, 242, 0.04));
-  border: 1px solid rgba(255, 245, 230, 0.16);
-  border-radius: 16rem 16rem 2rem 2rem;
-  box-shadow: inset 0 1px 0 rgba(255, 245, 230, 0.12);
+    radial-gradient(circle at 50% 10%, rgba(255, 245, 230, 0.1), transparent 35%),
+    linear-gradient(180deg, rgba(255, 249, 242, 0.06), rgba(255, 249, 242, 0.02));
+  border: 1px solid rgba(255, 245, 230, 0.12);
+  border-radius: 16rem 16rem 1.2rem 3rem;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 245, 230, 0.12),
+    0 32px 68px -38px rgba(0, 0, 0, 0.88);
+  clip-path: polygon(0 0, 100% 0, 100% 88%, 92% 100%, 0 100%);
 }
 
 .scene-section--final .scene-kicker {
@@ -1214,6 +1265,11 @@ a {
     position: relative;
     top: auto;
   }
+
+  .boutique-item:nth-child(2),
+  .boutique-item:nth-child(3) {
+    transform: none;
+  }
 }
 
 @media (max-width: 767px) {
@@ -1236,6 +1292,7 @@ a {
   .hero-portal-image {
     min-height: 22rem;
     border-radius: 10rem 10rem 1.6rem 1.6rem;
+    clip-path: polygon(0 0, 100% 0, 100% 92%, 90% 100%, 0 100%);
   }
 
   .hero-ticket {
@@ -1335,6 +1392,7 @@ a {
 
   .final-portal {
     border-radius: 8rem 8rem 1.6rem 1.6rem;
+    clip-path: polygon(0 0, 100% 0, 100% 94%, 92% 100%, 0 100%);
   }
 }
 

@@ -6,7 +6,7 @@ export function Button({ children, href = '#', variant = 'primary', className = 
     primary:
       'btn-sparkle bg-orange text-mist shadow-card hover:-translate-y-0.5 hover:bg-orange-soft focus-visible:ring-orange',
     secondary:
-      'border border-plum/25 bg-mist/90 text-plum hover:border-plum hover:bg-plum hover:text-mist focus-visible:ring-plum',
+      'border border-plum/35 bg-plum/5 text-plum shadow-card hover:-translate-y-0.5 hover:border-plum hover:bg-plum hover:text-mist focus-visible:ring-plum',
     light:
       'border border-mist/30 bg-mist/10 text-mist backdrop-blur hover:bg-mist hover:text-plum focus-visible:ring-mist',
   }
