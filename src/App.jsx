@@ -101,7 +101,11 @@ function App() {
         <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-5 py-4 md:px-8">
           <a href="#" className="flex items-center gap-3" aria-label="Vixie Dust Travel home">
             <div className="grid h-11 w-11 place-items-center overflow-hidden rounded-full border border-gold/40 bg-mist/15">
-              <img src="/vixie-fox-mark.svg" alt="Vixie Dust fox logo" className="h-8 w-8 object-contain" />
+              <img
+                src="/658027553_26629397506697359_3250149431792289541_n.jpg"
+                alt="Vixie Dust fox logo"
+                className="h-8 w-8 rounded-full object-cover"
+              />
             </div>
             <div>
               <p className="font-display text-2xl leading-none text-mist">Vixie Dust</p>
@@ -198,7 +202,12 @@ function App() {
               </aside>
 
               <div className="hero-fox-badge">
-                <img src="/vixie-fox-mark.svg" alt="" aria-hidden="true" className="h-10 w-10" />
+                <img
+                  src="/658027553_26629397506697359_3250149431792289541_n.jpg"
+                  alt=""
+                  aria-hidden="true"
+                  className="h-10 w-10 rounded-full object-cover"
+                />
               </div>
             </div>
           </div>
