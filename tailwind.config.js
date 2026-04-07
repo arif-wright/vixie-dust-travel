@@ -21,8 +21,8 @@ export default {
       },
       fontFamily: {
         display: ['"DM Serif Display"', 'serif'],
-        body: ['"Poppins"', 'sans-serif'],
-        accent: ['"Great Vibes"', 'cursive'],
+        body: ['"IBM Plex Sans"', 'sans-serif'],
+        accent: ['"Cormorant Garamond"', 'serif'],
       },
       boxShadow: {
         card: '0 20px 46px -24px rgba(28, 18, 33, 0.45)',
