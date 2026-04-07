@@ -78,7 +78,7 @@ const tripStats = [
 ]
 
 const proofChips = [
-  'Authorized destination planning support',
+  'Authorized planning support',
   'Promo monitoring included',
   'No extra planning fee',
 ]
@@ -160,18 +160,18 @@ function App() {
               <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-gold/40 bg-gold/10 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-gold">
                 Trusted Vacation Planning
               </p>
-              <h1 className="hero-title font-display text-6xl leading-[0.82] md:text-8xl">
-                Plan It Like
-                <span className="block text-gold">A Pro</span>
+              <h1 className="hero-title font-display text-5xl leading-[0.9] md:text-7xl">
+                Sprinkling Magic
+                <span className="block text-gold">On Every Journey</span>
               </h1>
               <p className="mt-5 max-w-xl text-base leading-relaxed text-mist/88 md:text-lg">
-                Start planning your trip with Disney, Universal, and cruise experts who cut chaos, protect your budget, and map every key move.
+                Making your dream vacation a reality with a touch of pixie dust, clear expert guidance, and stress-free planning from start to finish.
               </p>
 
               <div className="mt-8 flex flex-wrap items-center gap-3">
                 <div className="relative inline-flex">
                   <Button href="#intake" onClick={() => handleCtaClick('Start Planning My Trip', 'hero_primary')}>
-                    Start Planning My Trip
+                    Start Your Magical Journey
                   </Button>
                   <Starburst label="Free Plan" className="absolute -right-8 -top-8 hidden md:inline-flex" />
                 </div>
@@ -247,19 +247,25 @@ function App() {
           </div>
         </section>
 
-        <section className="impact-band mx-auto mt-10 w-full max-w-6xl px-5 md:px-8">
-          <div className="rounded-[1.9rem] border border-hotpink/45 bg-plum px-6 py-10 shadow-card md:px-10">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-gold/85">Built For Big Trips</p>
-            <h2 className="mt-3 font-display text-4xl leading-[0.92] text-mist md:text-6xl">
-              Powerful Planning. <span className="text-hotpink">Zero Guesswork.</span>
-            </h2>
-            <p className="mt-4 max-w-2xl text-base text-mist/80">
-              We engineer every move so your vacation feels smooth, high-value, and unforgettable.
-            </p>
-            <div className="mt-6">
-              <Button href="#intake" onClick={() => handleCtaClick('Start Planning My Trip', 'impact_band')}>
-                Start Planning My Trip
-              </Button>
+        <section className="welcome-band mx-auto mt-10 w-full max-w-6xl px-5 md:px-8">
+          <div className="welcome-card rounded-[1.9rem] border border-gold/35 px-6 py-10 shadow-card md:grid md:grid-cols-[0.3fr_0.7fr] md:items-center md:gap-10 md:px-10">
+            <div className="mx-auto mb-6 grid h-36 w-36 place-items-center rounded-full border border-plum/15 bg-mist md:mb-0">
+              <img src="/logo.svg" alt="Vixie Dust fox mascot" className="h-28 w-28 object-contain" />
+            </div>
+            <div>
+              <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-plum/70">Welcome To Vixie Dust Travels</p>
+              <h2 className="mt-3 font-display text-4xl leading-[0.95] text-plum md:text-5xl">
+                Fairy-Godmother Planning
+                <span className="block text-orange">For Family Adventures</span>
+              </h2>
+              <p className="mt-4 max-w-2xl text-base text-ink/80">
+                Planning Disney, cruises, and sunshine getaways is our happy place. We blend magic and logistics to build smooth, unforgettable trips.
+              </p>
+              <div className="mt-6">
+                <Button href="#services" onClick={() => handleCtaClick('Learn More', 'welcome_band')}>
+                  Learn More
+                </Button>
+              </div>
             </div>
           </div>
         </section>

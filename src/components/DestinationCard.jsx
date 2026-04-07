@@ -6,7 +6,7 @@ export function DestinationCard({ title, description, image, highlights, classNa
         alt={`${title} destination preview`}
         className="h-56 w-full object-cover transition duration-500 group-hover:scale-[1.03]"
       />
-      <div className="space-y-4 p-6">
+      <div className="space-y-4 bg-gradient-to-b from-mist to-cream p-6">
         <h3 className="font-display text-2xl text-ink">{title}</h3>
         <p className="text-sm leading-relaxed text-ink/80">{description}</p>
         <ul className="space-y-2 text-sm text-plum/90">

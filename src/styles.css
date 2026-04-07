@@ -115,9 +115,9 @@ a {
 
 .hero-shell {
   background:
-    radial-gradient(90% 90% at 80% 12%, rgba(231, 197, 110, 0.18), transparent 48%),
-    radial-gradient(65% 55% at 10% 32%, rgba(200, 101, 45, 0.28), transparent 60%),
-    linear-gradient(145deg, #201029 0%, #4a2b56 45%, #351b42 100%);
+    radial-gradient(90% 90% at 80% 10%, rgba(250, 207, 138, 0.25), transparent 48%),
+    radial-gradient(65% 55% at 10% 35%, rgba(223, 148, 111, 0.34), transparent 60%),
+    linear-gradient(145deg, #4d2f5c 0%, #7b4e71 43%, #6a3c60 100%);
 }
 
 .hero-watermark {
@@ -129,7 +129,7 @@ a {
   font-size: clamp(2.2rem, 9vw, 7rem);
   letter-spacing: 0.08em;
   font-weight: 800;
-  color: rgba(253, 248, 242, 0.08);
+  color: rgba(253, 248, 242, 0.11);
   white-space: nowrap;
   z-index: 1;
   pointer-events: none;
@@ -367,18 +367,41 @@ a {
     linear-gradient(132deg, #3a2046 0%, #4c2d59 100%);
 }
 
-.impact-band {
+.welcome-band {
   position: relative;
 }
 
-.impact-band::before {
+.welcome-card {
+  position: relative;
+  background:
+    radial-gradient(circle at 16% 22%, rgba(231, 197, 110, 0.16), transparent 36%),
+    radial-gradient(circle at 85% 82%, rgba(200, 101, 45, 0.13), transparent 28%),
+    linear-gradient(180deg, rgba(253, 248, 242, 0.95), rgba(247, 238, 227, 0.92));
+}
+
+.welcome-card::before {
   content: '';
   position: absolute;
-  inset: -12px 24px auto 24px;
-  height: 26px;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.4;
+  background-image:
+    radial-gradient(circle at 12% 24%, rgba(231, 197, 110, 0.8) 1px, transparent 1px),
+    radial-gradient(circle at 76% 20%, rgba(231, 197, 110, 0.7) 1px, transparent 1px),
+    radial-gradient(circle at 60% 80%, rgba(230, 0, 141, 0.3) 1px, transparent 1px);
+  background-size: 170px 170px, 190px 190px, 180px 180px;
+}
+
+.welcome-card::after {
+  content: '';
+  position: absolute;
+  left: 3%;
+  right: 3%;
+  bottom: -14px;
+  height: 30px;
   border-radius: 999px;
-  background: radial-gradient(circle, rgba(230, 0, 141, 0.4), rgba(230, 0, 141, 0));
-  filter: blur(7px);
+  background: radial-gradient(circle, rgba(231, 197, 110, 0.35), rgba(231, 197, 110, 0));
+  filter: blur(6px);
   pointer-events: none;
 }
 
