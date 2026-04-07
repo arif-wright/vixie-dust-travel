@@ -1,9 +1,11 @@
+import { useState } from 'react'
 import { Button } from './components/Button'
 import { DestinationCard } from './components/DestinationCard'
 import { SectionHeading } from './components/SectionHeading'
 import { Starburst } from './components/Starburst'
 import { TestimonialCard } from './components/TestimonialCard'
 import { TrustItem } from './components/TrustItem'
+import { trackEvent } from './lib/analytics'
 
 const destinations = [
   {
@@ -69,11 +71,35 @@ const testimonials = [
 ]
 
 function App() {
+  const [isSubmitted, setIsSubmitted] = useState(false)
+
+  const handleCtaClick = (label, location) => {
+    trackEvent('cta_click', { label, location })
+  }
+
+  const handleLeadSubmit = (event) => {
+    event.preventDefault()
+    const formData = new FormData(event.currentTarget)
+
+    trackEvent('lead_form_submit', {
+      destination: String(formData.get('destination') || ''),
+      travel_window: String(formData.get('travelWindow') || ''),
+      trip_type: String(formData.get('tripType') || ''),
+    })
+
+    event.currentTarget.reset()
+    setIsSubmitted(true)
+  }
+
   return (
     <div className="min-h-screen bg-cream font-body text-ink">
+      <a href="#main-content" className="skip-link">
+        Skip to main content
+      </a>
+
       <header className="nav-shell sticky top-0 z-50 border-b border-mist/15 bg-plum/80 text-mist backdrop-blur-xl">
         <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-5 py-4 md:px-8">
-          <a href="#" className="flex items-center gap-3">
+          <a href="#" className="flex items-center gap-3" aria-label="Vixie Dust Travel home">
             <div className="grid h-11 w-11 place-items-center overflow-hidden rounded-full border border-gold/40 bg-mist/15">
               <img src="/vixie-fox-mark.svg" alt="Vixie Dust fox logo" className="h-8 w-8 object-contain" />
             </div>
@@ -83,19 +109,32 @@ function App() {
             </div>
           </a>
 
-          <nav className="hidden items-center gap-8 text-sm font-medium text-mist/90 md:flex">
+          <nav aria-label="Primary" className="hidden items-center gap-8 text-sm font-medium text-mist/90 md:flex">
             <a href="#destinations" className="nav-link">Destinations</a>
             <a href="#services" className="nav-link">Services</a>
+            <a href="#merch" className="nav-link">Merch</a>
             <a href="#testimonials" className="nav-link">Testimonials</a>
           </nav>
 
-          <Button href="#start" className="nav-cta hidden md:inline-flex !bg-hotpink hover:!bg-hotpink-deep focus-visible:!ring-hotpink">
+          <Button
+            href="#intake"
+            className="nav-cta hidden md:inline-flex !bg-hotpink hover:!bg-hotpink-deep focus-visible:!ring-hotpink"
+            onClick={() => handleCtaClick('Start Planning My Trip', 'navbar_desktop')}
+          >
             Start Planning My Trip
+          </Button>
+
+          <Button
+            href="#intake"
+            className="nav-cta md:hidden !px-4 !py-2 !text-xs !bg-hotpink hover:!bg-hotpink-deep focus-visible:!ring-hotpink"
+            onClick={() => handleCtaClick('Start Planning', 'navbar_mobile')}
+          >
+            Start Planning
           </Button>
         </div>
       </header>
 
-      <main>
+      <main id="main-content">
         <section className="hero-shell relative overflow-hidden text-mist">
           <div className="hero-noise absolute inset-0" />
           <div className="mx-auto grid w-full max-w-6xl gap-12 px-5 pb-28 pt-14 md:grid-cols-[1.02fr_0.98fr] md:items-center md:px-8 md:pb-36 md:pt-20">
@@ -113,10 +152,12 @@ function App() {
 
               <div className="mt-8 flex flex-wrap items-center gap-3">
                 <div className="relative inline-flex">
-                  <Button href="#start">Start Planning My Trip</Button>
+                  <Button href="#intake" onClick={() => handleCtaClick('Start Planning My Trip', 'hero_primary')}>
+                    Start Planning My Trip
+                  </Button>
                   <Starburst label="Free Plan" className="absolute -right-8 -top-8 hidden md:inline-flex" />
                 </div>
-                <Button href="#destinations" variant="light">
+                <Button href="#destinations" variant="light" onClick={() => handleCtaClick('View Destinations', 'hero_secondary')}>
                   View Destinations
                 </Button>
               </div>
@@ -184,6 +225,25 @@ function App() {
           </div>
         </section>
 
+        <section id="merch" className="mx-auto w-full max-w-6xl px-5 pb-8 md:px-8 md:pb-10">
+          <article className="rounded-[1.6rem] border border-plum/15 bg-mist p-6 shadow-card md:flex md:items-center md:justify-between md:gap-8">
+            <div className="max-w-2xl">
+              <p className="inline-block rounded-full border border-hotpink/30 bg-hotpink/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-hotpink">
+                Community Merch
+              </p>
+              <h2 className="mt-3 font-display text-3xl leading-tight text-ink">A Little Merch, A Lot of Personality</h2>
+              <p className="mt-3 text-sm leading-relaxed text-ink/75 md:text-base">
+                We keep planning first, but yes, there are limited-run tees and park-day extras for clients and fans who want the full Vixie vibe.
+              </p>
+            </div>
+            <div className="mt-5 flex items-center gap-3 md:mt-0">
+              <Button href="#" variant="secondary" onClick={() => handleCtaClick('Shop Merch', 'merch_promo')}>
+                Shop Merch
+              </Button>
+            </div>
+          </article>
+        </section>
+
         <section id="services" className="relative overflow-hidden bg-mist py-16 md:py-20">
           <div className="services-accent" />
           <div className="mx-auto grid w-full max-w-6xl gap-10 px-5 md:grid-cols-[1fr_1fr] md:items-start md:px-8">
@@ -218,6 +278,98 @@ function App() {
           </div>
         </section>
 
+        <section id="intake" className="mx-auto w-full max-w-6xl px-5 pb-16 md:px-8 md:pb-20">
+          <div className="rounded-[1.8rem] border border-plum/15 bg-mist p-6 shadow-card md:p-8">
+            <SectionHeading
+              eyebrow="Start Planning"
+              title="Tell Us About Your Trip"
+              description="This short form helps us build your first quote and planning roadmap."
+            />
+
+            <form className="mt-8 grid gap-4 md:grid-cols-2" onSubmit={handleLeadSubmit}>
+              <div>
+                <label htmlFor="fullName" className="block text-sm font-semibold text-ink">
+                  Full name
+                </label>
+                <input id="fullName" name="fullName" required className="input-field" autoComplete="name" />
+              </div>
+
+              <div>
+                <label htmlFor="email" className="block text-sm font-semibold text-ink">
+                  Email
+                </label>
+                <input id="email" name="email" type="email" required className="input-field" autoComplete="email" />
+              </div>
+
+              <div>
+                <label htmlFor="destination" className="block text-sm font-semibold text-ink">
+                  Dream destination
+                </label>
+                <select id="destination" name="destination" required className="input-field">
+                  <option value="">Select one</option>
+                  <option value="disney">Disney</option>
+                  <option value="universal">Universal</option>
+                  <option value="cruise">Cruise</option>
+                  <option value="multi">Multi-destination</option>
+                </select>
+              </div>
+
+              <div>
+                <label htmlFor="travelWindow" className="block text-sm font-semibold text-ink">
+                  Travel window
+                </label>
+                <input id="travelWindow" name="travelWindow" required className="input-field" placeholder="Example: October 2026" />
+              </div>
+
+              <div>
+                <label htmlFor="tripType" className="block text-sm font-semibold text-ink">
+                  Trip style
+                </label>
+                <select id="tripType" name="tripType" required className="input-field">
+                  <option value="">Select one</option>
+                  <option value="family">Family trip</option>
+                  <option value="couples">Couples trip</option>
+                  <option value="group">Group trip</option>
+                  <option value="celebration">Celebration trip</option>
+                </select>
+              </div>
+
+              <div>
+                <label htmlFor="budget" className="block text-sm font-semibold text-ink">
+                  Budget target
+                </label>
+                <input id="budget" name="budget" className="input-field" placeholder="Optional" />
+              </div>
+
+              <div className="md:col-span-2">
+                <label htmlFor="notes" className="block text-sm font-semibold text-ink">
+                  Notes
+                </label>
+                <textarea
+                  id="notes"
+                  name="notes"
+                  rows="4"
+                  className="input-field min-h-[120px] resize-y"
+                  placeholder="Tell us your priorities, dates, or must-do moments"
+                />
+              </div>
+
+              <div className="md:col-span-2 flex flex-wrap items-center gap-3 pt-2">
+                <button type="submit" className="btn-primary" onClick={() => handleCtaClick('Submit Trip Form', 'intake_form')}>
+                  Start Planning My Trip
+                </button>
+                <p className="text-sm text-ink/65">By submitting, you agree to be contacted about your trip plan.</p>
+              </div>
+            </form>
+
+            {isSubmitted ? (
+              <p role="status" className="mt-4 rounded-xl border border-green-700/25 bg-green-50 px-4 py-3 text-sm font-medium text-green-800">
+                Thanks. We received your details and will follow up with next steps.
+              </p>
+            ) : null}
+          </div>
+        </section>
+
         <section id="start" className="final-cta relative overflow-hidden py-16 text-mist md:py-20">
           <div className="mx-auto w-full max-w-4xl px-5 text-center md:px-8">
             <p className="inline-block rounded-full border border-gold/40 bg-gold/10 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-gold">
@@ -225,15 +377,17 @@ function App() {
             </p>
             <h2 className="mt-5 font-display text-5xl leading-tight md:text-6xl">Start Planning My Trip</h2>
             <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-mist/85">
-              Tell us your dates, priorities, and budget. We will build your best-fit plan and guide every next step.
+              Prefer to begin with the form? We will turn your details into a smart, stress-free travel plan.
             </p>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
               <div className="relative inline-flex">
-                <Button href="#">Start Planning My Trip</Button>
+                <Button href="#intake" onClick={() => handleCtaClick('Start Planning My Trip', 'final_cta_primary')}>
+                  Start Planning My Trip
+                </Button>
                 <Starburst label="Book Now" className="absolute -right-8 -top-8 hidden md:inline-flex" />
               </div>
-              <Button href="#destinations" variant="light">
-                View Destinations
+              <Button href="#merch" variant="light" onClick={() => handleCtaClick('Browse Merch', 'final_cta_secondary')}>
+                Browse Merch
               </Button>
             </div>
           </div>

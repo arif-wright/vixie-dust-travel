@@ -1,4 +1,4 @@
-export function Button({ children, href = '#', variant = 'primary', className = '' }) {
+export function Button({ children, href = '#', variant = 'primary', className = '', ...props }) {
   const base =
     'inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold transition duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-cream'
 
@@ -12,7 +12,7 @@ export function Button({ children, href = '#', variant = 'primary', className = 
   }
 
   return (
-    <a href={href} className={`${base} ${styles[variant]} ${className}`}>
+    <a href={href} className={`${base} ${styles[variant]} ${className}`} {...props}>
       {children}
     </a>
   )
