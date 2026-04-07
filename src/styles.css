@@ -364,10 +364,15 @@ a {
   align-items: start;
 }
 
+.section-heading--adventure {
+  max-width: none;
+  width: 100%;
+}
+
 .adventure-heading-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(16rem, 20rem);
-  gap: 1.5rem;
+  grid-template-columns: minmax(0, 1.35fr) minmax(17rem, 20rem);
+  gap: 2.25rem;
   align-items: start;
 }
 
@@ -885,45 +890,21 @@ a {
   position: absolute;
   inset: 8% 10% auto 8%;
   height: 16rem;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 320' preserveAspectRatio='none'%3E%3Cpath d='M40 210C170 20 320 24 430 132C540 242 646 266 772 184C884 110 1018 106 1160 188' fill='none' stroke='%23b76643' stroke-width='5' stroke-linecap='round' stroke-dasharray='1 18'/%3E%3C/svg%3E")
+    center / 100% 100% no-repeat;
+  opacity: 0.84;
   pointer-events: none;
   transform: translateY(calc(var(--adventure-shift) * 0.45));
 }
 
 .portal-light-trail--sun {
-  inset: 22% 6% auto 63%;
-  height: 22rem;
+  inset: 24% 6% auto 66%;
+  width: 24%;
+  height: 20rem;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 360 460' preserveAspectRatio='none'%3E%3Cpath d='M30 42C58 62 86 90 110 126C138 166 160 206 182 246C206 290 232 330 272 366C294 386 320 404 344 420' fill='none' stroke='%23b76643' stroke-width='5' stroke-linecap='round' stroke-dasharray='1 18'/%3E%3C/svg%3E")
+    center / 100% 100% no-repeat;
+  opacity: 0.84;
   transform: translateY(calc(var(--adventure-shift) * 0.55));
-}
-
-.portal-light-trail-svg {
-  width: 100%;
-  height: 100%;
-  overflow: visible;
-}
-
-.trail-dot {
-  fill: #b76643;
-  opacity: 0.28;
-  filter: drop-shadow(0 0 5px rgba(255, 233, 166, 0.24));
-  transform-box: fill-box;
-  transform-origin: center;
-  animation: trail-step 3.8s ease-in-out infinite;
-  animation-delay: var(--dot-delay, 0ms);
-}
-
-@keyframes trail-step {
-  0%, 12% {
-    opacity: 0.12;
-    transform: scale(0.78);
-  }
-  18%, 28% {
-    opacity: 1;
-    transform: scale(1.18);
-  }
-  38%, 100% {
-    opacity: 0.42;
-    transform: scale(1);
-  }
 }
 
 .portal-card {
@@ -1647,8 +1628,7 @@ a {
   .hero-particles,
   .hero-shimmer,
   .scene-ambient::before,
-  .scene-ambient::after,
-  .trail-dot {
+  .scene-ambient::after {
     animation: none;
   }
 
@@ -1667,11 +1647,6 @@ a {
 
   .hero-stage,
   .portal-collage {
-    transform: none;
-  }
-
-  .trail-dot {
-    opacity: 0.62;
     transform: none;
   }
 }

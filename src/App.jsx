@@ -101,38 +101,6 @@ const trustSignals = [
   'Personalized travel guidance',
 ]
 
-const disneyCruiseTrailDots = [
-  [52, 206],
-  [118, 150],
-  [186, 120],
-  [256, 112],
-  [330, 122],
-  [404, 150],
-  [482, 184],
-  [566, 205],
-  [654, 207],
-  [742, 193],
-  [828, 170],
-  [916, 148],
-  [1002, 140],
-  [1088, 158],
-]
-
-const cruiseSunTrailDots = [
-  [40, 54],
-  [68, 68],
-  [94, 88],
-  [118, 114],
-  [142, 146],
-  [164, 182],
-  [188, 220],
-  [216, 258],
-  [250, 294],
-  [290, 328],
-  [334, 356],
-  [382, 378],
-]
-
 function App() {
   const [activeSection, setActiveSection] = useState('adventure')
   const [isSubmitted, setIsSubmitted] = useState(false)
@@ -481,7 +449,7 @@ function App() {
         <section id="adventure" ref={adventureRef} className="adventure-scene">
           <div className="scene-ambient scene-ambient--adventure" aria-hidden="true" />
           <div className="scene-shell scene-shell--wide">
-            <div className="section-heading section-heading--split reveal-up" data-reveal>
+            <div className="section-heading section-heading--split section-heading--adventure reveal-up" data-reveal>
               <p className="section-kicker">Choose your adventure</p>
               <div className="adventure-heading-layout">
                 <div>
@@ -510,34 +478,8 @@ function App() {
             </div>
 
             <div className="portal-collage">
-              <div className="portal-light-trail" aria-hidden="true">
-                <svg viewBox="0 0 1200 320" preserveAspectRatio="none" className="portal-light-trail-svg">
-                  {disneyCruiseTrailDots.map(([cx, cy], index) => (
-                    <circle
-                      key={`trail-main-${cx}-${cy}`}
-                      className="trail-dot"
-                      cx={cx}
-                      cy={cy}
-                      r="3.4"
-                      style={{ '--dot-delay': `${index * 120}ms` }}
-                    />
-                  ))}
-                </svg>
-              </div>
-              <div className="portal-light-trail portal-light-trail--sun" aria-hidden="true">
-                <svg viewBox="0 0 420 520" preserveAspectRatio="none" className="portal-light-trail-svg">
-                  {cruiseSunTrailDots.map(([cx, cy], index) => (
-                    <circle
-                      key={`trail-sun-${cx}-${cy}`}
-                      className="trail-dot"
-                      cx={cx}
-                      cy={cy}
-                      r="3.6"
-                      style={{ '--dot-delay': `${360 + index * 140}ms` }}
-                    />
-                  ))}
-                </svg>
-              </div>
+              <div className="portal-light-trail" aria-hidden="true" />
+              <div className="portal-light-trail portal-light-trail--sun" aria-hidden="true" />
               {adventurePortals.map((portal, index) => (
                 <article
                   key={portal.id}
