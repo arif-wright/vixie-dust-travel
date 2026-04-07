@@ -802,10 +802,9 @@ a {
 }
 
 .portal-light-trail--sun {
-  inset: 31% 11% auto 49%;
-  width: 33%;
-  height: 19rem;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 620 420' preserveAspectRatio='none'%3E%3Cpath d='M34 66C122 50 214 90 270 160C326 232 360 294 430 328C482 352 536 356 590 336' fill='none' stroke='%23f2a05f' stroke-width='5' stroke-linecap='round' stroke-dasharray='1 18'/%3E%3C/svg%3E")
+  inset: 22% 6% auto 63%;
+  height: 22rem;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 420 520' preserveAspectRatio='none'%3E%3Cpath d='M56 54C118 74 156 122 184 182C214 246 236 312 286 370C316 404 352 432 394 448' fill='none' stroke='%23f2a05f' stroke-width='5' stroke-linecap='round' stroke-dasharray='1 18'/%3E%3C/svg%3E")
     center / 100% 100% no-repeat;
   opacity: 0.7;
   transform: translateY(calc(var(--adventure-shift) * 0.55));
@@ -1038,26 +1037,26 @@ a {
 }
 
 .journey-node--1 {
-  left: 2%;
-  top: 12%;
+  left: 1%;
+  top: 16%;
   clip-path: polygon(0 18px, 18px 0, calc(100% - 18px) 0, 100% 18px, 100% 100%, 0 100%);
 }
 
 .journey-node--2 {
-  left: 28%;
-  top: 0;
+  left: 26%;
+  top: 2%;
   clip-path: polygon(18px 0, 100% 0, 100% calc(100% - 18px), calc(100% - 18px) 100%, 0 100%, 0 18px);
 }
 
 .journey-node--3 {
-  left: 54%;
-  top: 24%;
+  left: 56%;
+  top: 30%;
   clip-path: polygon(0 14px, 14px 0, 100% 0, 100% 100%, 18px 100%, 0 calc(100% - 18px));
 }
 
 .journey-node--4 {
   right: 2%;
-  top: 42%;
+  top: 48%;
   clip-path: polygon(16px 0, 100% 0, 100% 100%, 0 100%, 0 16px);
 }
 
