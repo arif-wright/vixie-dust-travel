@@ -47,6 +47,14 @@ a {
   text-decoration: none;
 }
 
+.logo-mark {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: contrast(1.08) saturate(1.06);
+}
+
 .skip-link {
   position: absolute;
   left: 0.5rem;

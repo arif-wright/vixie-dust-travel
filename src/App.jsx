@@ -113,11 +113,11 @@ function App() {
       <header className="nav-shell sticky top-0 z-50 border-b border-mist/15 bg-plum/88 text-mist backdrop-blur-xl">
         <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-5 py-4 md:px-8">
           <a href="#" className="flex items-center gap-3" aria-label="Vixie Dust Travel home">
-            <div className="grid h-11 w-11 place-items-center overflow-hidden rounded-full border border-gold/40 bg-mist/15">
+            <div className="grid h-11 w-11 place-items-center overflow-hidden rounded-full border border-gold/50 bg-mist">
               <img
-                src="/logo-face.svg"
+                src="/logo.svg"
                 alt="Vixie Dust fox logo"
-                className="h-8 w-8 rounded-full object-cover"
+                className="logo-mark h-8 w-8"
               />
             </div>
             <div>
@@ -126,16 +126,15 @@ function App() {
             </div>
           </a>
 
-          <nav aria-label="Primary" className="hidden items-center gap-8 text-sm font-medium text-mist/90 md:flex">
+          <nav aria-label="Primary" className="hidden items-center gap-6 text-sm font-medium text-mist/90 lg:flex">
             <a href="#destinations" className="nav-link">Destinations</a>
             <a href="#services" className="nav-link">Services</a>
-            <a href="#merch" className="nav-link">Merch</a>
-            <a href="#testimonials" className="nav-link">Testimonials</a>
+            <a href="#intake" className="nav-link">Plan</a>
           </nav>
 
           <Button
             href="#intake"
-            className="nav-cta hidden md:inline-flex !bg-hotpink hover:!bg-hotpink-deep focus-visible:!ring-hotpink"
+            className="nav-cta hidden sm:inline-flex !bg-hotpink hover:!bg-hotpink-deep focus-visible:!ring-hotpink"
             onClick={() => handleCtaClick('Start Planning My Trip', 'navbar_desktop')}
           >
             Start Planning My Trip
@@ -143,7 +142,7 @@ function App() {
 
           <Button
             href="#intake"
-            className="nav-cta md:hidden !px-4 !py-2 !text-xs !bg-hotpink hover:!bg-hotpink-deep focus-visible:!ring-hotpink"
+            className="nav-cta sm:hidden !px-4 !py-2 !text-xs !bg-hotpink hover:!bg-hotpink-deep focus-visible:!ring-hotpink"
             onClick={() => handleCtaClick('Start Planning', 'navbar_mobile')}
           >
             Start Planning
@@ -226,10 +225,10 @@ function App() {
 
               <div className="hero-fox-badge">
                 <img
-                  src="/logo-face.svg"
+                  src="/logo.svg"
                   alt=""
                   aria-hidden="true"
-                  className="h-10 w-10 rounded-full object-cover"
+                  className="logo-mark h-10 w-10"
                 />
               </div>
             </div>
