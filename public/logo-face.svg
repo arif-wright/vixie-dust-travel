@@ -1,0 +1,12 @@
+<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="face-clip">
+      <circle cx="60" cy="60" r="58" />
+    </clipPath>
+  </defs>
+  <g clip-path="url(#face-clip)">
+    <rect width="120" height="120" fill="#f7eee3" />
+    <image href="/logo.svg" x="-198" y="-132" width="612" height="792" preserveAspectRatio="xMidYMid slice" />
+  </g>
+  <circle cx="60" cy="60" r="58" fill="none" stroke="#3E2348" stroke-width="2" opacity="0.25" />
+</svg>

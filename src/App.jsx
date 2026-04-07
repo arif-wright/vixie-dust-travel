@@ -115,9 +115,9 @@ function App() {
           <a href="#" className="flex items-center gap-3" aria-label="Vixie Dust Travel home">
             <div className="grid h-11 w-11 place-items-center overflow-hidden rounded-full border border-gold/40 bg-mist/15">
               <img
-                src="/logo.svg"
+                src="/logo-face.svg"
                 alt="Vixie Dust fox logo"
-                className="logo-face h-8 w-8 rounded-full object-cover"
+                className="h-8 w-8 rounded-full object-cover"
               />
             </div>
             <div>
@@ -226,10 +226,10 @@ function App() {
 
               <div className="hero-fox-badge">
                 <img
-                  src="/logo.svg"
+                  src="/logo-face.svg"
                   alt=""
                   aria-hidden="true"
-                  className="logo-face h-10 w-10 rounded-full object-cover"
+                  className="h-10 w-10 rounded-full object-cover"
                 />
               </div>
             </div>
