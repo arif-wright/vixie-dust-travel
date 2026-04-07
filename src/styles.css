@@ -63,14 +63,18 @@ a {
 
 .sparkle-dot {
   position: absolute;
-  background: linear-gradient(145deg, #fff9ef, #f4d35e);
+  background:
+    radial-gradient(circle at 35% 35%, #fffdf8 0 26%, #ffe6a9 27%, #f4d35e 58%, #d9864b 100%);
   clip-path: polygon(50% 0%, 58% 42%, 100% 50%, 58% 58%, 50% 100%, 42% 58%, 0% 50%, 42% 42%);
   transform: rotate(var(--sparkle-rotate, 0deg));
   opacity: 0;
   animation-name: sparkle-fade;
   animation-timing-function: ease-out;
   animation-fill-mode: forwards;
-  box-shadow: 0 0 10px rgba(244, 211, 94, 0.45);
+  box-shadow:
+    0 0 0 1px rgba(255, 250, 240, 0.9),
+    0 0 12px rgba(244, 211, 94, 0.9),
+    0 0 24px rgba(217, 134, 75, 0.55);
 }
 
 @keyframes sparkle-fade {
@@ -79,7 +83,7 @@ a {
     transform: translateY(3px) rotate(var(--sparkle-rotate, 0deg)) scale(0.5);
   }
   30% {
-    opacity: 0.95;
+    opacity: 1;
   }
   100% {
     opacity: 0;
@@ -477,22 +481,19 @@ a {
 }
 
 .scene-divider--hero {
-  height: 9rem;
+  height: 8.5rem;
   background:
-    radial-gradient(circle at 8% 100%, #f5ede2 0 5.8rem, transparent 5.9rem),
-    radial-gradient(circle at 27% 100%, #f5ede2 0 6.5rem, transparent 6.6rem),
-    radial-gradient(circle at 50% 100%, #f5ede2 0 7.1rem, transparent 7.2rem),
-    radial-gradient(circle at 73% 100%, #f5ede2 0 6.2rem, transparent 6.3rem),
-    radial-gradient(circle at 93% 100%, #f5ede2 0 5.4rem, transparent 5.5rem);
+    linear-gradient(180deg, rgba(245, 237, 226, 0), rgba(245, 237, 226, 0.18)),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 160' preserveAspectRatio='none'%3E%3Cpath fill='%23f5ede2' d='M0 112L40 101.3C80 91 160 69 240 69.3C320 69 400 91 480 106.7C560 123 640 133 720 122.7C800 112 880 80 960 74.7C1040 69 1120 91 1200 106.7C1280 123 1360 133 1400 138.7L1440 144V160H1400C1360 160 1280 160 1200 160C1120 160 1040 160 960 160C880 160 800 160 720 160C640 160 560 160 480 160C400 160 320 160 240 160C160 160 80 160 40 160H0Z'/%3E%3C/svg%3E")
+      center bottom / 100% 100% no-repeat;
 }
 
 .scene-divider--soft {
-  height: 7rem;
+  height: 6rem;
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0), rgba(245, 237, 226, 0.75)),
-    radial-gradient(circle at 14% 100%, rgba(245, 237, 226, 0.88) 0 4.4rem, transparent 4.5rem),
-    radial-gradient(circle at 45% 100%, rgba(245, 237, 226, 0.92) 0 4.9rem, transparent 5rem),
-    radial-gradient(circle at 78% 100%, rgba(245, 237, 226, 0.88) 0 4.2rem, transparent 4.3rem);
+    linear-gradient(180deg, rgba(245, 237, 226, 0), rgba(245, 237, 226, 0.55)),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 96' preserveAspectRatio='none'%3E%3Cpath fill='%23f5ede2' fill-opacity='.92' d='M0 48L48 42.7C96 37 192 27 288 32C384 37 480 59 576 64C672 69 768 59 864 48C960 37 1056 27 1152 26.7C1248 27 1344 37 1392 42.7L1440 48V96H1392C1344 96 1248 96 1152 96C1056 96 960 96 864 96C768 96 672 96 576 96C480 96 384 96 288 96C192 96 96 96 48 96H0Z'/%3E%3C/svg%3E")
+      center bottom / 100% 100% no-repeat;
 }
 
 .scene-section--welcome {
@@ -1256,11 +1257,11 @@ a {
   }
 
   .scene-divider--hero {
-    height: 6rem;
+    height: 5rem;
     background:
-      radial-gradient(circle at 18% 100%, #f5ede2 0 3.5rem, transparent 3.6rem),
-      radial-gradient(circle at 48% 100%, #f5ede2 0 4rem, transparent 4.1rem),
-      radial-gradient(circle at 78% 100%, #f5ede2 0 3.6rem, transparent 3.7rem);
+      linear-gradient(180deg, rgba(245, 237, 226, 0), rgba(245, 237, 226, 0.12)),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120' preserveAspectRatio='none'%3E%3Cpath fill='%23f5ede2' d='M0 88L40 82.7C80 77 160 67 240 66.7C320 67 400 75 480 82.7C560 91 640 99 720 98.7C800 99 880 91 960 80C1040 69 1120 53 1200 53.3C1280 53 1360 69 1400 77.3L1440 85V120H1400C1360 120 1280 120 1200 120C1120 120 1040 120 960 120C880 120 800 120 720 120C640 120 560 120 480 120C400 120 320 120 240 120C160 120 80 120 40 120H0Z'/%3E%3C/svg%3E")
+        center bottom / 100% 100% no-repeat;
   }
 
   .welcome-portrait {
