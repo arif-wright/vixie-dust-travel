@@ -16,7 +16,7 @@ const adventurePortals = [
     title: 'Disney Vacations',
     text: 'Theme park anticipation, resort atmosphere, and polished planning that keeps the wonder high without turning the trip into homework.',
     image:
-      'https://images.unsplash.com/photo-1566264956508-41e8ef7f5cfc?auto=format&fit=crop&w=1400&q=80',
+      'https://images.pexels.com/photos/8184000/pexels-photo-8184000.jpeg?auto=compress&cs=tinysrgb&w=1400',
     accent: 'Rope drop to fireworks',
     className: 'portal-card--castle',
   },
