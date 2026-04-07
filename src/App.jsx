@@ -210,17 +210,25 @@ function App() {
         <section className="hero-reference relative overflow-hidden text-mist">
           <div className="hero-reference-overlay" />
           <div className="mx-auto w-full max-w-4xl px-5 pb-28 pt-20 text-center md:pb-36 md:pt-24">
-            <h1 className="font-display text-5xl leading-[0.94] text-plum md:text-7xl">
-              Sprinkling Magic
-              <span className="block">on Every Journey</span>
-            </h1>
-            <p className="mx-auto mt-4 max-w-2xl text-base text-plum/85 md:text-lg">
-              Making your dream vacation a reality with a touch of pixie dust.
-            </p>
-            <div className="mt-7">
-              <Button href="#intake" onClick={() => handleCtaClick('Start Your Magical Journey', 'hero_primary')}>
-                Start Your Magical Journey
-              </Button>
+            <div className="hero-copy-shell">
+              <p className="inline-block rounded-full border border-gold/45 bg-gold/20 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-plum">
+                Trusted Vacation Planning
+              </p>
+              <h1 className="mt-4 font-display text-5xl leading-[0.92] text-plum md:text-7xl">
+                Sprinkling Magic
+                <span className="block">on Every Journey</span>
+              </h1>
+              <p className="mx-auto mt-4 max-w-2xl text-base text-plum/90 md:text-lg">
+                Personalized Disney, cruise, and sunny getaway planning with clear guidance, warm support, and magical moments built in.
+              </p>
+              <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
+                <Button href="#intake" onClick={() => handleCtaClick('Start Your Magical Journey', 'hero_primary')}>
+                  Start Your Magical Journey
+                </Button>
+                <Button href="#services" variant="secondary" onClick={() => handleCtaClick('View Services', 'hero_secondary')}>
+                  View Services
+                </Button>
+              </div>
             </div>
           </div>
 
@@ -233,12 +241,13 @@ function App() {
               <img src="/logo.svg" alt="Vixie Dust fox mascot" className="h-40 w-40 object-contain md:h-48 md:w-48" />
             </div>
             <div>
+              <p className="font-accent text-3xl text-orange">A little pixie dust, a lot of planning confidence</p>
               <h2 className="font-display text-4xl leading-tight text-plum md:text-5xl">Welcome to Vixie Dust Travels!</h2>
               <p className="mt-4 text-base leading-relaxed text-charcoal/80 md:text-lg">
-                Hi! We’re your fairy godmother for family vacations. Planning Disney, cruises, and tropical getaways isn’t just our job. It’s our passion.
+                We plan Disney vacations, cruises, and tropical escapes with care, clarity, and concierge-level support from quote to takeoff.
               </p>
               <p className="mt-3 text-base leading-relaxed text-charcoal/80 md:text-lg">
-                With a sprinkle of magic, we craft personalized trips that bring smiles, wonder, and unforgettable memories.
+                Every itinerary is tailored to your crew, budget, and travel style so your trip feels exciting and effortless.
               </p>
               <div className="mt-6">
                 <Button href="#services" onClick={() => handleCtaClick('Learn More', 'welcome_section')}>
@@ -254,8 +263,8 @@ function App() {
         <section id="services" className="section-speckle mx-auto w-full max-w-6xl px-5 py-12 md:px-8 md:py-16">
           <SectionHeading
             eyebrow="Our Services"
-            title="Travel Planning As Enchanting As The Magic Kingdom"
-            description="Family-friendly planning support for Disney vacations, cruises, and sunny getaways."
+            title="Travel Planning With Magic And A Real Game Plan"
+            description="Family-friendly planning support for Disney vacations, cruises, and sunny getaways with a professional structure behind every detail."
             align="center"
           />
 
@@ -268,11 +277,11 @@ function App() {
 
         <div className="wand-divider" aria-hidden="true">✦</div>
 
-        <section id="testimonials" className="mx-auto w-full max-w-6xl px-5 py-14 md:px-8 md:py-18">
+        <section id="testimonials" className="testimonial-panel mx-auto w-full max-w-6xl rounded-[1.8rem] px-5 py-14 md:px-8 md:py-18">
           <SectionHeading
             eyebrow="Happy Travelers"
             title="What Our Happy Travelers Are Saying"
-            description="Kind words from families and couples who trusted us to bring the magic to life."
+            description="Kind words from families and couples who trusted us to bring the magic to life with less stress and more confidence."
             align="center"
           />
           <div className="mt-8 grid gap-6 md:grid-cols-3">
