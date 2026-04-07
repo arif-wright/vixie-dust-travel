@@ -21,7 +21,9 @@ body,
 
 body {
   font-family: 'Poppins', sans-serif;
-  background: #fceedc;
+  background:
+    radial-gradient(70% 70% at 50% 0%, rgba(231, 197, 110, 0.16), transparent 55%),
+    linear-gradient(132deg, #3a2046 0%, #4c2d59 100%);
   color: #2e2e2e;
 }
 

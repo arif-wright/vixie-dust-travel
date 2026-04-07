@@ -72,6 +72,27 @@ const testimonials = [
   },
 ]
 
+const merchDrops = [
+  {
+    title: 'Park Day Tee',
+    description: 'Soft, vintage-wash tees with Vixie Dust magic for park rope-drop days.',
+    image:
+      'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=1200&q=80',
+  },
+  {
+    title: 'Pixie Dust Crewneck',
+    description: 'Cozy layering piece for chilly resort mornings and late-night fireworks.',
+    image:
+      'https://images.unsplash.com/photo-1523398002811-999ca8dec234?auto=format&fit=crop&w=1200&q=80',
+  },
+  {
+    title: 'Travel Sticker Pack',
+    description: 'Postage-inspired sticker set made for tumblers, journals, and park binders.',
+    image:
+      'https://images.unsplash.com/photo-1583744946564-b52ac1c389c8?auto=format&fit=crop&w=1200&q=80',
+  },
+]
+
 function App() {
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [showCelebrate, setShowCelebrate] = useState(false)
@@ -151,7 +172,7 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-cream font-body text-ink">
+    <div className="min-h-screen font-body text-ink">
       {isLoading ? (
         <div className="loading-overlay" role="status" aria-live="polite" aria-label="Loading Vixie Dust Travels">
           <div className="loading-inner">
@@ -185,6 +206,7 @@ function App() {
           <nav aria-label="Primary" className="hidden items-center gap-6 text-sm font-semibold text-ink/80 lg:flex">
             <a href="#welcome" className="nav-link">Welcome</a>
             <a href="#services" className="nav-link">Services</a>
+            <a href="#merch" className="nav-link">Merch</a>
             <a href="#intake" className="nav-link">Plan</a>
           </nav>
 
@@ -272,6 +294,39 @@ function App() {
             {destinations.map((destination) => (
               <DestinationCard key={destination.title} {...destination} />
             ))}
+          </div>
+        </section>
+
+        <div className="wand-divider" aria-hidden="true">✦</div>
+
+        <section id="merch" className="mx-auto w-full max-w-6xl px-5 py-12 md:px-8 md:py-16">
+          <div className="rounded-[1.8rem] border border-plum/15 bg-gradient-to-br from-white/70 via-mist to-cream p-6 shadow-card md:p-8">
+            <SectionHeading
+              eyebrow="Vixie Merch"
+              title="A Little Magic To Wear Between Trips"
+              description="Travel-first planning is still the priority, but clients can also shop limited Vixie Dust pieces inspired by park days and fandom culture."
+              align="center"
+            />
+
+            <div className="mt-8 grid gap-6 md:grid-cols-3">
+              {merchDrops.map((item) => (
+                <article key={item.title} className="overflow-hidden rounded-[1.25rem] border border-plum/14 bg-white shadow-card">
+                  <img src={item.image} alt={item.title} className="h-44 w-full object-cover" loading="lazy" />
+                  <div className="space-y-3 p-4">
+                    <h3 className="font-display text-2xl leading-tight text-plum">{item.title}</h3>
+                    <p className="text-sm leading-relaxed text-charcoal/75">{item.description}</p>
+                    <Button
+                      href="#intake"
+                      variant="secondary"
+                      className="!px-5 !py-2.5 !text-sm"
+                      onClick={() => handleCtaClick(`Shop ${item.title}`, 'merch_section')}
+                    >
+                      Shop Merch
+                    </Button>
+                  </div>
+                </article>
+              ))}
+            </div>
           </div>
         </section>
 
