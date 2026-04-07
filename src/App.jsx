@@ -140,7 +140,7 @@ function App() {
       const sparkle = document.createElement('span')
       sparkle.className = 'sparkle-dot'
 
-      const size = 6 + Math.random() * 7
+      const size = 7.5 + Math.random() * 8.5
       sparkle.style.left = `${x - size / 2}px`
       sparkle.style.top = `${y - size / 2}px`
       sparkle.style.width = `${size}px`
@@ -461,6 +461,7 @@ function App() {
 
             <div className="portal-collage">
               <div className="portal-light-trail" aria-hidden="true" />
+              <div className="portal-light-trail portal-light-trail--sun" aria-hidden="true" />
               {adventurePortals.map((portal, index) => (
                 <article
                   key={portal.id}

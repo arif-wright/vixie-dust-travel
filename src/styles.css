@@ -6,9 +6,9 @@
 
 :root {
   color-scheme: only light;
-  --bg-cream: #f8ede0;
-  --bg-rose: #ecd4cb;
-  --bg-warm: #f2dfd0;
+  --bg-cream: #f2e1d8;
+  --bg-rose: #dfbebf;
+  --bg-warm: #e8cdc8;
   --ink: #261520;
   --ink-soft: rgba(38, 21, 32, 0.78);
   --plum: #562d4f;
@@ -43,8 +43,8 @@ body {
   font-family: 'IBM Plex Sans', sans-serif;
   color: var(--ink);
   background:
-    radial-gradient(42% 26% at 50% 0%, rgba(244, 211, 94, 0.14), transparent 72%),
-    linear-gradient(180deg, #f6e8dc 0%, #f1dfd6 20%, #ebd5cf 52%, #e2c3c3 78%, #502949 90%, #22111f 100%);
+    radial-gradient(42% 26% at 50% 0%, rgba(244, 211, 94, 0.16), transparent 72%),
+    linear-gradient(180deg, #f0ddd5 0%, #e8cfc9 18%, #dfbfc0 48%, #c796a0 74%, #502949 90%, #22111f 100%);
 }
 
 a {
@@ -94,7 +94,7 @@ a {
 .sparkle-dot {
   position: absolute;
   background:
-    radial-gradient(circle at 36% 36%, rgba(255, 255, 252, 0.98) 0 24%, rgba(255, 243, 206, 0.96) 25%, rgba(244, 211, 94, 0.94) 56%, rgba(217, 134, 75, 0.88) 100%);
+    radial-gradient(circle at 38% 38%, rgba(255, 255, 255, 1) 0 18%, rgba(255, 250, 236, 0.99) 19%, rgba(255, 241, 190, 0.98) 42%, rgba(244, 211, 94, 0.95) 66%, rgba(217, 134, 75, 0.84) 100%);
   clip-path: polygon(50% 0%, 58% 42%, 100% 50%, 58% 58%, 50% 100%, 42% 58%, 0% 50%, 42% 42%);
   transform: rotate(var(--sparkle-rotate, 0deg));
   opacity: 0;
@@ -102,11 +102,12 @@ a {
   animation-timing-function: ease-out;
   animation-fill-mode: forwards;
   box-shadow:
-    0 0 0 1px rgba(255, 253, 245, 0.95),
-    0 0 10px rgba(255, 248, 228, 0.95),
-    0 0 22px rgba(244, 211, 94, 0.82),
-    0 0 38px rgba(208, 124, 113, 0.38);
-  filter: saturate(1.06);
+    0 0 0 1px rgba(255, 253, 246, 0.98),
+    0 0 12px rgba(255, 248, 230, 1),
+    0 0 26px rgba(255, 233, 155, 0.96),
+    0 0 44px rgba(244, 211, 94, 0.82),
+    0 0 72px rgba(189, 98, 122, 0.38);
+  filter: saturate(1.08) brightness(1.08);
 }
 
 @keyframes sparkle-fade {
@@ -115,10 +116,10 @@ a {
     transform: translateY(3px) rotate(var(--sparkle-rotate, 0deg)) scale(0.5);
   }
   30% {
-    opacity: 0.98;
+    opacity: 1;
   }
   100% {
-    opacity: 0;
+    opacity: 0.06;
     transform: translate(var(--sparkle-drift, 0px), -20px) rotate(calc(var(--sparkle-rotate, 0deg) + 12deg)) scale(1.05);
   }
 }
@@ -737,8 +738,8 @@ a {
 .adventure-scene {
   position: relative;
   background:
-    radial-gradient(34% 24% at 78% 0%, rgba(86, 45, 79, 0.16), transparent 72%),
-    linear-gradient(180deg, rgba(243, 228, 217, 0.98), rgba(234, 212, 206, 0.98));
+    radial-gradient(34% 24% at 78% 0%, rgba(86, 45, 79, 0.22), transparent 72%),
+    linear-gradient(180deg, rgba(231, 207, 202, 0.985), rgba(215, 184, 184, 0.985));
   overflow: hidden;
 }
 
@@ -798,6 +799,16 @@ a {
   opacity: 0.72;
   pointer-events: none;
   transform: translateY(calc(var(--adventure-shift) * 0.45));
+}
+
+.portal-light-trail--sun {
+  inset: 31% 11% auto 49%;
+  width: 33%;
+  height: 19rem;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 620 420' preserveAspectRatio='none'%3E%3Cpath d='M34 66C122 50 214 90 270 160C326 232 360 294 430 328C482 352 536 356 590 336' fill='none' stroke='%23f2a05f' stroke-width='5' stroke-linecap='round' stroke-dasharray='1 18'/%3E%3C/svg%3E")
+    center / 100% 100% no-repeat;
+  opacity: 0.7;
+  transform: translateY(calc(var(--adventure-shift) * 0.55));
 }
 
 .portal-card {
@@ -926,7 +937,7 @@ a {
 
 .journey-path-scene {
   position: relative;
-  background: linear-gradient(180deg, rgba(234, 214, 205, 0.98), rgba(228, 205, 197, 0.98));
+  background: linear-gradient(180deg, rgba(223, 192, 191, 0.985), rgba(209, 173, 181, 0.985));
   overflow: hidden;
 }
 
@@ -1033,8 +1044,8 @@ a {
 .proof-scene {
   position: relative;
   background:
-    radial-gradient(30% 24% at 84% 10%, rgba(86, 45, 79, 0.16), transparent 74%),
-    linear-gradient(180deg, rgba(232, 210, 202, 0.98), rgba(226, 202, 194, 0.98));
+    radial-gradient(30% 24% at 84% 10%, rgba(86, 45, 79, 0.2), transparent 74%),
+    linear-gradient(180deg, rgba(220, 189, 190, 0.985), rgba(202, 165, 176, 0.985));
 }
 
 .scene-ambient--proof::before {
@@ -1056,7 +1067,7 @@ a {
   right: 0;
   top: -2rem;
   height: 5rem;
-  background: linear-gradient(180deg, rgba(238, 218, 205, 0), rgba(236, 214, 199, 0.9));
+  background: linear-gradient(180deg, rgba(226, 199, 194, 0), rgba(216, 186, 186, 0.92));
   filter: blur(18px);
   pointer-events: none;
 }
@@ -1358,7 +1369,8 @@ a {
     transform: none;
   }
 
-  .portal-light-trail {
+  .portal-light-trail,
+  .portal-light-trail--sun {
     display: none;
   }
 
