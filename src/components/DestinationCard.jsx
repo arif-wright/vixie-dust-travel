@@ -1,12 +1,12 @@
 export function DestinationCard({ title, description, image, highlights, className = '' }) {
   return (
-    <article className={`group overflow-hidden rounded-[1.55rem] border border-plum/10 bg-mist shadow-card transition duration-300 hover:-translate-y-1 ${className}`}>
-      <div className="relative bg-gradient-to-b from-lavender/55 via-blush/20 to-mist px-6 pb-6 pt-5 text-center">
-        <div className="mx-auto h-20 w-20 overflow-hidden rounded-full border border-gold/40 bg-cream p-1 shadow-sm">
+    <article className={`destination-card angled-card group overflow-hidden border border-plum/10 bg-mist shadow-card transition duration-300 hover:-translate-y-1 ${className}`}>
+      <div className="destination-card-media relative bg-gradient-to-b from-lavender/55 via-blush/20 to-mist px-6 pb-6 pt-5 text-center">
+        <div className="mx-auto h-20 w-20 overflow-hidden border border-gold/40 bg-cream p-1 shadow-sm [clip-path:polygon(12%_0,100%_0,100%_88%,88%_100%,0_100%,0_12%)]">
           <img
             src={image}
             alt={`${title} destination preview`}
-            className="h-full w-full rounded-full object-cover transition duration-500 group-hover:scale-110"
+            className="h-full w-full object-cover transition duration-500 group-hover:scale-110 [clip-path:polygon(12%_0,100%_0,100%_88%,88%_100%,0_100%,0_12%)]"
           />
         </div>
       </div>

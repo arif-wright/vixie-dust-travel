@@ -474,6 +474,62 @@ a {
   background-size: 210px 210px, 185px 185px, 220px 220px;
 }
 
+.panel-frame {
+  position: relative;
+  overflow: hidden;
+  clip-path: polygon(0 16px, 16px 0, calc(100% - 28px) 0, 100% 28px, 100% 100%, 22px 100%, 0 calc(100% - 22px));
+}
+
+.panel-frame::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border: 1px solid rgba(74, 44, 58, 0.1);
+  clip-path: polygon(0 16px, 16px 0, calc(100% - 28px) 0, 100% 28px, 100% 100%, 22px 100%, 0 calc(100% - 22px));
+}
+
+.angled-card {
+  position: relative;
+  clip-path: polygon(0 14px, 14px 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 18px 100%, 0 calc(100% - 18px));
+}
+
+.angled-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border: 1px solid rgba(74, 44, 58, 0.12);
+  clip-path: polygon(0 14px, 14px 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 18px 100%, 0 calc(100% - 18px));
+}
+
+.destination-card {
+  background:
+    linear-gradient(180deg, rgba(255, 249, 242, 0.96), rgba(247, 238, 227, 0.96));
+}
+
+.destination-card-media::after {
+  content: '';
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 999px;
+  border: 1px dashed rgba(74, 44, 58, 0.35);
+  background: rgba(253, 248, 242, 0.66);
+}
+
+.merch-card {
+  background:
+    linear-gradient(180deg, rgba(255, 250, 245, 0.98), rgba(250, 240, 230, 0.95));
+}
+
+.trust-item {
+  background:
+    linear-gradient(150deg, rgba(255, 249, 242, 0.9), rgba(248, 236, 225, 0.88));
+}
+
 .final-cta {
   background:
     radial-gradient(70% 70% at 50% 0%, rgba(231, 197, 110, 0.16), transparent 55%),
@@ -673,6 +729,8 @@ a {
 .testimonial-card {
   position: relative;
   overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(255, 249, 242, 0.95), rgba(245, 234, 244, 0.8));
 }
 
 .testimonial-card::before {

@@ -258,7 +258,7 @@ function App() {
         </section>
 
         <section id="welcome" className="mx-auto w-full max-w-6xl px-5 py-14 md:px-8 md:py-16">
-          <div className="welcome-reference grid items-center gap-8 rounded-[2rem] border border-gold/40 bg-mist p-6 shadow-card md:grid-cols-[0.34fr_0.66fr] md:p-10">
+          <div className="welcome-reference panel-frame grid items-center gap-8 border border-gold/40 bg-mist p-6 shadow-card md:grid-cols-[0.34fr_0.66fr] md:p-10">
             <div className="relative mx-auto w-fit">
               <img src="/logo.svg" alt="Vixie Dust fox mascot" className="h-40 w-40 object-contain md:h-48 md:w-48" />
             </div>
@@ -300,7 +300,7 @@ function App() {
         <div className="wand-divider" aria-hidden="true">✦</div>
 
         <section id="merch" className="mx-auto w-full max-w-6xl px-5 py-12 md:px-8 md:py-16">
-          <div className="rounded-[1.8rem] border border-plum/15 bg-gradient-to-br from-white/70 via-mist to-cream p-6 shadow-card md:p-8">
+          <div className="panel-frame border border-plum/15 bg-gradient-to-br from-white/70 via-mist to-cream p-6 shadow-card md:p-8">
             <SectionHeading
               eyebrow="Vixie Merch"
               title="A Little Magic To Wear Between Trips"
@@ -310,7 +310,7 @@ function App() {
 
             <div className="mt-8 grid gap-6 md:grid-cols-3">
               {merchDrops.map((item) => (
-                <article key={item.title} className="overflow-hidden rounded-[1.25rem] border border-plum/14 bg-white shadow-card">
+                <article key={item.title} className="merch-card angled-card overflow-hidden border border-plum/14 bg-white shadow-card">
                   <img src={item.image} alt={item.title} className="h-44 w-full object-cover" loading="lazy" />
                   <div className="space-y-3 p-4">
                     <h3 className="font-display text-2xl leading-tight text-plum">{item.title}</h3>
@@ -332,7 +332,7 @@ function App() {
 
         <div className="wand-divider" aria-hidden="true">✦</div>
 
-        <section id="testimonials" className="testimonial-panel mx-auto w-full max-w-6xl rounded-[1.8rem] px-5 py-14 md:px-8 md:py-18">
+        <section id="testimonials" className="testimonial-panel panel-frame mx-auto w-full max-w-6xl px-5 py-14 md:px-8 md:py-18">
           <SectionHeading
             eyebrow="Happy Travelers"
             title="What Our Happy Travelers Are Saying"
@@ -357,7 +357,7 @@ function App() {
         </section>
 
         <section id="intake" className="mx-auto w-full max-w-6xl px-5 pb-16 md:px-8 md:pb-20">
-          <div className="rounded-[1.8rem] border border-plum/15 bg-mist p-6 shadow-card md:p-8">
+          <div className="panel-frame border border-plum/15 bg-mist p-6 shadow-card md:p-8">
             <SectionHeading
               eyebrow="Let’s Plan"
               title="Start Your Magical Adventure ✨"
