@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Button } from './components/Button'
 import { DestinationCard } from './components/DestinationCard'
 import { SectionHeading } from './components/SectionHeading'
@@ -75,6 +75,60 @@ const testimonials = [
 function App() {
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [showCelebrate, setShowCelebrate] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
+  const sparkleLayerRef = useRef(null)
+
+  useEffect(() => {
+    const hideLoader = () => setIsLoading(false)
+
+    const timeoutId = window.setTimeout(hideLoader, 900)
+    window.addEventListener('load', hideLoader, { once: true })
+
+    return () => {
+      window.clearTimeout(timeoutId)
+      window.removeEventListener('load', hideLoader)
+    }
+  }, [])
+
+  useEffect(() => {
+    const layer = sparkleLayerRef.current
+    if (!layer) return
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    const isCoarsePointer = window.matchMedia('(pointer: coarse)').matches
+    if (prefersReducedMotion || isCoarsePointer) return
+
+    let lastTime = 0
+    const minInterval = 36
+
+    const spawnSparkle = (x, y) => {
+      const sparkle = document.createElement('span')
+      sparkle.className = 'sparkle-dot'
+
+      const size = 6 + Math.random() * 8
+      sparkle.style.left = `${x - size / 2}px`
+      sparkle.style.top = `${y - size / 2}px`
+      sparkle.style.width = `${size}px`
+      sparkle.style.height = `${size}px`
+      sparkle.style.setProperty('--sparkle-rotate', `${Math.random() * 80 - 40}deg`)
+      sparkle.style.setProperty('--sparkle-drift', `${Math.random() * 16 - 8}px`)
+      sparkle.style.animationDuration = `${580 + Math.random() * 360}ms`
+
+      layer.appendChild(sparkle)
+      window.setTimeout(() => sparkle.remove(), 1100)
+    }
+
+    const handleMove = (event) => {
+      const now = performance.now()
+      if (now - lastTime < minInterval) return
+      lastTime = now
+
+      spawnSparkle(event.clientX, event.clientY)
+    }
+
+    window.addEventListener('mousemove', handleMove)
+    return () => window.removeEventListener('mousemove', handleMove)
+  }, [])
 
   const handleCtaClick = (label, location) => {
     trackEvent('cta_click', { label, location })
@@ -98,6 +152,16 @@ function App() {
 
   return (
     <div className="min-h-screen bg-cream font-body text-ink">
+      {isLoading ? (
+        <div className="loading-overlay" role="status" aria-live="polite" aria-label="Loading Vixie Dust Travels">
+          <div className="loading-inner">
+            <img src="/logo.svg" alt="" aria-hidden="true" className="loading-logo" />
+            <p className="loading-text">Sprinkling A Little Magic...</p>
+          </div>
+        </div>
+      ) : null}
+      <div ref={sparkleLayerRef} className="sparkle-layer" aria-hidden="true" />
+
       <a href="#main-content" className="skip-link">
         Skip to main content
       </a>
@@ -185,6 +249,8 @@ function App() {
           </div>
         </section>
 
+        <div className="wand-divider" aria-hidden="true">✦</div>
+
         <section id="services" className="section-speckle mx-auto w-full max-w-6xl px-5 py-12 md:px-8 md:py-16">
           <SectionHeading
             eyebrow="Our Services"
@@ -200,6 +266,8 @@ function App() {
           </div>
         </section>
 
+        <div className="wand-divider" aria-hidden="true">✦</div>
+
         <section id="testimonials" className="mx-auto w-full max-w-6xl px-5 py-14 md:px-8 md:py-18">
           <SectionHeading
             eyebrow="Happy Travelers"
@@ -213,6 +281,8 @@ function App() {
             ))}
           </div>
         </section>
+
+        <div className="wand-divider" aria-hidden="true">✦</div>
 
         <section className="mx-auto w-full max-w-6xl px-5 pb-10 md:px-8">
           <div className="grid gap-4 md:grid-cols-3">
