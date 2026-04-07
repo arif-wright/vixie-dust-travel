@@ -71,7 +71,7 @@ const testimonials = [
 function App() {
   return (
     <div className="min-h-screen bg-cream font-body text-ink">
-      <header className="sticky top-0 z-50 border-b border-mist/15 bg-plum/80 text-mist backdrop-blur-xl">
+      <header className="nav-shell sticky top-0 z-50 border-b border-mist/15 bg-plum/80 text-mist backdrop-blur-xl">
         <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-5 py-4 md:px-8">
           <a href="#" className="flex items-center gap-3">
             <div className="grid h-11 w-11 place-items-center overflow-hidden rounded-full border border-gold/40 bg-mist/15">
@@ -84,12 +84,12 @@ function App() {
           </a>
 
           <nav className="hidden items-center gap-8 text-sm font-medium text-mist/90 md:flex">
-            <a href="#destinations" className="transition hover:text-gold">Destinations</a>
-            <a href="#services" className="transition hover:text-gold">Services</a>
-            <a href="#testimonials" className="transition hover:text-gold">Testimonials</a>
+            <a href="#destinations" className="nav-link">Destinations</a>
+            <a href="#services" className="nav-link">Services</a>
+            <a href="#testimonials" className="nav-link">Testimonials</a>
           </nav>
 
-          <Button href="#start" className="hidden md:inline-flex">
+          <Button href="#start" className="nav-cta hidden md:inline-flex !bg-hotpink hover:!bg-hotpink-deep focus-visible:!ring-hotpink">
             Start Planning My Trip
           </Button>
         </div>

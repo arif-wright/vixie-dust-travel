@@ -7,6 +7,8 @@ export default {
         cream: '#F7EEE3',
         orange: '#C8652D',
         'orange-soft': '#E98C4A',
+        hotpink: '#E6008D',
+        'hotpink-deep': '#C40076',
         plum: '#3E2348',
         'plum-soft': '#5B3B67',
         gold: '#E7C56E',
