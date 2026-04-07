@@ -110,7 +110,7 @@ function App() {
         Skip to main content
       </a>
 
-      <header className="nav-shell sticky top-0 z-50 border-b border-mist/15 bg-plum/88 text-mist backdrop-blur-xl">
+      <header className="nav-shell sticky top-0 z-50 border-b border-plum/15 bg-cream/96 text-ink backdrop-blur-xl">
         <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-5 py-4 md:px-8">
           <a href="#" className="flex items-center gap-3" aria-label="Vixie Dust Travel home">
             <div className="grid h-11 w-11 place-items-center overflow-hidden rounded-full border border-gold/50 bg-mist">
@@ -121,12 +121,12 @@ function App() {
               />
             </div>
             <div>
-              <p className="font-display text-2xl leading-none text-mist">Vixie Dust</p>
-              <p className="text-[10px] uppercase tracking-[0.25em] text-gold/85">Travel Agency</p>
+              <p className="font-display text-2xl leading-none text-plum">Vixie Dust</p>
+              <p className="text-[10px] uppercase tracking-[0.25em] text-orange">Travel Agency</p>
             </div>
           </a>
 
-          <nav aria-label="Primary" className="hidden items-center gap-6 text-sm font-medium text-mist/90 lg:flex">
+          <nav aria-label="Primary" className="hidden items-center gap-6 text-sm font-semibold text-ink/80 lg:flex">
             <a href="#destinations" className="nav-link">Destinations</a>
             <a href="#services" className="nav-link">Services</a>
             <a href="#intake" className="nav-link">Plan</a>
