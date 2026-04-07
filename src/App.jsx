@@ -98,10 +98,19 @@ const trustSignals = [
   'Personalized support before you travel',
 ]
 
+const navItems = [
+  { id: 'welcome', label: 'Welcome' },
+  { id: 'services', label: 'Journeys' },
+  { id: 'merch', label: 'Boutique' },
+  { id: 'testimonials', label: 'Stories' },
+  { id: 'intake', label: 'Book' },
+]
+
 function App() {
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [showCelebrate, setShowCelebrate] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
+  const [activeSection, setActiveSection] = useState('welcome')
   const sparkleLayerRef = useRef(null)
 
   useEffect(() => {
@@ -156,6 +165,33 @@ function App() {
     return () => window.removeEventListener('mousemove', handleMove)
   }, [])
 
+  useEffect(() => {
+    const sections = navItems
+      .map(({ id }) => document.getElementById(id))
+      .filter(Boolean)
+
+    if (!sections.length) return undefined
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visibleEntries = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)
+
+        if (visibleEntries[0]?.target?.id) {
+          setActiveSection(visibleEntries[0].target.id)
+        }
+      },
+      {
+        rootMargin: '-28% 0px -46% 0px',
+        threshold: [0.2, 0.35, 0.5, 0.65],
+      },
+    )
+
+    sections.forEach((section) => observer.observe(section))
+    return () => observer.disconnect()
+  }, [])
+
   const handleCtaClick = (label, location) => {
     trackEvent('cta_click', { label, location })
   }
@@ -204,12 +240,17 @@ function App() {
             </div>
           </a>
 
-          <nav aria-label="Primary" className="hidden items-center gap-6 text-sm font-semibold text-ink/80 lg:flex">
-            <a href="#welcome" className="nav-link">Welcome</a>
-            <a href="#services" className="nav-link">Journeys</a>
-            <a href="#merch" className="nav-link">Boutique</a>
-            <a href="#testimonials" className="nav-link">Stories</a>
-            <a href="#intake" className="nav-link">Book</a>
+          <nav aria-label="Primary" className="hidden items-center gap-2 text-sm font-semibold text-ink/80 md:flex">
+            {navItems.map((item) => (
+              <a
+                key={item.id}
+                href={`#${item.id}`}
+                className={`nav-link ${activeSection === item.id ? 'nav-link-active' : ''}`}
+                aria-current={activeSection === item.id ? 'page' : undefined}
+              >
+                {item.label}
+              </a>
+            ))}
           </nav>
 
           <Button
@@ -247,11 +288,11 @@ function App() {
                 Vixie Dust Travels crafts Disney vacations, cruises, and sunny escapes with polished planning, fandom-friendly warmth, and concierge-level support from quote to takeoff.
               </p>
 
-              <div className="mt-8 flex flex-wrap gap-3">
-                <Button href="#intake" onClick={() => handleCtaClick('Start Your Magical Journey', 'hero_primary')}>
+              <div className="hero-actions mt-8 flex flex-wrap gap-3">
+                <Button href="#intake" className="hero-primary-cta" onClick={() => handleCtaClick('Start Your Magical Journey', 'hero_primary')}>
                   Start Your Magical Journey
                 </Button>
-                <Button href="#services" variant="secondary" onClick={() => handleCtaClick('Explore Journey Map', 'hero_secondary')}>
+                <Button href="#services" variant="secondary" className="hero-secondary-cta" onClick={() => handleCtaClick('Explore Journey Map', 'hero_secondary')}>
                   Explore The Journey Map
                 </Button>
               </div>
@@ -271,7 +312,7 @@ function App() {
                   <img
                     src="https://images.unsplash.com/photo-1496417263034-38ec4f0b665a?auto=format&fit=crop&w=1600&q=80"
                     alt="A magical castle scene at dusk"
-                    className="h-full w-full object-cover"
+                    className="h-full w-full object-cover object-[50%_42%]"
                   />
                 </div>
 

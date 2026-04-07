@@ -6,6 +6,20 @@
 
 :root {
   color-scheme: only light;
+  --surface-cream: #f7ecdf;
+  --surface-warm: #f0dfcf;
+  --surface-rose: #e7d0c8;
+  --ink-strong: #261623;
+  --ink-soft: rgba(38, 22, 35, 0.78);
+  --brand-plum: #532d4c;
+  --brand-plum-deep: #23121f;
+  --brand-gold: #f4d35e;
+  --space-section: clamp(4.5rem, 8vw, 6.5rem);
+  --type-kicker: 0.78rem;
+  --type-body: 1rem;
+  --type-body-lg: 1.08rem;
+  --type-title: clamp(2.7rem, 4.4vw, 4.7rem);
+  --type-hero: clamp(4.2rem, 8vw, 7rem);
 }
 
 * {
@@ -27,8 +41,9 @@ body {
   font-family: 'IBM Plex Sans', sans-serif;
   background:
     radial-gradient(42% 26% at 50% 0%, rgba(244, 211, 94, 0.16), transparent 70%),
-    linear-gradient(180deg, #f4e7d9 0%, #f4e8db 14%, #efddcf 34%, #e9d1c6 56%, #5a304f 84%, #271425 100%);
-  color: #2e2e2e;
+    linear-gradient(180deg, var(--surface-cream) 0%, #f3e6d9 14%, var(--surface-warm) 34%, var(--surface-rose) 56%, #5a304f 84%, #271425 100%);
+  color: var(--ink-strong);
+  line-height: 1.6;
 }
 
 a {
@@ -157,6 +172,7 @@ a {
 
 .nav-shell {
   position: relative;
+  box-shadow: 0 12px 28px -24px rgba(28, 14, 26, 0.4);
 }
 
 .nav-shell::before {
@@ -182,11 +198,17 @@ a {
 
 .nav-link {
   position: relative;
-  transition: color 180ms ease;
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.5rem;
+  padding: 0.4rem 0.7rem;
+  border-radius: 999px;
+  transition: color 180ms ease, background-color 180ms ease;
 }
 
 .nav-link:hover {
   color: #3e2348;
+  background: rgba(83, 45, 76, 0.08);
 }
 
 .nav-link::after {
@@ -206,6 +228,15 @@ a {
   transform: scaleX(1);
 }
 
+.nav-link-active {
+  color: var(--brand-plum);
+  background: rgba(83, 45, 76, 0.12);
+}
+
+.nav-link-active::after {
+  transform: scaleX(1);
+}
+
 .nav-cta {
   box-shadow: 0 14px 32px -20px rgba(230, 0, 141, 0.65);
 }
@@ -217,7 +248,7 @@ a {
 .scene-kicker {
   display: inline-block;
   margin: 0;
-  font-size: 0.78rem;
+  font-size: var(--type-kicker);
   font-weight: 700;
   letter-spacing: 0.24em;
   text-transform: uppercase;
@@ -227,7 +258,7 @@ a {
 .scene-title {
   margin: 0.9rem 0 0;
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(2.6rem, 4.6vw, 4.6rem);
+  font-size: var(--type-title);
   line-height: 0.88;
   letter-spacing: -0.025em;
   color: #3d233f;
@@ -235,9 +266,9 @@ a {
 
 .scene-copy {
   margin-top: 1.15rem;
-  font-size: 1rem;
-  line-height: 1.8;
-  color: rgba(46, 46, 46, 0.78);
+  font-size: var(--type-body-lg);
+  line-height: 1.78;
+  color: var(--ink-soft);
 }
 
 .section-intro {
@@ -308,7 +339,7 @@ a {
 .hero-title {
   margin: 1rem 0 0;
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(4rem, 8vw, 6.7rem);
+  font-size: var(--type-hero);
   line-height: 0.8;
   letter-spacing: -0.045em;
   color: #fff6ef;
@@ -318,9 +349,24 @@ a {
 .hero-description {
   margin-top: 1.3rem;
   max-width: 40rem;
-  font-size: 1.05rem;
+  font-size: var(--type-body-lg);
   line-height: 1.85;
   color: rgba(255, 245, 236, 0.82);
+}
+
+.hero-actions {
+  align-items: center;
+}
+
+.hero-primary-cta {
+  min-width: 17rem;
+  box-shadow:
+    0 18px 38px -24px rgba(0, 0, 0, 0.92),
+    0 0 0 1px rgba(244, 211, 94, 0.18);
+}
+
+.hero-secondary-cta {
+  background: rgba(255, 249, 242, 0.9);
 }
 
 .hero-trust-strip {
@@ -391,8 +437,8 @@ a {
   inset: 0;
   z-index: 1;
   background:
-    radial-gradient(circle at 50% 12%, rgba(255, 245, 230, 0.46), transparent 28%),
-    linear-gradient(180deg, rgba(59, 30, 63, 0.02), rgba(11, 7, 16, 0.58));
+    radial-gradient(circle at 50% 12%, rgba(255, 245, 230, 0.36), transparent 24%),
+    linear-gradient(180deg, rgba(20, 12, 25, 0.14), rgba(11, 7, 16, 0.68));
   pointer-events: none;
 }
 
@@ -735,8 +781,9 @@ a {
 
 .journey-stop-description {
   margin: 1rem 0 0;
-  line-height: 1.8;
-  color: rgba(46, 46, 46, 0.8);
+  font-size: var(--type-body);
+  line-height: 1.78;
+  color: var(--ink-soft);
 }
 
 .journey-stop-list {
@@ -902,8 +949,9 @@ a {
 
 .boutique-item-copy p {
   margin: 0.55rem 0 0;
+  font-size: var(--type-body);
   line-height: 1.75;
-  color: rgba(46, 46, 46, 0.76);
+  color: var(--ink-soft);
 }
 
 .scene-section--memories {
@@ -1075,7 +1123,7 @@ a {
 .booking-notes p {
   margin: 0;
   line-height: 1.75;
-  color: rgba(46, 46, 46, 0.76);
+  color: var(--ink-soft);
 }
 
 .booking-form-frame {
@@ -1100,6 +1148,8 @@ a {
   background: rgba(255, 253, 249, 0.96);
   padding: 0.8rem 0.9rem;
   font: inherit;
+  font-size: 1rem;
+  line-height: 1.4;
   color: #201426;
   clip-path: polygon(0 10px, 10px 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
 }
@@ -1115,19 +1165,21 @@ a {
   align-items: center;
   justify-content: center;
   border: 0;
-  background: linear-gradient(135deg, #ba6a38 0%, #d7804a 100%);
-  color: #fdf8f2;
+  background: linear-gradient(135deg, #f8dd79 0%, #f4c84b 100%);
+  color: #311a2f;
   padding: 0.85rem 1.5rem;
   font: inherit;
   font-weight: 700;
+  letter-spacing: 0.01em;
   cursor: pointer;
   transition: transform 180ms ease, filter 180ms ease;
   clip-path: polygon(0 14px, 14px 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px));
+  box-shadow: 0 18px 34px -24px rgba(21, 12, 27, 0.48);
 }
 
 .btn-primary:hover {
   transform: translateY(-1px);
-  filter: brightness(1.06);
+  filter: brightness(1.03);
 }
 
 .btn-primary:focus-visible {
@@ -1228,6 +1280,10 @@ a {
 }
 
 @media (max-width: 1100px) {
+  :root {
+    --space-section: clamp(4rem, 7vw, 5rem);
+  }
+
   .journey-map::before {
     left: 1.1rem;
   }
@@ -1273,12 +1329,15 @@ a {
 }
 
 @media (max-width: 767px) {
-  .site-grit::before {
-    opacity: 0.06;
+  :root {
+    --type-hero: 3.9rem;
+    --type-title: 2.8rem;
+    --type-body-lg: 1rem;
+    --space-section: 3.8rem;
   }
 
-  .hero-title {
-    font-size: 3.7rem;
+  .site-grit::before {
+    opacity: 0.06;
   }
 
   .hero-stage {
@@ -1358,6 +1417,12 @@ a {
   .journey-stop--sun .journey-stop-copy {
     margin: -1.25rem 0.35rem 0;
     clip-path: polygon(0 16px, 16px 0, calc(100% - 18px) 0, 100% 18px, 100% 100%, 0 100%);
+  }
+
+  .hero-primary-cta,
+  .hero-secondary-cta {
+    width: 100%;
+    justify-content: center;
   }
 
   .boutique-item {

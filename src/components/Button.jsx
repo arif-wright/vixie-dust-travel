@@ -1,10 +1,10 @@
 export function Button({ children, href = '#', variant = 'primary', className = '', ...props }) {
   const base =
-    'inline-flex items-center justify-center px-6 py-3 text-sm font-semibold transition duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-cream [clip-path:polygon(0_14px,14px_0,calc(100%_-_16px)_0,100%_16px,100%_100%,16px_100%,0_calc(100%_-_16px))]'
+    'inline-flex min-h-[3.5rem] items-center justify-center px-6 py-3 text-sm font-semibold transition duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-cream [clip-path:polygon(0_14px,14px_0,calc(100%_-_16px)_0,100%_16px,100%_100%,16px_100%,0_calc(100%_-_16px))]'
 
   const styles = {
     primary:
-      'btn-sparkle bg-orange text-mist shadow-card hover:-translate-y-0.5 hover:bg-orange-soft focus-visible:ring-orange',
+      'btn-sparkle bg-gold text-plum shadow-card hover:-translate-y-0.5 hover:brightness-105 focus-visible:ring-gold',
     secondary:
       'border border-plum/35 bg-plum/5 text-plum shadow-card hover:-translate-y-0.5 hover:border-plum hover:bg-plum hover:text-mist focus-visible:ring-plum',
     light:
