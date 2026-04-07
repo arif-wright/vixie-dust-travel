@@ -908,11 +908,31 @@ a {
   --base-transform: rotate(-4deg);
   left: 30%;
   top: 7.5rem;
-  width: min(30%, 22rem);
-  height: 19rem;
+  width: min(31%, 23rem);
+  height: 20.5rem;
   z-index: 3;
   border-radius: 2rem 2rem 1rem 2rem;
   clip-path: polygon(0 18px, 18px 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.portal-card--signature .portal-overlay {
+  padding: 1.15rem 1.1rem 1.2rem;
+}
+
+.portal-card--signature h3 {
+  font-size: clamp(1.45rem, 2.2vw, 2.3rem);
+  line-height: 0.98;
+}
+
+.portal-card--signature .portal-accent {
+  margin-top: 0.55rem;
+  font-size: 0.86rem;
+}
+
+.portal-card--signature .portal-text {
+  margin-top: 0.65rem;
+  font-size: 0.95rem;
+  line-height: 1.58;
 }
 
 .portal-card--cruise {
