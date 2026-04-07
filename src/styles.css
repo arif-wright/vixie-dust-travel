@@ -794,9 +794,6 @@ a {
   position: absolute;
   inset: 8% 10% auto 8%;
   height: 16rem;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 320' preserveAspectRatio='none'%3E%3Cpath d='M40 210C170 20 320 24 430 132C540 242 646 266 772 184C884 110 1018 106 1160 188' fill='none' stroke='%23f2a05f' stroke-width='5' stroke-linecap='round' stroke-dasharray='1 18'/%3E%3C/svg%3E")
-    center / 100% 100% no-repeat;
-  opacity: 0.72;
   pointer-events: none;
   transform: translateY(calc(var(--adventure-shift) * 0.45));
 }
@@ -804,10 +801,38 @@ a {
 .portal-light-trail--sun {
   inset: 22% 6% auto 63%;
   height: 22rem;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 420 520' preserveAspectRatio='none'%3E%3Cpath d='M56 54C118 74 156 122 184 182C214 246 236 312 286 370C316 404 352 432 394 448' fill='none' stroke='%23f2a05f' stroke-width='5' stroke-linecap='round' stroke-dasharray='1 18'/%3E%3C/svg%3E")
-    center / 100% 100% no-repeat;
-  opacity: 0.7;
   transform: translateY(calc(var(--adventure-shift) * 0.55));
+}
+
+.portal-light-trail-svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.trail-dot {
+  fill: #b76643;
+  opacity: 0.28;
+  filter: drop-shadow(0 0 5px rgba(255, 233, 166, 0.24));
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: trail-step 3.8s ease-in-out infinite;
+  animation-delay: var(--dot-delay, 0ms);
+}
+
+@keyframes trail-step {
+  0%, 12% {
+    opacity: 0.12;
+    transform: scale(0.78);
+  }
+  18%, 28% {
+    opacity: 1;
+    transform: scale(1.18);
+  }
+  38%, 100% {
+    opacity: 0.42;
+    transform: scale(1);
+  }
 }
 
 .portal-card {
@@ -1522,7 +1547,8 @@ a {
   .hero-particles,
   .hero-shimmer,
   .scene-ambient::before,
-  .scene-ambient::after {
+  .scene-ambient::after,
+  .trail-dot {
     animation: none;
   }
 
@@ -1541,6 +1567,11 @@ a {
 
   .hero-stage,
   .portal-collage {
+    transform: none;
+  }
+
+  .trail-dot {
+    opacity: 0.62;
     transform: none;
   }
 }
