@@ -110,7 +110,7 @@ function App() {
         Skip to main content
       </a>
 
-      <header className="nav-shell sticky top-0 z-50 border-b border-mist/15 bg-plum/80 text-mist backdrop-blur-xl">
+      <header className="nav-shell sticky top-0 z-50 border-b border-mist/15 bg-plum/88 text-mist backdrop-blur-xl">
         <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-5 py-4 md:px-8">
           <a href="#" className="flex items-center gap-3" aria-label="Vixie Dust Travel home">
             <div className="grid h-11 w-11 place-items-center overflow-hidden rounded-full border border-gold/40 bg-mist/15">
@@ -153,6 +153,7 @@ function App() {
 
       <main id="main-content" className="site-grit">
         <section className="hero-shell relative overflow-hidden text-mist">
+          <p className="hero-watermark" aria-hidden="true">VIXIE DUST</p>
           <div className="hero-noise absolute inset-0" />
           <StampBadge title="Authorized" subtitle="Planner" className="hidden md:block hero-stamp" />
           <div className="mx-auto grid w-full max-w-6xl gap-12 px-5 pb-28 pt-14 md:grid-cols-[1.02fr_0.98fr] md:items-center md:px-8 md:pb-36 md:pt-20">
@@ -160,7 +161,7 @@ function App() {
               <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-gold/40 bg-gold/10 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-gold">
                 Trusted Vacation Planning
               </p>
-              <h1 className="font-display text-5xl leading-[0.9] md:text-7xl">
+              <h1 className="hero-title font-display text-6xl leading-[0.82] md:text-8xl">
                 Plan It Like
                 <span className="block text-gold">A Pro</span>
               </h1>
@@ -244,6 +245,23 @@ function App() {
             <TrustItem title="Authorization" detail="Authorized Disney + Universal Planning Support" />
             <TrustItem title="Value" detail="Free Planning, Offer Monitoring, Concierge Guidance" />
             <TrustItem title="Service Promise" detail="Response Within 1 Business Day" />
+          </div>
+        </section>
+
+        <section className="impact-band mx-auto mt-10 w-full max-w-6xl px-5 md:px-8">
+          <div className="rounded-[1.9rem] border border-hotpink/45 bg-plum px-6 py-10 shadow-card md:px-10">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-gold/85">Built For Big Trips</p>
+            <h2 className="mt-3 font-display text-4xl leading-[0.92] text-mist md:text-6xl">
+              Powerful Planning. <span className="text-hotpink">Zero Guesswork.</span>
+            </h2>
+            <p className="mt-4 max-w-2xl text-base text-mist/80">
+              We engineer every move so your vacation feels smooth, high-value, and unforgettable.
+            </p>
+            <div className="mt-6">
+              <Button href="#intake" onClick={() => handleCtaClick('Start Planning My Trip', 'impact_band')}>
+                Start Planning My Trip
+              </Button>
+            </div>
           </div>
         </section>
 
