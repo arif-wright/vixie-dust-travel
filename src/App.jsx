@@ -3,106 +3,96 @@ import { Button } from './components/Button'
 import { trackEvent } from './lib/analytics'
 
 const navItems = [
-  { id: 'welcome', label: 'Welcome' },
-  { id: 'experiences', label: 'Adventures' },
-  { id: 'process', label: 'Process' },
-  { id: 'stories', label: 'Stories' },
+  { id: 'adventure', label: 'Adventure' },
+  { id: 'path', label: 'Journey' },
+  { id: 'proof', label: 'Stories' },
   { id: 'consultation', label: 'Consult' },
 ]
 
-const experiences = [
+const adventurePortals = [
   {
-    eyebrow: 'Story One',
-    title: 'Park Icons And Resort Nights',
-    subhead: 'Disney vacations with strategy behind the wonder.',
-    description:
-      'For travelers who want fireworks, food, and fandom-level excitement without spending the whole trip managing logistics.',
-    highlights: ['Resort pairing', 'Dining timing', 'Ride strategy', 'Celebration planning'],
+    id: 'disney',
+    eyebrow: 'Park Story',
+    title: 'Disney Vacations',
+    text: 'Theme park anticipation, resort atmosphere, and polished planning that keeps the wonder high without turning the trip into homework.',
     image:
       'https://images.unsplash.com/photo-1566264956508-41e8ef7f5cfc?auto=format&fit=crop&w=1400&q=80',
-    className: 'experience-panel--castle',
+    accent: 'Rope drop to fireworks',
+    className: 'portal-card--castle',
   },
   {
-    eyebrow: 'Story Two',
-    title: 'Deckside Magic And Smooth Sailings',
-    subhead: 'Cruises designed for ease, elegance, and zero scramble.',
-    description:
-      'From choosing the right ship to embarkation flow and port-day priorities, every detail gets shaped into a calmer, more exciting trip.',
-    highlights: ['Ship fit', 'Cabin advice', 'Transfer planning', 'Port-day flow'],
+    id: 'cruise',
+    eyebrow: 'Ocean Story',
+    title: 'Magical Cruises',
+    text: 'Cruise recommendations, embarkation guidance, and port-day rhythm for travelers who want the sailing to feel elegant, easy, and exciting.',
     image:
       'https://images.unsplash.com/photo-1548574505-5e239809ee19?auto=format&fit=crop&w=1400&q=80',
-    className: 'experience-panel--cruise',
+    accent: 'Deckside calm, zero scramble',
+    className: 'portal-card--cruise',
   },
   {
-    eyebrow: 'Story Three',
-    title: 'Sunlit Escapes With More Personality',
-    subhead: 'Beach and warm-weather getaways that feel curated, not generic.',
-    description:
-      'For couples, families, and celebration travelers who want tropical energy, polished recommendations, and less time overthinking every booking choice.',
-    highlights: ['Resort curation', 'Excursion picks', 'Budget guidance', 'Celebration extras'],
+    id: 'sun',
+    eyebrow: 'Sun Story',
+    title: 'Sunny Getaways',
+    text: 'Warm-weather trips with more personality, better fit, and less generic searching.',
     image:
       'https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=1400&q=80',
-    className: 'experience-panel--sun',
+    accent: 'A little glamorous, a lot easier',
+    className: 'portal-card--sun',
   },
 ]
 
-const processSteps = [
+const pathMoments = [
   {
-    title: 'Dream It',
-    text: 'You share your dates, priorities, budget comfort zone, and the kind of trip energy you want.',
+    title: 'The spark',
+    text: 'You bring the dream, the dates, and the feeling you want the trip to have.',
   },
   {
-    title: 'Shape It',
-    text: 'Vixie Dust maps the best fit, watches the details, and turns your ideas into a polished plan.',
+    title: 'The match',
+    text: 'Vixie Dust narrows the best options and filters the noise into clear recommendations.',
   },
   {
-    title: 'Book It',
-    text: 'Reservations, timing, and logistics come together with a real strategy instead of guesswork.',
+    title: 'The map',
+    text: 'Booking, timing, and practical details get shaped into a plan that actually flows.',
   },
   {
-    title: 'Enjoy It',
-    text: 'You travel with more excitement, less tab chaos, and a planner still in your corner before departure.',
+    title: 'The takeoff',
+    text: 'You head out with more excitement, more confidence, and far fewer tabs open.',
   },
 ]
 
-const trustNotes = [
-  'Planning services are included, so guidance feels accessible instead of gatekept.',
-  'Response times stay quick, thoughtful, and human.',
-  'Every recommendation is shaped around experience, not just availability.',
-]
-
-const testimonials = [
+const layeredQuotes = [
   {
     quote:
-      'We stopped second-guessing every choice. It finally felt like someone understood both the magic and the logistics.',
+      'We stopped second-guessing every decision. It felt like someone understood the kind of trip we wanted, not just the destination.',
     name: 'Alyssa R.',
     trip: 'Disney + Resort Split Stay',
-    className: 'story-card--one',
+    className: 'quote-layer--one',
   },
   {
     quote:
-      'The cruise felt effortless. We had the right cabin, the right timing, and none of the stress we usually carry into a trip.',
-    name: 'Marcus and Tia L.',
-    trip: '7-Night Caribbean Cruise',
-    className: 'story-card--two',
-  },
-  {
-    quote:
-      'The recommendations felt personal instead of generic. We got a trip that actually matched how we like to travel.',
+      'The recommendations felt personal instead of generic. We got real help and still kept that excited pre-trip feeling.',
     name: 'The Nguyen Family',
     trip: 'Theme Park Vacation Planning',
-    className: 'story-card--three',
+    className: 'quote-layer--two',
+  },
+  {
+    quote:
+      'Our cruise felt effortless. Cabin choice, timing, and embarkation all clicked in a way they never have before.',
+    name: 'Marcus and Tia L.',
+    trip: '7-Night Caribbean Cruise',
+    className: 'quote-layer--three',
   },
 ]
 
 const trustSignals = [
-  'Free planning services',
-  'Quick replies',
-  'Personalized recommendations',
+  'Planning services included',
+  'Quick thoughtful replies',
+  'Personalized travel guidance',
 ]
 
 function App() {
-  const [activeSection, setActiveSection] = useState('welcome')
+  const [activeSection, setActiveSection] = useState('adventure')
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [showCelebrate, setShowCelebrate] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
@@ -177,7 +167,7 @@ function App() {
         }
       },
       {
-        rootMargin: '-24% 0px -48% 0px',
+        rootMargin: '-24% 0px -46% 0px',
         threshold: [0.2, 0.35, 0.55],
       },
     )
@@ -212,7 +202,7 @@ function App() {
         <div className="loading-overlay" role="status" aria-live="polite" aria-label="Loading Vixie Dust Travel">
           <div className="loading-inner">
             <img src="/logo.svg" alt="" aria-hidden="true" className="loading-logo" />
-            <p className="loading-text">Opening The Map...</p>
+            <p className="loading-text">Stepping Into The Story...</p>
           </div>
         </div>
       ) : null}
@@ -231,7 +221,7 @@ function App() {
             </div>
             <div>
               <p className="brand-wordmark">Vixie Dust</p>
-              <p className="brand-subtitle">Travel Concierge</p>
+              <p className="brand-subtitle">Travel Story Concierge</p>
             </div>
           </a>
 
@@ -251,17 +241,17 @@ function App() {
           <Button
             href="#consultation"
             className="header-cta hidden sm:inline-flex"
-            onClick={() => handleCtaClick('Book Your Consultation', 'header_desktop')}
+            onClick={() => handleCtaClick('Begin Your Vacation Story', 'header_desktop')}
           >
-            Book Your Consultation
+            Begin Your Vacation Story
           </Button>
 
           <Button
             href="#consultation"
             className="header-cta sm:hidden !px-4 !text-xs"
-            onClick={() => handleCtaClick('Book Consultation', 'header_mobile')}
+            onClick={() => handleCtaClick('Begin Story', 'header_mobile')}
           >
-            Book
+            Begin
           </Button>
         </div>
 
@@ -282,37 +272,41 @@ function App() {
       </header>
 
       <main id="main-content" className="site-grit">
-        <section className="hero-scene">
-          <div className="hero-atmosphere" aria-hidden="true" />
-          <div className="hero-glow hero-glow--left" aria-hidden="true" />
-          <div className="hero-glow hero-glow--right" aria-hidden="true" />
+        <section className="invitation-hero">
+          <div className="hero-backdrop" aria-hidden="true" />
+          <div className="hero-orb hero-orb--left" aria-hidden="true" />
+          <div className="hero-orb hero-orb--right" aria-hidden="true" />
+          <div className="hero-particles" aria-hidden="true" />
 
-          <div className="scene-shell scene-shell--hero hero-layout">
+          <div className="hero-frame">
+            <div className="hero-depth hero-depth--rear" aria-hidden="true" />
+            <div className="hero-depth hero-depth--front" aria-hidden="true" />
+
             <div className="hero-copy">
-              <p className="scene-kicker">Stress-free vacation planning with personality</p>
+              <p className="hero-kicker">The invitation</p>
               <h1 className="hero-title">
-                The vacation should feel magical
-                <span className="block text-orange">before you even leave home.</span>
+                The trip should start
+                <span className="block">the second you land here.</span>
               </h1>
-              <p className="hero-description">
-                Vixie Dust Travel plans Disney trips, cruises, and immersive escapes with boutique care, fandom-aware guidance, and polished logistics from dreaming to departure.
+              <p className="hero-subtext">
+                Vixie Dust Travel designs Disney vacations, cruises, and immersive escapes that feel cinematic, personal, and beautifully considered from the very first idea.
               </p>
 
               <div className="hero-actions">
                 <Button
                   href="#consultation"
                   className="hero-primary-cta"
-                  onClick={() => handleCtaClick('Start Planning Your Vacation', 'hero_primary')}
+                  onClick={() => handleCtaClick('Start The Story', 'hero_primary')}
                 >
-                  Start Planning Your Vacation
+                  Start The Story
                 </Button>
                 <Button
-                  href="#experiences"
+                  href="#adventure"
                   variant="secondary"
                   className="hero-secondary-cta"
-                  onClick={() => handleCtaClick('Explore Vacation Styles', 'hero_secondary')}
+                  onClick={() => handleCtaClick('Choose Your Adventure', 'hero_secondary')}
                 >
-                  Explore Vacation Styles
+                  Choose Your Adventure
                 </Button>
               </div>
 
@@ -325,185 +319,140 @@ function App() {
               </div>
             </div>
 
-            <div className="hero-visual">
-              <div className="hero-portal">
-                <div className="hero-portal-image">
-                  <img
-                    src="https://images.unsplash.com/photo-1496417263034-38ec4f0b665a?auto=format&fit=crop&w=1600&q=80"
-                    alt="A dramatic magical castle scene at dusk"
-                    className="h-full w-full object-cover object-[52%_42%]"
-                  />
-                </div>
-
-                <aside className="hero-note hero-note--main">
-                  <p className="hero-note-label">Vixie approach</p>
-                  <p className="hero-note-title">Wonder in the mood board. Strategy in the itinerary.</p>
-                </aside>
-
-                <aside className="hero-note hero-note--stats">
-                  <p className="hero-note-label">Journey flow</p>
-                  <p className="hero-note-route">Dreaming → Matching → Booking → Departure</p>
-                </aside>
+            <div className="hero-stage">
+              <div className="hero-stage-image">
+                <img
+                  src="https://images.unsplash.com/photo-1496417263034-38ec4f0b665a?auto=format&fit=crop&w=1800&q=80"
+                  alt="A castle glowing at dusk like the opening scene of a vacation story"
+                  className="h-full w-full object-cover object-[52%_44%]"
+                />
               </div>
+
+              <aside className="hero-ticket hero-ticket--main">
+                <p className="hero-ticket-label">Vixie Dust effect</p>
+                <p className="hero-ticket-text">Less decision fatigue. More anticipation, momentum, and arrival energy.</p>
+              </aside>
+
+              <aside className="hero-ticket hero-ticket--route">
+                <p className="hero-ticket-label">What this feels like</p>
+                <p className="hero-ticket-text">Travel planning that understands the atmosphere, not just the logistics.</p>
+              </aside>
             </div>
           </div>
-
-          <div className="scene-wave scene-wave--hero" aria-hidden="true" />
         </section>
 
-        <section id="welcome" className="scene-section scene-section--welcome">
-          <div className="scene-shell welcome-layout">
-            <div className="welcome-figure">
-              <div className="welcome-figure-frame">
-                <img src="/logo.svg" alt="Vixie Dust fox mascot" className="h-44 w-44 object-contain md:h-52 md:w-52" />
-              </div>
-              <div className="welcome-stamp">Curated with Vixie Dust</div>
-            </div>
-
-            <div className="welcome-copy">
-              <p className="scene-kicker">Why book with Vixie Dust Travel</p>
-              <h2 className="scene-title">A travel planner who understands the vibe, not just the booking engine.</h2>
-              <p className="scene-copy">
-                This isn&apos;t generic vacation planning. It&apos;s concierge-minded guidance for travelers chasing anticipation, atmosphere, and the kind of details that make a trip feel special.
-              </p>
-
-              <div className="welcome-ribbon">
-                <p>Thoughtful recommendations tailored to how you actually travel.</p>
-                <p>Real planning help that keeps the excitement high and the logistics calm.</p>
-                <p>Professional enough to trust, playful enough to still feel magical.</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="scene-wave scene-wave--soft" aria-hidden="true" />
+        <section className="scene-threshold" aria-hidden="true">
+          <div className="threshold-line" />
+          <div className="threshold-copy">Step past the invitation</div>
         </section>
 
-        <section id="experiences" className="scene-section scene-section--experiences">
-          <div className="scene-shell">
-            <div className="section-heading section-heading--center">
-              <p className="scene-kicker">Choose your adventure</p>
-              <h2 className="scene-title">Three ways into the story, all planned with the same obsessive care.</h2>
-              <p className="scene-copy">
-                Each trip type gets its own mood, pacing, and strategy, but the through-line stays the same: a polished experience that feels curated instead of cookie-cutter.
-              </p>
+        <section id="adventure" className="adventure-scene">
+          <div className="scene-shell scene-shell--wide">
+            <div className="section-heading section-heading--split">
+              <p className="section-kicker">Choose your adventure</p>
+              <div>
+                <h2 className="section-title">A collage of vacation moods instead of a list of services.</h2>
+                <p className="section-copy">
+                  Every portal is a different kind of anticipation. The point is not just where you go, but how the whole trip feels once it starts taking shape.
+                </p>
+              </div>
             </div>
 
-            <div className="experience-river">
-              {experiences.map((experience) => (
-                <article key={experience.title} className={`experience-panel ${experience.className}`}>
-                  <div className="experience-media">
-                    <img src={experience.image} alt={experience.title} className="h-full w-full object-cover" loading="lazy" />
+            <div className="portal-collage">
+              {adventurePortals.map((portal) => (
+                <article key={portal.id} className={`portal-card ${portal.className}`}>
+                  <div className="portal-image">
+                    <img src={portal.image} alt={portal.title} className="h-full w-full object-cover" loading="lazy" />
                   </div>
-
-                  <div className="experience-copy">
-                    <p className="experience-eyebrow">{experience.eyebrow}</p>
-                    <h3>{experience.title}</h3>
-                    <p className="experience-subhead">{experience.subhead}</p>
-                    <p className="experience-description">{experience.description}</p>
-                    <ul className="experience-points">
-                      {experience.highlights.map((item) => (
-                        <li key={item}>{item}</li>
-                      ))}
-                    </ul>
+                  <div className="portal-overlay">
+                    <p className="portal-eyebrow">{portal.eyebrow}</p>
+                    <h3>{portal.title}</h3>
+                    <p className="portal-accent">{portal.accent}</p>
+                    <p className="portal-text">{portal.text}</p>
                   </div>
                 </article>
               ))}
             </div>
           </div>
-
-          <div className="scene-wave scene-wave--soft" aria-hidden="true" />
         </section>
 
-        <section id="process" className="scene-section scene-section--process">
+        <section id="path" className="journey-path-scene">
           <div className="scene-shell">
-            <div className="section-heading">
-              <p className="scene-kicker">From dreaming to departure</p>
-              <h2 className="scene-title">A planning process that keeps the momentum magical.</h2>
-              <p className="scene-copy">
-                The best travel planning feels like an unfolding story, not a pile of tasks. Every stage is designed to move you from idea to itinerary with less friction and more excitement.
+            <div className="section-heading section-heading--center">
+              <p className="section-kicker">From dream to departure</p>
+              <h2 className="section-title">A travel path that flows like a story arc, not a checklist.</h2>
+              <p className="section-copy">
+                The process is designed to feel directional and calm. Each turn takes you further into the vacation and further away from the usual planning chaos.
               </p>
             </div>
 
-            <div className="process-path">
-              {processSteps.map((step, index) => (
-                <div key={step.title} className="process-stop">
-                  <span className="process-index">0{index + 1}</span>
-                  <h3>{step.title}</h3>
-                  <p>{step.text}</p>
-                </div>
+            <div className="journey-flow">
+              <div className="journey-path-line" aria-hidden="true" />
+              {pathMoments.map((moment, index) => (
+                <article key={moment.title} className={`journey-node journey-node--${index + 1}`}>
+                  <span className="journey-node-index">0{index + 1}</span>
+                  <h3>{moment.title}</h3>
+                  <p>{moment.text}</p>
+                </article>
               ))}
             </div>
           </div>
-
-          <div className="scene-wave scene-wave--soft" aria-hidden="true" />
         </section>
 
-        <section id="stories" className="scene-section scene-section--stories">
-          <div className="scene-shell stories-layout">
-            <div className="stories-copy">
-              <p className="scene-kicker">Traveler stories</p>
-              <h2 className="scene-title">Proof that the planning can feel as good as the trip itself.</h2>
-              <p className="scene-copy">
-                When clients talk about Vixie Dust Travel, the pattern is always the same: more confidence, less chaos, and a trip that feels thoughtfully theirs.
+        <section id="proof" className="proof-scene">
+          <div className="scene-shell proof-layout">
+            <div className="proof-copy">
+              <p className="section-kicker">Social proof</p>
+              <h2 className="section-title">Real travelers describing the feeling we are actually trying to create.</h2>
+              <p className="section-copy">
+                Calm. Excitement. Less overthinking. More trust. The best feedback is rarely about one booking detail. It&apos;s about how the whole experience felt in motion.
               </p>
-
-              <ul className="trust-list">
-                {trustNotes.map((note) => (
-                  <li key={note}>{note}</li>
-                ))}
-              </ul>
             </div>
 
-            <div className="stories-stack">
-              {testimonials.map((testimonial) => (
-                <figure key={testimonial.name} className={`story-card ${testimonial.className}`}>
-                  <blockquote>{testimonial.quote}</blockquote>
+            <div className="quote-editorial">
+              {layeredQuotes.map((quote) => (
+                <figure key={quote.name} className={`quote-layer ${quote.className}`}>
+                  <blockquote>{quote.quote}</blockquote>
                   <figcaption>
-                    <strong>{testimonial.name}</strong>
-                    <span>{testimonial.trip}</span>
+                    <strong>{quote.name}</strong>
+                    <span>{quote.trip}</span>
                   </figcaption>
                 </figure>
               ))}
             </div>
           </div>
-
-          <div className="scene-wave scene-wave--soft" aria-hidden="true" />
         </section>
 
-        <section id="consultation" className="scene-section scene-section--consultation">
-          <div className="scene-shell consultation-layout">
-            <div className="consultation-copy">
-              <p className="scene-kicker">Plan your consultation</p>
-              <h2 className="scene-title">Tell us where you want to go, and we&apos;ll help shape the feeling of the whole trip.</h2>
-              <p className="scene-copy">
-                Share a few details and Vixie Dust Travel will follow up with a thoughtful next step, not a generic sales sequence.
+        <section id="consultation" className="decision-scene">
+          <div className="decision-backdrop" aria-hidden="true" />
+          <div className="scene-shell decision-layout">
+            <div className="decision-copy">
+              <p className="section-kicker section-kicker--light">The decision moment</p>
+              <h2 className="decision-title">If the trip matters, the planning should feel elevated too.</h2>
+              <p className="decision-text">
+                Tell Vixie Dust Travel what kind of escape you&apos;re imagining, and we&apos;ll help shape it into something memorable, navigable, and worth looking forward to.
               </p>
-
-              <div className="consultation-aside">
-                <p>Best for travelers who want help deciding, comparing, and creating a trip with more personality.</p>
-                <p>Great for first-timers, celebration trips, and anyone tired of planning in twenty open tabs.</p>
-              </div>
             </div>
 
-            <div className="consultation-frame">
-              <form className="consultation-form" onSubmit={handleLeadSubmit}>
+            <div className="decision-form-frame">
+              <form className="decision-form" onSubmit={handleLeadSubmit}>
                 <div>
-                  <label htmlFor="fullName" className="block text-sm font-semibold text-ink">
+                  <label htmlFor="fullName" className="block text-sm font-semibold text-mist">
                     Full name
                   </label>
                   <input id="fullName" name="fullName" required className="input-field" autoComplete="name" />
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="block text-sm font-semibold text-ink">
+                  <label htmlFor="email" className="block text-sm font-semibold text-mist">
                     Email
                   </label>
                   <input id="email" name="email" type="email" required className="input-field" autoComplete="email" />
                 </div>
 
                 <div>
-                  <label htmlFor="destination" className="block text-sm font-semibold text-ink">
-                    Vacation style
+                  <label htmlFor="destination" className="block text-sm font-semibold text-mist">
+                    What kind of trip?
                   </label>
                   <select id="destination" name="destination" required className="input-field">
                     <option value="">Select one</option>
@@ -515,56 +464,56 @@ function App() {
                 </div>
 
                 <div>
-                  <label htmlFor="travelWindow" className="block text-sm font-semibold text-ink">
+                  <label htmlFor="travelWindow" className="block text-sm font-semibold text-mist">
                     Travel window
                   </label>
                   <input id="travelWindow" name="travelWindow" required className="input-field" placeholder="Example: October 2026" />
                 </div>
 
                 <div>
-                  <label htmlFor="tripType" className="block text-sm font-semibold text-ink">
-                    Trip vibe
+                  <label htmlFor="tripType" className="block text-sm font-semibold text-mist">
+                    Trip energy
                   </label>
                   <select id="tripType" name="tripType" required className="input-field">
                     <option value="">Select one</option>
-                    <option value="family">Family adventure</option>
-                    <option value="couples">Couples getaway</option>
+                    <option value="family">Family trip</option>
+                    <option value="couples">Couples trip</option>
                     <option value="group">Group trip</option>
                     <option value="celebration">Celebration trip</option>
                   </select>
                 </div>
 
                 <div>
-                  <label htmlFor="budget" className="block text-sm font-semibold text-ink">
+                  <label htmlFor="budget" className="block text-sm font-semibold text-mist">
                     Budget thoughts
                   </label>
                   <input id="budget" name="budget" className="input-field" placeholder="Optional" />
                 </div>
 
                 <div className="md:col-span-2">
-                  <label htmlFor="notes" className="block text-sm font-semibold text-ink">
-                    What are you dreaming about?
+                  <label htmlFor="notes" className="block text-sm font-semibold text-mist">
+                    What kind of vacation story are you after?
                   </label>
                   <textarea
                     id="notes"
                     name="notes"
                     rows="4"
                     className="input-field min-h-[140px] resize-y"
-                    placeholder="Favorite destinations, travel dates, celebration plans, or must-have moments"
+                    placeholder="Destinations, must-have moments, celebration details, or anything you want the trip to feel like"
                   />
                 </div>
 
                 <div className="md:col-span-2 flex flex-wrap items-center gap-3 pt-2">
-                  <button type="submit" className="btn-primary" onClick={() => handleCtaClick('Request Consultation', 'consultation_form')}>
-                    Request My Consultation
+                  <button type="submit" className="btn-primary" onClick={() => handleCtaClick('Begin My Consultation', 'consultation_form')}>
+                    Begin My Consultation
                   </button>
-                  <p className="text-sm text-ink/65">By submitting, you agree to be contacted about your trip plans.</p>
+                  <p className="text-sm text-mist/70">By submitting, you agree to be contacted about your vacation plans.</p>
                 </div>
               </form>
 
               {isSubmitted ? (
                 <p role="status" className={`mt-4 rounded-xl border border-green-700/25 bg-green-50 px-4 py-3 text-sm font-medium text-green-800 ${showCelebrate ? 'form-success' : ''}`}>
-                  Thanks. Your consultation request is in, and we&apos;ll follow up with next steps soon.
+                  Thanks. Your vacation story is in our queue, and we&apos;ll follow up soon.
                 </p>
               ) : null}
             </div>
