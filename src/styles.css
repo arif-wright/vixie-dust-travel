@@ -180,6 +180,18 @@ a {
   fill: #f7eee3;
 }
 
+.stat-strip {
+  position: relative;
+}
+
+.stat-chip {
+  border: 1px solid rgba(253, 248, 242, 0.2);
+  border-radius: 0.95rem;
+  background: rgba(253, 248, 242, 0.08);
+  backdrop-filter: blur(3px);
+  padding: 0.55rem 0.65rem;
+}
+
 .services-accent {
   position: absolute;
   left: 0;
@@ -268,6 +280,32 @@ a {
   outline-offset: 2px;
 }
 
+.testimonial-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.testimonial-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #c8652d, #e6008d, #e7c56e);
+}
+
+.testimonial-mark {
+  position: absolute;
+  right: 0.9rem;
+  top: 0.6rem;
+  font-family: 'Fraunces', serif;
+  font-size: 3.1rem;
+  line-height: 1;
+  color: rgba(62, 35, 72, 0.12);
+  pointer-events: none;
+}
+
 .starburst {
   filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.35));
 }
@@ -342,6 +380,10 @@ a {
     bottom: 1.2rem;
     width: 52%;
     transform: rotate(1.4deg);
+  }
+
+  .stat-chip {
+    padding: 0.45rem 0.5rem;
   }
 
   .starburst {

@@ -70,6 +70,12 @@ const testimonials = [
   },
 ]
 
+const tripStats = [
+  { value: '300+', label: 'Trips Planned' },
+  { value: '4.9', label: 'Average Client Rating' },
+  { value: '24hr', label: 'Typical Response Window' },
+]
+
 function App() {
   const [isSubmitted, setIsSubmitted] = useState(false)
 
@@ -171,6 +177,15 @@ function App() {
                 <span className="text-mist/80">•</span>
                 Most Popular
               </div>
+
+              <div className="stat-strip mt-8 grid max-w-xl grid-cols-3 gap-2">
+                {tripStats.map((item) => (
+                  <div key={item.label} className="stat-chip">
+                    <p className="text-lg font-bold text-mist md:text-xl">{item.value}</p>
+                    <p className="text-[10px] uppercase tracking-[0.16em] text-mist/70">{item.label}</p>
+                  </div>
+                ))}
+              </div>
             </div>
 
             <div className="relative z-10">
@@ -243,7 +258,7 @@ function App() {
           </div>
         </section>
 
-        <section id="merch" className="mx-auto w-full max-w-6xl px-5 pb-8 md:px-8 md:pb-10">
+        <section id="merch" className="section-speckle mx-auto w-full max-w-6xl px-5 pb-8 md:px-8 md:pb-10">
           <article className="rounded-[1.6rem] border border-plum/15 bg-mist p-6 shadow-card md:flex md:items-center md:justify-between md:gap-8">
             <div className="max-w-2xl">
               <p className="inline-block rounded-full border border-hotpink/30 bg-hotpink/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-hotpink">
@@ -283,7 +298,7 @@ function App() {
           </div>
         </section>
 
-        <section id="testimonials" className="mx-auto w-full max-w-6xl px-5 py-16 md:px-8 md:py-20">
+        <section id="testimonials" className="section-speckle mx-auto w-full max-w-6xl px-5 py-16 md:px-8 md:py-20">
           <SectionHeading
             eyebrow="Testimonials"
             title="Travelers Trust Vixie Dust to Get the Details Right"
@@ -291,8 +306,8 @@ function App() {
             align="center"
           />
           <div className="mt-8 grid gap-6 md:grid-cols-3">
-            {testimonials.map((testimonial) => (
-              <TestimonialCard key={testimonial.name} {...testimonial} />
+            {testimonials.map((testimonial, index) => (
+              <TestimonialCard key={testimonial.name} {...testimonial} className={index === 1 ? 'md:-translate-y-3' : ''} />
             ))}
           </div>
         </section>
