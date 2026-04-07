@@ -898,10 +898,10 @@ a {
 }
 
 .portal-light-trail--sun {
-  inset: 30% 24% auto 50%;
-  width: 16%;
-  height: 15rem;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 280 320' preserveAspectRatio='none'%3E%3Cpath d='M258 30C230 54 204 80 178 112C154 144 136 178 120 212C106 242 92 272 70 298' fill='none' stroke='%23b76643' stroke-width='5' stroke-linecap='round' stroke-dasharray='1 18'/%3E%3C/svg%3E")
+  inset: 34% 14% auto 59%;
+  width: 17%;
+  height: 16rem;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 340' preserveAspectRatio='none'%3E%3Cpath d='M36 26C92 78 136 130 174 184C208 232 236 278 266 326' fill='none' stroke='%23b76643' stroke-width='5' stroke-linecap='round' stroke-dasharray='1 18'/%3E%3C/svg%3E")
     center / 100% 100% no-repeat;
   opacity: 0.84;
   transform: translateY(calc(var(--adventure-shift) * 0.55));
