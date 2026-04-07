@@ -14,14 +14,11 @@ export default {
         mist: '#FDF8F2',
       },
       fontFamily: {
-        display: ['"DM Serif Display"', 'serif'],
-        body: ['"Sora"', 'sans-serif'],
+        display: ['"Fraunces"', 'serif'],
+        body: ['"Outfit"', 'sans-serif'],
       },
       boxShadow: {
-        card: '0 18px 44px -24px rgba(32, 20, 38, 0.35)',
-      },
-      backgroundImage: {
-        'hero-glow': 'radial-gradient(circle at 10% 10%, rgba(231, 197, 110, 0.18), transparent 32%), radial-gradient(circle at 85% 20%, rgba(233, 140, 74, 0.22), transparent 24%)',
+        card: '0 20px 46px -24px rgba(28, 18, 33, 0.45)',
       },
       keyframes: {
         floaty: {
