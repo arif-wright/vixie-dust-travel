@@ -483,11 +483,29 @@ function App() {
           <div className="scene-shell scene-shell--wide">
             <div className="section-heading section-heading--split reveal-up" data-reveal>
               <p className="section-kicker">Choose your adventure</p>
-              <div>
-                <h2 className="section-title">A collage of vacation moods instead of a list of services.</h2>
-                <p className="section-copy">
-                  Every portal is a different kind of anticipation. The point is not just where you go, but how the whole trip feels once it starts taking shape.
-                </p>
+              <div className="adventure-heading-layout">
+                <div>
+                  <h2 className="section-title">A collage of vacation moods instead of a list of services.</h2>
+                  <p className="section-copy">
+                    Every portal is a different kind of anticipation. The point is not just where you go, but how the whole trip feels once it starts taking shape.
+                  </p>
+                </div>
+
+                <aside className="approval-card" aria-label="Vixie Dust brand approval">
+                  <div className="approval-card-logo">
+                    <img
+                      src="/658027553_26629397506697359_3250149431792289541_n.jpg"
+                      alt="Vixie Dust Travel logo"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="approval-stamp" aria-hidden="true">
+                    <span>Vixie Dust</span>
+                    <span>Story-Stamped</span>
+                  </div>
+                  <p className="approval-card-kicker">Curated by Vixie Dust</p>
+                  <p className="approval-card-copy">A little fox-mark of approval for trips with more atmosphere, charm, and confidence from the very start.</p>
+                </aside>
               </div>
             </div>
 
