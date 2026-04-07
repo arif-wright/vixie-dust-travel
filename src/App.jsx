@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Button } from './components/Button'
 import { DestinationCard } from './components/DestinationCard'
 import { SectionHeading } from './components/SectionHeading'
+import { StampBadge } from './components/StampBadge'
 import { Starburst } from './components/Starburst'
 import { TestimonialCard } from './components/TestimonialCard'
 import { TrustItem } from './components/TrustItem'
@@ -144,9 +145,10 @@ function App() {
         </div>
       </header>
 
-      <main id="main-content">
+      <main id="main-content" className="site-grit">
         <section className="hero-shell relative overflow-hidden text-mist">
           <div className="hero-noise absolute inset-0" />
+          <StampBadge title="Authorized" subtitle="Planner" className="hidden md:block hero-stamp" />
           <div className="mx-auto grid w-full max-w-6xl gap-12 px-5 pb-28 pt-14 md:grid-cols-[1.02fr_0.98fr] md:items-center md:px-8 md:pb-36 md:pt-20">
             <div className="relative z-10">
               <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-gold/40 bg-gold/10 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-gold">
@@ -241,6 +243,7 @@ function App() {
         </section>
 
         <section id="destinations" className="section-speckle mx-auto w-full max-w-6xl px-5 pb-16 pt-16 md:px-8 md:pt-20">
+          <StampBadge title="No Extra" subtitle="Fees" className="hidden md:block destinations-stamp" />
           <SectionHeading
             eyebrow="Featured Destinations"
             title="Iconic Trips, With a Smart Game Plan"
@@ -299,6 +302,7 @@ function App() {
         </section>
 
         <section id="testimonials" className="section-speckle mx-auto w-full max-w-6xl px-5 py-16 md:px-8 md:py-20">
+          <StampBadge title="Client" subtitle="Favorite" className="hidden md:block testimonials-stamp" />
           <SectionHeading
             eyebrow="Testimonials"
             title="Travelers Trust Vixie Dust to Get the Details Right"
