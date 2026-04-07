@@ -241,8 +241,59 @@ a {
   box-shadow: 0 14px 32px -20px rgba(230, 0, 141, 0.65);
 }
 
+.nav-mobile-strip {
+  border-top: 1px solid rgba(83, 45, 76, 0.08);
+  background: rgba(247, 236, 223, 0.96);
+}
+
+.nav-mobile-scroll {
+  display: flex;
+  gap: 0.55rem;
+  overflow-x: auto;
+  padding: 0.65rem 1rem 0.8rem;
+  scrollbar-width: none;
+}
+
+.nav-mobile-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.nav-mobile-link {
+  flex: 0 0 auto;
+  min-height: 2.4rem;
+  padding: 0.48rem 0.8rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: rgba(38, 22, 35, 0.76);
+  border: 1px solid rgba(83, 45, 76, 0.12);
+  background: rgba(255, 249, 242, 0.88);
+  clip-path: polygon(0 10px, 10px 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+}
+
+.nav-mobile-link-active {
+  color: var(--brand-plum);
+  border-color: rgba(83, 45, 76, 0.28);
+  background: rgba(83, 45, 76, 0.12);
+}
+
 .scene-section {
   position: relative;
+}
+
+.scene-shell {
+  width: 100%;
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: var(--space-section) 1.25rem;
+}
+
+.scene-shell--hero {
+  padding-top: clamp(3.5rem, 7vw, 5.5rem);
+  padding-bottom: clamp(4.75rem, 8vw, 7rem);
+}
+
+.scene-shell--final {
+  padding-bottom: clamp(5rem, 8vw, 7rem);
 }
 
 .scene-kicker {
@@ -334,6 +385,7 @@ a {
 .hero-copy {
   position: relative;
   z-index: 1;
+  max-width: 38rem;
 }
 
 .hero-title {
@@ -359,24 +411,26 @@ a {
 }
 
 .hero-primary-cta {
-  min-width: 17rem;
+  min-width: 19rem;
+  font-size: 0.98rem;
+  font-weight: 800;
   box-shadow:
     0 18px 38px -24px rgba(0, 0, 0, 0.92),
-    0 0 0 1px rgba(244, 211, 94, 0.18);
+    0 0 0 1px rgba(244, 211, 94, 0.26);
 }
 
 .hero-secondary-cta {
   background: rgba(255, 249, 242, 0.9);
 }
 
-.hero-trust-strip {
+.hero-proof-row {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
   margin-top: 1.75rem;
 }
 
-.hero-trust-pill {
+.hero-proof-pill {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
@@ -392,19 +446,19 @@ a {
 
 .hero-stage {
   position: relative;
-  min-height: 32rem;
+  min-height: 30rem;
 }
 
 .hero-portal {
   position: relative;
   min-height: 100%;
-  padding: 2rem 1.5rem 2.5rem;
+  padding: 1.4rem 1rem 1rem 3rem;
 }
 
 .hero-portal::before {
   content: '';
   position: absolute;
-  inset: 1.2rem 0 0;
+  inset: 1rem 0.2rem 0 2rem;
   border: 1px solid rgba(255, 244, 231, 0.25);
   border-radius: 16rem 16rem 2rem 2rem;
   opacity: 0.55;
@@ -424,7 +478,7 @@ a {
 .hero-portal-image {
   position: relative;
   overflow: hidden;
-  min-height: 30rem;
+  min-height: 29rem;
   border: 1px solid rgba(255, 244, 231, 0.22);
   border-radius: 18rem 18rem 1.4rem 3rem;
   box-shadow: 0 44px 86px -34px rgba(6, 4, 10, 0.95);
@@ -464,10 +518,12 @@ a {
   }
 }
 
-.hero-ticket {
+.hero-caption {
   position: absolute;
+  left: -1.3rem;
+  bottom: 1.5rem;
   z-index: 2;
-  max-width: 17rem;
+  max-width: 18rem;
   padding: 1rem 1rem 1.05rem;
   background:
     linear-gradient(180deg, rgba(255, 248, 240, 0.98), rgba(241, 227, 213, 0.96)),
@@ -475,39 +531,7 @@ a {
   color: #3d233f;
   box-shadow: 0 24px 56px -28px rgba(6, 4, 10, 0.95);
   border: 1px solid rgba(74, 44, 58, 0.08);
-}
-
-.hero-ticket::before,
-.hero-ticket::after {
-  content: '';
-  position: absolute;
-  top: calc(50% - 0.7rem);
-  width: 1.4rem;
-  height: 1.4rem;
-  border-radius: 999px;
-  background: #85566b;
-}
-
-.hero-ticket::before {
-  left: -0.7rem;
-}
-
-.hero-ticket::after {
-  right: -0.7rem;
-}
-
-.hero-ticket--planner {
-  left: -1rem;
-  bottom: 2.25rem;
-  transform: rotate(-2.8deg);
   clip-path: polygon(0 0, calc(100% - 22px) 0, 100% 22px, 100% 100%, 24px 100%, 0 calc(100% - 22px));
-}
-
-.hero-ticket--route {
-  right: -0.6rem;
-  top: 3rem;
-  transform: rotate(5.5deg);
-  clip-path: polygon(18px 0, 100% 0, 100% calc(100% - 18px), calc(100% - 18px) 100%, 0 100%, 0 18px);
 }
 
 .hero-ticket-label {
@@ -525,24 +549,6 @@ a {
   font-family: 'DM Serif Display', serif;
   font-size: 1.15rem;
   line-height: 1.35;
-}
-
-.hero-compass {
-  position: absolute;
-  right: 0.5rem;
-  bottom: 0.5rem;
-  display: grid;
-  place-items: center;
-  width: 4.2rem;
-  height: 4.2rem;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 244, 231, 0.28);
-  background: rgba(18, 10, 23, 0.28);
-  font-size: 1.4rem;
-  color: #f4d35e;
-  backdrop-filter: blur(10px);
-  animation: floaty 4.5s ease-in-out infinite;
-  box-shadow: 0 16px 34px -20px rgba(0, 0, 0, 0.9);
 }
 
 @keyframes floaty {
@@ -691,7 +697,7 @@ a {
 .journey-map {
   position: relative;
   display: grid;
-  gap: 2rem;
+  gap: 2.5rem;
   margin-top: 3.5rem;
 }
 
@@ -1345,7 +1351,7 @@ a {
   }
 
   .hero-portal {
-    padding: 1rem 0 2.5rem;
+    padding: 0.5rem 0 2.8rem;
   }
 
   .hero-portal-image {
@@ -1354,7 +1360,7 @@ a {
     clip-path: polygon(0 0, 100% 0, 100% 92%, 90% 100%, 0 100%);
   }
 
-  .hero-ticket {
+  .hero-caption {
     position: relative;
     left: auto;
     right: auto;
@@ -1363,13 +1369,6 @@ a {
     max-width: none;
     margin-top: 0.85rem;
     transform: none;
-  }
-
-  .hero-compass {
-    right: 1rem;
-    bottom: 1rem;
-    width: 3.5rem;
-    height: 3.5rem;
   }
 
   .scene-divider--hero {

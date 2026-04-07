@@ -269,6 +269,21 @@ function App() {
             Start Planning
           </Button>
         </div>
+
+        <nav aria-label="Mobile sections" className="nav-mobile-strip md:hidden">
+          <div className="nav-mobile-scroll">
+            {navItems.map((item) => (
+              <a
+                key={item.id}
+                href={`#${item.id}`}
+                className={`nav-mobile-link ${activeSection === item.id ? 'nav-mobile-link-active' : ''}`}
+                aria-current={activeSection === item.id ? 'page' : undefined}
+              >
+                {item.label}
+              </a>
+            ))}
+          </div>
+        </nav>
       </header>
 
       <main id="main-content" className="site-grit">
@@ -277,29 +292,29 @@ function App() {
           <div className="hero-dust hero-dust--left" aria-hidden="true" />
           <div className="hero-dust hero-dust--right" aria-hidden="true" />
 
-          <div className="mx-auto grid w-full max-w-7xl gap-10 px-5 pb-20 pt-14 md:px-8 md:pb-28 md:pt-20 xl:grid-cols-[1.05fr_0.95fr] xl:items-center">
+          <div className="scene-shell scene-shell--hero grid gap-10 xl:grid-cols-[1.05fr_0.95fr] xl:items-center">
             <div className="hero-copy">
               <p className="scene-kicker">Boutique planning for magical vacations</p>
               <h1 className="hero-title">
-                Your next trip should feel
-                <span className="block text-orange">like a story worth entering.</span>
+                Plan a magical trip
+                <span className="block text-orange">without planning it alone.</span>
               </h1>
               <p className="hero-description">
-                Vixie Dust Travels crafts Disney vacations, cruises, and sunny escapes with polished planning, fandom-friendly warmth, and concierge-level support from quote to takeoff.
+                Disney vacations, cruises, and sunny escapes shaped with polished strategy, warm guidance, and concierge-level support from quote to takeoff.
               </p>
 
               <div className="hero-actions mt-8 flex flex-wrap gap-3">
-                <Button href="#intake" className="hero-primary-cta" onClick={() => handleCtaClick('Start Your Magical Journey', 'hero_primary')}>
-                  Start Your Magical Journey
+                <Button href="#intake" className="hero-primary-cta" onClick={() => handleCtaClick('Start Planning My Trip Now', 'hero_primary')}>
+                  Start Planning My Trip Now
                 </Button>
                 <Button href="#services" variant="secondary" className="hero-secondary-cta" onClick={() => handleCtaClick('Explore Journey Map', 'hero_secondary')}>
-                  Explore The Journey Map
+                  See Travel Options
                 </Button>
               </div>
 
-              <div className="hero-trust-strip">
+              <div className="hero-proof-row">
                 {trustSignals.map((signal) => (
-                  <span key={signal} className="hero-trust-pill">
+                  <span key={signal} className="hero-proof-pill">
                     {signal}
                   </span>
                 ))}
@@ -315,19 +330,9 @@ function App() {
                     className="h-full w-full object-cover object-[50%_42%]"
                   />
                 </div>
-
-                <div className="hero-ticket hero-ticket--planner">
-                  <p className="hero-ticket-label">Signature Style</p>
-                  <p className="hero-ticket-title">Warm guidance, polished details, and plenty of wonder.</p>
-                </div>
-
-                <div className="hero-ticket hero-ticket--route">
-                  <p className="hero-ticket-label">Journey Flow</p>
-                  <p className="hero-route">Discovery → Dreaming → Booking → Takeoff</p>
-                </div>
-
-                <div className="hero-compass" aria-hidden="true">
-                  ✦
+                <div className="hero-caption">
+                  <p className="hero-ticket-label">What you get</p>
+                  <p className="hero-ticket-title">A clear plan, a faster booking path, and a real person in your corner.</p>
                 </div>
               </div>
             </div>
@@ -337,7 +342,7 @@ function App() {
         </section>
 
         <section id="welcome" className="scene-section scene-section--welcome">
-          <div className="mx-auto grid w-full max-w-7xl gap-10 px-5 py-16 md:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+          <div className="scene-shell grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
             <div className="welcome-portrait">
               <div className="welcome-portrait-frame">
                 <img src="/logo.svg" alt="Vixie Dust fox mascot" className="h-40 w-40 object-contain md:h-52 md:w-52" />
@@ -375,7 +380,7 @@ function App() {
         </section>
 
         <section id="services" className="scene-section scene-section--services">
-          <div className="mx-auto w-full max-w-7xl px-5 py-16 md:px-8 md:py-20">
+          <div className="scene-shell">
             <div className="section-intro section-intro--center">
               <p className="scene-kicker">Choose your journey</p>
               <h2 className="scene-title">Three signature escapes, told like destinations instead of boxes.</h2>
@@ -420,7 +425,7 @@ function App() {
         </section>
 
         <section id="merch" className="scene-section scene-section--merch">
-          <div className="mx-auto w-full max-w-7xl px-5 py-16 md:px-8">
+          <div className="scene-shell">
             <div className="boutique-shell">
               <div className="boutique-copy">
                 <p className="scene-kicker">The Vixie boutique</p>
@@ -457,7 +462,7 @@ function App() {
         </section>
 
         <section id="testimonials" className="scene-section scene-section--memories">
-          <div className="mx-auto w-full max-w-7xl px-5 py-16 md:px-8 md:py-20">
+          <div className="scene-shell">
             <div className="section-intro">
               <p className="scene-kicker">Traveler stories</p>
               <h2 className="scene-title">The trust section, retold as a wall of keepsakes and happy returns.</h2>
@@ -497,7 +502,7 @@ function App() {
         </section>
 
         <section id="intake" className="scene-section scene-section--booking">
-          <div className="mx-auto w-full max-w-7xl px-5 py-16 md:px-8 md:py-20">
+          <div className="scene-shell">
             <div className="booking-shell">
               <div className="booking-copy">
                 <p className="scene-kicker">Begin the booking chapter</p>
@@ -620,7 +625,7 @@ function App() {
         </section>
 
         <section id="start" className="scene-section scene-section--final">
-          <div className="mx-auto w-full max-w-5xl px-5 pb-20 pt-16 text-center md:px-8 md:pb-24">
+          <div className="scene-shell scene-shell--final mx-auto max-w-5xl text-center">
             <div className="final-portal">
               <p className="scene-kicker">Last stop</p>
               <h2 className="scene-title">Ready to trade endless tabs for a beautifully planned trip?</h2>
