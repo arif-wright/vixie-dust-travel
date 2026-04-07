@@ -109,6 +109,9 @@ function App() {
   const sparkleLayerRef = useRef(null)
   const heroRef = useRef(null)
   const adventureRef = useRef(null)
+  const pathRef = useRef(null)
+  const proofRef = useRef(null)
+  const consultationRef = useRef(null)
 
   useEffect(() => {
     const hideLoader = () => setIsLoading(false)
@@ -232,6 +235,27 @@ function App() {
         const rect = adventure.getBoundingClientRect()
         const shift = Math.max(-22, Math.min(22, rect.top * -0.03))
         adventure.style.setProperty('--adventure-shift', `${shift}px`)
+      }
+
+      const path = pathRef.current
+      if (path) {
+        const rect = path.getBoundingClientRect()
+        const shift = Math.max(-18, Math.min(18, rect.top * -0.024))
+        path.style.setProperty('--scene-shift', `${shift}px`)
+      }
+
+      const proof = proofRef.current
+      if (proof) {
+        const rect = proof.getBoundingClientRect()
+        const shift = Math.max(-16, Math.min(16, rect.top * -0.02))
+        proof.style.setProperty('--scene-shift', `${shift}px`)
+      }
+
+      const consultation = consultationRef.current
+      if (consultation) {
+        const rect = consultation.getBoundingClientRect()
+        const shift = Math.max(-14, Math.min(14, rect.top * -0.018))
+        consultation.style.setProperty('--scene-shift', `${shift}px`)
       }
     }
 
@@ -398,9 +422,9 @@ function App() {
             <div className="hero-stage reveal-up" data-reveal style={{ '--reveal-delay': '140ms' }}>
               <div className="hero-stage-image">
                 <img
-                  src="https://images.unsplash.com/photo-1496417263034-38ec4f0b665a?auto=format&fit=crop&w=1800&q=80"
-                  alt="A castle glowing at dusk like the opening scene of a vacation story"
-                  className="h-full w-full object-cover object-[52%_44%]"
+                  src="https://images.pexels.com/photos/8184000/pexels-photo-8184000.jpeg?auto=compress&cs=tinysrgb&w=1800"
+                  alt="Walt Disney and Mickey Mouse statue in front of Cinderella Castle at Walt Disney World"
+                  className="h-full w-full object-cover object-[52%_40%]"
                 />
               </div>
 
@@ -423,6 +447,7 @@ function App() {
         </section>
 
         <section id="adventure" ref={adventureRef} className="adventure-scene">
+          <div className="scene-ambient scene-ambient--adventure" aria-hidden="true" />
           <div className="scene-shell scene-shell--wide">
             <div className="section-heading section-heading--split reveal-up" data-reveal>
               <p className="section-kicker">Choose your adventure</p>
@@ -458,7 +483,8 @@ function App() {
           </div>
         </section>
 
-        <section id="path" className="journey-path-scene section-overlap-top">
+        <section id="path" ref={pathRef} className="journey-path-scene section-overlap-top">
+          <div className="scene-ambient scene-ambient--path" aria-hidden="true" />
           <div className="scene-shell">
             <div className="section-heading section-heading--center reveal-up" data-reveal>
               <p className="section-kicker">From dream to departure</p>
@@ -486,7 +512,8 @@ function App() {
           </div>
         </section>
 
-        <section id="proof" className="proof-scene section-overlap-top">
+        <section id="proof" ref={proofRef} className="proof-scene section-overlap-top">
+          <div className="scene-ambient scene-ambient--proof" aria-hidden="true" />
           <div className="scene-shell proof-layout">
             <div className="proof-copy reveal-up" data-reveal>
               <p className="section-kicker">Social proof</p>
@@ -515,8 +542,9 @@ function App() {
           </div>
         </section>
 
-        <section id="consultation" className="decision-scene section-overlap-top">
+        <section id="consultation" ref={consultationRef} className="decision-scene section-overlap-top">
           <div className="decision-backdrop" aria-hidden="true" />
+          <div className="scene-ambient scene-ambient--decision" aria-hidden="true" />
           <div className="scene-shell decision-layout">
             <div className="decision-copy reveal-up" data-reveal>
               <p className="section-kicker section-kicker--light">The decision moment</p>

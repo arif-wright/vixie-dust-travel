@@ -21,6 +21,7 @@
   --title-size: clamp(2.9rem, 5vw, 5.2rem);
   --hero-shift: 0px;
   --adventure-shift: 0px;
+  --scene-shift: 0px;
 }
 
 * {
@@ -43,7 +44,7 @@ body {
   color: var(--ink);
   background:
     radial-gradient(42% 26% at 50% 0%, rgba(244, 211, 94, 0.14), transparent 72%),
-    linear-gradient(180deg, var(--bg-cream) 0%, #f6e7db 20%, var(--bg-warm) 52%, var(--bg-rose) 78%, #502949 90%, #22111f 100%);
+    linear-gradient(180deg, #f6e8dc 0%, #f1dfd6 20%, #ebd5cf 52%, #e2c3c3 78%, #502949 90%, #22111f 100%);
 }
 
 a {
@@ -93,7 +94,7 @@ a {
 .sparkle-dot {
   position: absolute;
   background:
-    radial-gradient(circle at 35% 35%, #fffdf8 0 26%, #ffe6a9 27%, #f4d35e 58%, #d9864b 100%);
+    radial-gradient(circle at 36% 36%, rgba(255, 255, 252, 0.98) 0 24%, rgba(255, 243, 206, 0.96) 25%, rgba(244, 211, 94, 0.94) 56%, rgba(217, 134, 75, 0.88) 100%);
   clip-path: polygon(50% 0%, 58% 42%, 100% 50%, 58% 58%, 50% 100%, 42% 58%, 0% 50%, 42% 42%);
   transform: rotate(var(--sparkle-rotate, 0deg));
   opacity: 0;
@@ -101,9 +102,11 @@ a {
   animation-timing-function: ease-out;
   animation-fill-mode: forwards;
   box-shadow:
-    0 0 0 1px rgba(255, 250, 240, 0.9),
-    0 0 14px rgba(244, 211, 94, 0.88),
-    0 0 26px rgba(217, 134, 75, 0.48);
+    0 0 0 1px rgba(255, 253, 245, 0.95),
+    0 0 10px rgba(255, 248, 228, 0.95),
+    0 0 22px rgba(244, 211, 94, 0.82),
+    0 0 38px rgba(208, 124, 113, 0.38);
+  filter: saturate(1.06);
 }
 
 @keyframes sparkle-fade {
@@ -112,7 +115,7 @@ a {
     transform: translateY(3px) rotate(var(--sparkle-rotate, 0deg)) scale(0.5);
   }
   30% {
-    opacity: 1;
+    opacity: 0.98;
   }
   100% {
     opacity: 0;
@@ -675,6 +678,19 @@ a {
   overflow: hidden;
 }
 
+.scene-threshold::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: -1.8rem;
+  width: min(76rem, 96%);
+  height: 4rem;
+  transform: translateX(-50%);
+  background: radial-gradient(circle, rgba(244, 211, 94, 0.18), rgba(244, 211, 94, 0));
+  filter: blur(18px);
+  pointer-events: none;
+}
+
 .threshold-line {
   width: min(100% - 2rem, 74rem);
   height: 4rem;
@@ -701,14 +717,68 @@ a {
 .section-overlap-top {
   margin-top: -2.2rem;
   padding-top: 2.2rem;
+  isolation: isolate;
+}
+
+.section-overlap-top::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: -2.2rem;
+  width: min(78rem, 98%);
+  height: 4.5rem;
+  transform: translateX(-50%);
+  background: linear-gradient(180deg, rgba(255, 249, 242, 0), rgba(255, 249, 242, 0.35));
+  filter: blur(16px);
+  pointer-events: none;
+  z-index: 0;
 }
 
 .adventure-scene {
   position: relative;
   background:
-    radial-gradient(34% 24% at 78% 0%, rgba(86, 45, 79, 0.12), transparent 72%),
-    linear-gradient(180deg, rgba(248, 237, 224, 0.98), rgba(242, 224, 211, 0.98));
+    radial-gradient(34% 24% at 78% 0%, rgba(86, 45, 79, 0.16), transparent 72%),
+    linear-gradient(180deg, rgba(243, 228, 217, 0.98), rgba(234, 212, 206, 0.98));
   overflow: hidden;
+}
+
+.scene-ambient {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  transform: translateY(var(--scene-shift));
+  transition: transform 140ms linear;
+}
+
+.scene-ambient::before,
+.scene-ambient::after {
+  content: '';
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(22px);
+  opacity: 0.55;
+}
+
+.scene-ambient::before {
+  width: 18rem;
+  height: 18rem;
+}
+
+.scene-ambient::after {
+  width: 24rem;
+  height: 24rem;
+}
+
+.scene-ambient--adventure::before {
+  left: -4rem;
+  top: 4rem;
+  background: radial-gradient(circle, rgba(244, 211, 94, 0.16), transparent 68%);
+}
+
+.scene-ambient--adventure::after {
+  right: 2rem;
+  bottom: 4rem;
+  background: radial-gradient(circle, rgba(125, 74, 102, 0.16), transparent 70%);
 }
 
 .portal-collage {
@@ -727,6 +797,7 @@ a {
     center / 100% 100% no-repeat;
   opacity: 0.72;
   pointer-events: none;
+  transform: translateY(calc(var(--adventure-shift) * 0.45));
 }
 
 .portal-card {
@@ -855,8 +926,20 @@ a {
 
 .journey-path-scene {
   position: relative;
-  background: linear-gradient(180deg, rgba(242, 225, 212, 0.98), rgba(238, 218, 205, 0.98));
+  background: linear-gradient(180deg, rgba(234, 214, 205, 0.98), rgba(228, 205, 197, 0.98));
   overflow: hidden;
+}
+
+.scene-ambient--path::before {
+  left: 8%;
+  top: 8%;
+  background: radial-gradient(circle, rgba(242, 160, 95, 0.14), transparent 66%);
+}
+
+.scene-ambient--path::after {
+  right: 10%;
+  bottom: 8%;
+  background: radial-gradient(circle, rgba(86, 45, 79, 0.15), transparent 70%);
 }
 
 .journey-flow {
@@ -871,6 +954,7 @@ a {
   background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 520' preserveAspectRatio='none'%3E%3Cpath d='M70 120C190 30 330 30 450 120C560 202 700 214 800 160C904 104 1010 110 1130 208' fill='none' stroke='%23d38b60' stroke-width='4' stroke-linecap='round' stroke-dasharray='2 18'/%3E%3C/svg%3E")
     center / 100% 100% no-repeat;
   opacity: 0.9;
+  transform: translateY(calc(var(--scene-shift) * 0.35));
 }
 
 .journey-node {
@@ -949,8 +1033,20 @@ a {
 .proof-scene {
   position: relative;
   background:
-    radial-gradient(30% 24% at 84% 10%, rgba(86, 45, 79, 0.12), transparent 74%),
-    linear-gradient(180deg, rgba(242, 224, 210, 0.98), rgba(236, 214, 199, 0.98));
+    radial-gradient(30% 24% at 84% 10%, rgba(86, 45, 79, 0.16), transparent 74%),
+    linear-gradient(180deg, rgba(232, 210, 202, 0.98), rgba(226, 202, 194, 0.98));
+}
+
+.scene-ambient--proof::before {
+  left: -2rem;
+  top: 2rem;
+  background: radial-gradient(circle, rgba(244, 211, 94, 0.12), transparent 68%);
+}
+
+.scene-ambient--proof::after {
+  right: 4rem;
+  top: 6rem;
+  background: radial-gradient(circle, rgba(201, 125, 120, 0.14), transparent 70%);
 }
 
 .proof-scene::before {
@@ -1065,6 +1161,18 @@ a {
     radial-gradient(34% 34% at 18% 20%, rgba(244, 211, 94, 0.12), transparent 72%),
     radial-gradient(26% 34% at 82% 24%, rgba(242, 160, 95, 0.12), transparent 74%);
   pointer-events: none;
+}
+
+.scene-ambient--decision::before {
+  left: 6%;
+  top: 10%;
+  background: radial-gradient(circle, rgba(244, 211, 94, 0.1), transparent 70%);
+}
+
+.scene-ambient--decision::after {
+  right: 4%;
+  bottom: 8%;
+  background: radial-gradient(circle, rgba(242, 160, 95, 0.1), transparent 70%);
 }
 
 .decision-layout {
@@ -1204,6 +1312,24 @@ a {
   }
 }
 
+@keyframes ambient-drift {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -10px, 0);
+  }
+}
+
+.scene-ambient::before,
+.scene-ambient::after {
+  animation: ambient-drift 15s ease-in-out infinite;
+}
+
+.scene-ambient::after {
+  animation-duration: 20s;
+}
+
 @media (min-width: 900px) {
   .desktop-nav {
     display: flex;
@@ -1336,6 +1462,11 @@ a {
     padding-top: 1rem;
   }
 
+  .section-overlap-top::before {
+    top: -1rem;
+    height: 2rem;
+  }
+
   .scene-threshold {
     padding-top: 0.7rem;
   }
@@ -1358,7 +1489,9 @@ a {
   .loading-logo,
   .hero-stage-image img,
   .hero-particles,
-  .hero-shimmer {
+  .hero-shimmer,
+  .scene-ambient::before,
+  .scene-ambient::after {
     animation: none;
   }
 
