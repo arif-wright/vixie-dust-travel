@@ -4,7 +4,7 @@ export function Button({ children, href = '#', variant = 'primary', className = 
 
   const styles = {
     primary:
-      'bg-orange text-mist shadow-card hover:-translate-y-0.5 hover:bg-orange-soft focus-visible:ring-orange',
+      'btn-sparkle bg-orange text-mist shadow-card hover:-translate-y-0.5 hover:bg-orange-soft focus-visible:ring-orange',
     secondary:
       'border border-plum/35 bg-mist text-plum hover:border-plum hover:bg-plum hover:text-mist focus-visible:ring-plum',
     light:

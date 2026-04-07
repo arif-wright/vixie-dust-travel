@@ -37,14 +37,17 @@ const destinations = [
 
 const services = [
   {
+    icon: '🏰',
     title: 'Custom Itinerary Design',
     text: 'We build day-by-day plans around your priorities, mobility needs, and realistic pace.',
   },
   {
+    icon: '🚢',
     title: 'Booking + Offer Monitoring',
     text: 'We manage reservations and track promotions so your trip stays optimized as prices shift.',
   },
   {
+    icon: '🌴',
     title: 'Pre-Trip Concierge Support',
     text: 'Before departure, you get a clear action timeline and direct answers to every logistics question.',
   },
@@ -85,6 +88,7 @@ const proofChips = [
 
 function App() {
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [showCelebrate, setShowCelebrate] = useState(false)
 
   const handleCtaClick = (label, location) => {
     trackEvent('cta_click', { label, location })
@@ -102,6 +106,8 @@ function App() {
 
     event.currentTarget.reset()
     setIsSubmitted(true)
+    setShowCelebrate(true)
+    window.setTimeout(() => setShowCelebrate(false), 2200)
   }
 
   return (
@@ -134,7 +140,7 @@ function App() {
 
           <Button
             href="#intake"
-            className="nav-cta hidden sm:inline-flex !bg-hotpink hover:!bg-hotpink-deep focus-visible:!ring-hotpink"
+            className="nav-cta hidden sm:inline-flex"
             onClick={() => handleCtaClick('Start Planning My Trip', 'navbar_desktop')}
           >
             Start Planning My Trip
@@ -142,7 +148,7 @@ function App() {
 
           <Button
             href="#intake"
-            className="nav-cta sm:hidden !px-4 !py-2 !text-xs !bg-hotpink hover:!bg-hotpink-deep focus-visible:!ring-hotpink"
+            className="nav-cta sm:hidden !px-4 !py-2 !text-xs"
             onClick={() => handleCtaClick('Start Planning', 'navbar_mobile')}
           >
             Start Planning
@@ -247,6 +253,8 @@ function App() {
           </div>
         </section>
 
+        <div className="wand-divider" aria-hidden="true">✦</div>
+
         <section className="welcome-band mx-auto mt-10 w-full max-w-6xl px-5 md:px-8">
           <div className="welcome-card rounded-[1.9rem] border border-gold/35 px-6 py-10 shadow-card md:grid md:grid-cols-[0.3fr_0.7fr] md:items-center md:gap-10 md:px-10">
             <div className="mx-auto mb-6 grid h-36 w-36 place-items-center rounded-full border border-plum/15 bg-mist md:mb-0">
@@ -269,6 +277,8 @@ function App() {
             </div>
           </div>
         </section>
+
+        <div className="wand-divider" aria-hidden="true">✦</div>
 
         <section id="destinations" className="section-speckle mx-auto w-full max-w-6xl px-5 pb-16 pt-16 md:px-8 md:pt-20">
           <StampBadge title="No Extra" subtitle="Fees" className="hidden md:block destinations-stamp" />
@@ -313,7 +323,7 @@ function App() {
           </article>
         </section>
 
-        <section id="services" className="relative overflow-hidden bg-mist py-16 md:py-20">
+        <section id="services" className="relative overflow-hidden bg-lavender/28 py-16 md:py-20">
           <div className="services-accent" />
           <div className="services-grain" />
           <div className="mx-auto grid w-full max-w-6xl gap-10 px-5 md:grid-cols-[1fr_1fr] md:items-start md:px-8">
@@ -326,6 +336,7 @@ function App() {
             <div className="space-y-4">
               {services.map((service, index) => (
                 <article key={service.title} className="rounded-[1.45rem] border border-plum/10 bg-cream p-5 shadow-card transition hover:-translate-y-0.5">
+                  <p className="mb-2 text-2xl" aria-hidden="true">{service.icon}</p>
                   <p className="mb-2 text-xs font-semibold uppercase tracking-[0.22em] text-hotpink">
                     Step {String(index + 1).padStart(2, '0')}
                   </p>
@@ -337,7 +348,7 @@ function App() {
           </div>
         </section>
 
-        <section id="testimonials" className="section-speckle mx-auto w-full max-w-6xl px-5 py-16 md:px-8 md:py-20">
+        <section id="testimonials" className="section-speckle rounded-[2rem] bg-lavender/24 mx-auto w-full max-w-6xl px-5 py-16 md:px-8 md:py-20">
           <StampBadge title="Client" subtitle="Favorite" className="hidden md:block testimonials-stamp" />
           <SectionHeading
             eyebrow="Testimonials"
@@ -448,7 +459,7 @@ function App() {
             </form>
 
             {isSubmitted ? (
-              <p role="status" className="mt-4 rounded-xl border border-green-700/25 bg-green-50 px-4 py-3 text-sm font-medium text-green-800">
+              <p role="status" className={`mt-4 rounded-xl border border-green-700/25 bg-green-50 px-4 py-3 text-sm font-medium text-green-800 ${showCelebrate ? 'form-success' : ''}`}>
                 Thanks. We received your details and will follow up with next steps.
               </p>
             ) : null}
@@ -462,12 +473,12 @@ function App() {
             </p>
             <h2 className="mt-5 font-display text-5xl leading-tight md:text-6xl">Start Planning My Trip</h2>
             <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-mist/85">
-              Prefer to begin with the form? We will turn your details into a smart, stress-free travel plan.
+              Ready to see the magic come to life? Let&apos;s chat and map your dream itinerary.
             </p>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
               <div className="relative inline-flex">
                 <Button href="#intake" onClick={() => handleCtaClick('Start Planning My Trip', 'final_cta_primary')}>
-                  Start Planning My Trip
+                  Let&apos;s Plan Your Trip ✨
                 </Button>
                 <Starburst label="Book Now" className="absolute -right-8 -top-8 hidden md:inline-flex" />
               </div>
