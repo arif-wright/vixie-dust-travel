@@ -47,6 +47,13 @@ a {
   text-decoration: none;
 }
 
+.logo-face {
+  object-fit: cover;
+  object-position: 52% 20%;
+  transform: scale(2.55);
+  transform-origin: center 28%;
+}
+
 .skip-link {
   position: absolute;
   left: 0.5rem;

@@ -117,7 +117,7 @@ function App() {
               <img
                 src="/logo.svg"
                 alt="Vixie Dust fox logo"
-                className="h-8 w-8 rounded-full object-cover"
+                className="logo-face h-8 w-8 rounded-full object-cover"
               />
             </div>
             <div>
@@ -229,7 +229,7 @@ function App() {
                   src="/logo.svg"
                   alt=""
                   aria-hidden="true"
-                  className="h-10 w-10 rounded-full object-cover"
+                  className="logo-face h-10 w-10 rounded-full object-cover"
                 />
               </div>
             </div>
