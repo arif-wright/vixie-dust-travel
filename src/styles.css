@@ -99,15 +99,6 @@ a {
   fill: #f7eee3;
 }
 
-.starburst-chip {
-  border-radius: 999px;
-  background: #c8652d;
-  color: #fdf8f2;
-  padding: 0.33rem 0.58rem;
-  font-size: 0.62rem;
-  letter-spacing: 0.08em;
-}
-
 .services-accent {
   position: absolute;
   left: 0;
@@ -125,22 +116,35 @@ a {
     linear-gradient(132deg, #3a2046 0%, #4c2d59 100%);
 }
 
-.cta-burst {
-  position: relative;
-}
-
-.cta-burst::after {
-  content: 'Book Now';
-  position: absolute;
-  right: -0.9rem;
-  top: -0.8rem;
-  border-radius: 999px;
+.starburst {
   background: #e7c56e;
-  color: #3e2348;
-  padding: 0.23rem 0.5rem;
-  font-size: 0.6rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
+  clip-path: polygon(
+    50% 0%,
+    60% 16%,
+    77% 8%,
+    80% 25%,
+    96% 25%,
+    88% 40%,
+    100% 50%,
+    88% 60%,
+    96% 75%,
+    80% 75%,
+    77% 92%,
+    60% 84%,
+    50% 100%,
+    40% 84%,
+    23% 92%,
+    20% 75%,
+    4% 75%,
+    12% 60%,
+    0% 50%,
+    12% 40%,
+    4% 25%,
+    20% 25%,
+    23% 8%,
+    40% 16%
+  );
+  box-shadow: 0 12px 25px -10px rgba(0, 0, 0, 0.45);
 }
 
 @media (max-width: 767px) {
@@ -155,7 +159,8 @@ a {
     top: 0.35rem;
   }
 
-  .cta-burst::after {
-    right: -0.5rem;
+  .starburst {
+    height: 3.5rem;
+    width: 3.5rem;
   }
 }

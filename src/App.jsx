@@ -1,6 +1,7 @@
 import { Button } from './components/Button'
 import { DestinationCard } from './components/DestinationCard'
 import { SectionHeading } from './components/SectionHeading'
+import { Starburst } from './components/Starburst'
 import { TestimonialCard } from './components/TestimonialCard'
 import { TrustItem } from './components/TrustItem'
 
@@ -110,8 +111,11 @@ function App() {
                 Stress-free Disney, Universal, and cruise planning with expert strategy, free support, and a clear path from quote to takeoff.
               </p>
 
-              <div className="mt-8 flex flex-wrap gap-3">
-                <Button href="#start">Start Planning My Trip</Button>
+              <div className="mt-8 flex flex-wrap items-center gap-3">
+                <div className="relative inline-flex">
+                  <Button href="#start">Start Planning My Trip</Button>
+                  <Starburst label="Free Plan" className="absolute -right-8 -top-8 hidden md:inline-flex" />
+                </div>
                 <Button href="#destinations" variant="light">
                   View Destinations
                 </Button>
@@ -119,7 +123,8 @@ function App() {
 
               <div className="mt-7 inline-flex items-center gap-2 rounded-full border border-gold/40 bg-gold/15 px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-gold">
                 Free Planning
-                <span className="starburst-chip">Most Popular</span>
+                <span className="text-mist/80">•</span>
+                Most Popular
               </div>
             </div>
 
@@ -223,9 +228,10 @@ function App() {
               Tell us your dates, priorities, and budget. We will build your best-fit plan and guide every next step.
             </p>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-              <Button href="#" className="cta-burst">
-                Start Planning My Trip
-              </Button>
+              <div className="relative inline-flex">
+                <Button href="#">Start Planning My Trip</Button>
+                <Starburst label="Book Now" className="absolute -right-8 -top-8 hidden md:inline-flex" />
+              </div>
               <Button href="#destinations" variant="light">
                 View Destinations
               </Button>
