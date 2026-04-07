@@ -142,12 +142,12 @@ function App() {
               <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-gold/40 bg-gold/10 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-gold">
                 Trusted Vacation Planning
               </p>
-              <h1 className="font-display text-5xl leading-[0.95] md:text-7xl">
-                Start Planning
-                <span className="block text-gold">Your Trip</span>
+              <h1 className="font-display text-5xl leading-[0.9] md:text-7xl">
+                Plan It Like
+                <span className="block text-gold">A Pro</span>
               </h1>
               <p className="mt-5 max-w-xl text-base leading-relaxed text-mist/88 md:text-lg">
-                Stress-free Disney, Universal, and cruise planning with expert strategy, free support, and a clear path from quote to takeoff.
+                Start planning your trip with Disney, Universal, and cruise experts who cut chaos, protect your budget, and map every key move.
               </p>
 
               <div className="mt-8 flex flex-wrap items-center gap-3">
@@ -188,6 +188,15 @@ function App() {
                 <p className="mt-1 font-display text-2xl text-plum">Planned Better</p>
               </aside>
 
+              <aside className="hero-tool-card hidden md:block">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-hotpink">Trip Toolkit</p>
+                <ul className="mt-2 space-y-1.5 text-xs text-ink/85">
+                  <li>Park-day pacing plan</li>
+                  <li>Dining + budget strategy</li>
+                  <li>Pre-travel checklist</li>
+                </ul>
+              </aside>
+
               <div className="hero-fox-badge">
                 <img src="/vixie-fox-mark.svg" alt="" aria-hidden="true" className="h-10 w-10" />
               </div>
@@ -207,7 +216,7 @@ function App() {
           </div>
         </section>
 
-        <section id="destinations" className="mx-auto w-full max-w-6xl px-5 pb-16 pt-16 md:px-8 md:pt-20">
+        <section id="destinations" className="section-speckle mx-auto w-full max-w-6xl px-5 pb-16 pt-16 md:px-8 md:pt-20">
           <SectionHeading
             eyebrow="Featured Destinations"
             title="Iconic Trips, With a Smart Game Plan"
@@ -219,7 +228,7 @@ function App() {
               <DestinationCard
                 key={destination.title}
                 {...destination}
-                className={index === 1 ? 'md:translate-y-6 md:rotate-[1.2deg]' : index === 2 ? 'md:-translate-y-1 md:-rotate-[0.8deg]' : ''}
+                className={index === 1 ? 'md:translate-y-6 md:rotate-[1.4deg]' : index === 2 ? 'md:-translate-y-2 md:-rotate-[1deg]' : 'md:rotate-[-0.5deg]'}
               />
             ))}
           </div>
@@ -246,6 +255,7 @@ function App() {
 
         <section id="services" className="relative overflow-hidden bg-mist py-16 md:py-20">
           <div className="services-accent" />
+          <div className="services-grain" />
           <div className="mx-auto grid w-full max-w-6xl gap-10 px-5 md:grid-cols-[1fr_1fr] md:items-start md:px-8">
             <SectionHeading
               eyebrow="Services"
@@ -255,7 +265,7 @@ function App() {
 
             <div className="space-y-4">
               {services.map((service) => (
-                <article key={service.title} className="rounded-[1.45rem] border border-plum/10 bg-cream p-5 shadow-card">
+                <article key={service.title} className="rounded-[1.45rem] border border-plum/10 bg-cream p-5 shadow-card transition hover:-translate-y-0.5">
                   <h3 className="font-display text-2xl text-ink">{service.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-ink/80">{service.text}</p>
                 </article>
