@@ -387,7 +387,8 @@ body {
   position: relative;
   z-index: 2;
   height: 34px;
-  background: #fffdfc;
+  margin-top: -34px;
+  background: transparent;
   overflow: hidden;
 }
 
