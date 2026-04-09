@@ -283,12 +283,14 @@ body {
 }
 
 .service-icon {
-  position: relative;
-  z-index: 2;
+  position: absolute;
+  z-index: 3;
+  left: 50%;
+  bottom: -32px;
   width: 96px;
   aspect-ratio: 1;
-  margin: 0 auto;
-  transform: translateY(14px);
+  margin: 0;
+  transform: translateX(-50%);
   border-radius: 50%;
   border: 5px solid rgba(255, 255, 255, 0.9);
   box-shadow: 0 7px 18px -13px rgba(88, 55, 64, 0.52);
@@ -296,9 +298,10 @@ body {
 
 .service-card-top {
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   margin: 0;
-  padding: 0.8rem 1rem 2.25rem;
+  height: 116px;
+  padding: 0.8rem 1rem 0;
   background-image:
     linear-gradient(180deg, rgba(255, 232, 239, 0.5), rgba(255, 246, 241, 0.72)),
     url('/card-bg.png');
@@ -308,20 +311,7 @@ body {
 }
 
 .service-card-top::after {
-  content: '';
-  position: absolute;
-  z-index: 2;
-  left: -8%;
-  right: -8%;
-  bottom: -1px;
-  height: 72px;
-  background:
-    radial-gradient(circle at 12% 100%, #fffdfc 0 36px, transparent 37px),
-    radial-gradient(circle at 31% 100%, #fffdfc 0 30px, transparent 31px),
-    radial-gradient(circle at 50% 100%, #fffdfc 0 44px, transparent 45px),
-    radial-gradient(circle at 69% 100%, #fffdfc 0 30px, transparent 31px),
-    radial-gradient(circle at 88% 100%, #fffdfc 0 36px, transparent 37px);
-  pointer-events: none;
+  display: none;
 }
 
 .service-card-top--castle {
@@ -385,12 +375,59 @@ body {
   z-index: 2;
   background: #fffdfc;
   margin-top: 0;
-  padding: 1.85rem 1rem 1.25rem;
+  padding: 1.2rem 1rem 1.25rem;
 }
 
 .service-card-body > * {
   position: relative;
   z-index: 2;
+}
+
+.service-card-cloud-row {
+  position: relative;
+  z-index: 2;
+  height: 34px;
+  background: #fffdfc;
+  overflow: hidden;
+}
+
+.service-cloud {
+  position: absolute;
+  bottom: 0;
+  background: #fffdfc;
+  border: 1px solid #e7d6d7;
+  border-bottom: 0;
+  border-radius: 999px 999px 0 0;
+}
+
+.service-cloud--outer-left {
+  left: -2%;
+  width: 24%;
+  height: 32px;
+}
+
+.service-cloud--inner-left {
+  left: 17%;
+  width: 20%;
+  height: 26px;
+}
+
+.service-cloud--center {
+  left: 40%;
+  width: 20%;
+  height: 38px;
+}
+
+.service-cloud--inner-right {
+  right: 17%;
+  width: 20%;
+  height: 26px;
+}
+
+.service-cloud--outer-right {
+  right: -2%;
+  width: 24%;
+  height: 32px;
 }
 
 .testimonials {

@@ -99,6 +99,13 @@ function App() {
                 <div className={`service-card-top service-card-top--${service.icon}`} aria-hidden="true">
                   <div className={`service-icon service-icon--${service.icon}`} />
                 </div>
+                <div className="service-card-cloud-row" aria-hidden="true">
+                  <span className="service-cloud service-cloud--outer-left" />
+                  <span className="service-cloud service-cloud--inner-left" />
+                  <span className="service-cloud service-cloud--center" />
+                  <span className="service-cloud service-cloud--inner-right" />
+                  <span className="service-cloud service-cloud--outer-right" />
+                </div>
                 <div className="service-card-body">
                   <h3>{service.title}</h3>
                   <p>{service.text}</p>
