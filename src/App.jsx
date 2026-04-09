@@ -96,7 +96,9 @@ function App() {
           <div className="service-grid">
             {services.map((service) => (
               <article key={service.id} className="service-card">
-                <div className={`service-icon service-icon--${service.icon}`} aria-hidden="true" />
+                <div className={`service-card-top service-card-top--${service.icon}`} aria-hidden="true">
+                  <div className={`service-icon service-icon--${service.icon}`} />
+                </div>
                 <h3>{service.title}</h3>
                 <p>{service.text}</p>
                 <a
