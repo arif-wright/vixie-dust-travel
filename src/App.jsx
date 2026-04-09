@@ -66,7 +66,7 @@ function App() {
         <section className="welcome" id="welcome">
           <div className="welcome-grid">
             <div className="mascot-wrap" aria-hidden="true">
-              <img src="/vixie-fox-mark.svg" alt="" className="mascot" />
+              <img src="/logo-2.png" alt="" className="mascot" />
               <span className="wand-star">✦</span>
             </div>
             <div className="welcome-copy">
