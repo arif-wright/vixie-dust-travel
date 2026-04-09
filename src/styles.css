@@ -298,7 +298,7 @@ body {
 
 .service-card-top {
   position: relative;
-  z-index: 5;
+  z-index: 3;
   overflow: visible;
   margin: 0;
   height: 116px;
@@ -386,7 +386,7 @@ body {
 
 .service-card-cloud-row {
   position: relative;
-  z-index: 2;
+  z-index: 4;
   height: 64px;
   top: -44px;
   margin-top: 0;
