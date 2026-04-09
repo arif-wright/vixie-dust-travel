@@ -74,21 +74,28 @@ body {
 }
 
 .hero::after {
-  content: '';
-  position: absolute;
-  left: -6%;
-  right: -6%;
-  bottom: -1px;
-  height: clamp(88px, 14vw, 150px);
-  background:
-    radial-gradient(circle at 4% 100%, var(--bg-soft) 58%, transparent 59%) 0 0 / 18% 100% repeat-x,
-    linear-gradient(var(--bg-soft), var(--bg-soft));
+  display: none;
 }
 
 .hero-content {
   position: relative;
   z-index: 2;
   max-width: 48rem;
+}
+
+.hero-divider {
+  position: relative;
+  z-index: 4;
+  margin-top: clamp(-6.2rem, -9vw, -4.2rem);
+  line-height: 0;
+  pointer-events: none;
+}
+
+.hero-divider-image {
+  display: block;
+  width: min(100%, 1536px);
+  height: auto;
+  margin: 0 auto;
 }
 
 .hero-title {

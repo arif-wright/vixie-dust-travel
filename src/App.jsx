@@ -63,7 +63,11 @@ function App() {
           </div>
         </section>
 
-        <section className="welcome cloud-top" id="welcome">
+        <section className="hero-divider" aria-hidden="true">
+          <img src="/hero-divider.png" alt="" className="hero-divider-image" />
+        </section>
+
+        <section className="welcome" id="welcome">
           <div className="welcome-grid">
             <div className="mascot-wrap" aria-hidden="true">
               <img src="/vixie-fox-mark.svg" alt="" className="mascot" />
