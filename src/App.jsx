@@ -100,6 +100,7 @@ function App() {
                   <div className={`service-icon service-icon--${service.icon}`} />
                 </div>
                 <div className="service-card-cloud-row" aria-hidden="true">
+                  <img src="/cloud-divider.png" alt="" className="service-cloud-image" />
                   <span className="service-cloud service-cloud--outer-left" />
                   <span className="service-cloud service-cloud--inner-left" />
                   <span className="service-cloud service-cloud--center" />
