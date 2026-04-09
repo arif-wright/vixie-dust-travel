@@ -61,7 +61,7 @@ body {
 .hero-image {
   background-image: url('/hero.png');
   background-size: cover;
-  background-position: center top;
+  background-position: center 68%;
   filter: none;
 }
 
