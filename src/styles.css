@@ -266,7 +266,7 @@ body {
   position: relative;
   border-radius: 20px;
   overflow: hidden;
-  padding: 0 1rem 1.25rem;
+  padding: 0;
   background: #fffdfc;
   border: 1px solid #ead9d9;
   box-shadow: 0 13px 27px -23px rgba(136, 82, 94, 0.34);
@@ -297,8 +297,8 @@ body {
 .service-card-top {
   position: relative;
   overflow: hidden;
-  margin: 0 -1rem 0.7rem;
-  padding: 0.8rem 1rem 2.35rem;
+  margin: 0;
+  padding: 0.8rem 1rem 2.2rem;
   background-image:
     linear-gradient(180deg, rgba(255, 232, 239, 0.5), rgba(255, 246, 241, 0.72)),
     url('/card-bg.png');
@@ -311,30 +311,25 @@ body {
   content: '';
   position: absolute;
   z-index: 1;
-  left: -10%;
-  right: -10%;
-  top: 46%;
-  height: 60px;
+  left: -9%;
+  right: -9%;
+  bottom: -26px;
+  height: 56px;
   background:
-    radial-gradient(circle at 6% 100%, #fffdfc 0 30px, transparent 31px),
-    radial-gradient(circle at 20% 100%, #fffdfc 0 32px, transparent 33px),
-    radial-gradient(circle at 36% 100%, #fffdfc 0 28px, transparent 29px),
-    radial-gradient(circle at 52% 100%, #fffdfc 0 33px, transparent 34px),
-    radial-gradient(circle at 68% 100%, #fffdfc 0 29px, transparent 30px),
-    radial-gradient(circle at 84% 100%, #fffdfc 0 32px, transparent 33px),
-    radial-gradient(circle at 98% 100%, #fffdfc 0 30px, transparent 31px);
-  filter: drop-shadow(0 -1px 0 rgba(255, 255, 255, 0.9));
+    radial-gradient(circle at 7% 0, #fffdfc 0 30px, transparent 31px),
+    radial-gradient(circle at 23% 0, #fffdfc 0 33px, transparent 34px),
+    radial-gradient(circle at 39% 0, #fffdfc 0 29px, transparent 30px),
+    radial-gradient(circle at 55% 0, #fffdfc 0 34px, transparent 35px),
+    radial-gradient(circle at 71% 0, #fffdfc 0 30px, transparent 31px),
+    radial-gradient(circle at 87% 0, #fffdfc 0 33px, transparent 34px);
+  filter: drop-shadow(0 1px 0 rgba(229, 214, 216, 0.95));
 }
 
 .service-card-top::before {
   content: '';
   position: absolute;
   z-index: 1;
-  left: 0;
-  right: 0;
-  top: calc(46% + 28px);
-  bottom: -1px;
-  background: #fffdfc;
+  display: none;
 }
 
 .service-card-top--castle {
@@ -391,6 +386,14 @@ body {
   min-height: 2.7rem;
   padding-inline: 1.2rem;
   font-size: 0.96rem;
+}
+
+.service-card-body {
+  position: relative;
+  z-index: 2;
+  background: #fffdfc;
+  margin-top: -6px;
+  padding: 2.05rem 1rem 1.25rem;
 }
 
 .testimonials {
@@ -495,7 +498,7 @@ body {
   }
 
   .service-card {
-    padding: 0 0.9rem 1.2rem;
+    padding: 0;
   }
 
   .services::after {

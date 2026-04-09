@@ -99,15 +99,17 @@ function App() {
                 <div className={`service-card-top service-card-top--${service.icon}`} aria-hidden="true">
                   <div className={`service-icon service-icon--${service.icon}`} />
                 </div>
-                <h3>{service.title}</h3>
-                <p>{service.text}</p>
-                <a
-                  href="#contact"
-                  className="button-primary button-card"
-                  onClick={() => handleClick(`Learn More ${service.title}`, 'services')}
-                >
-                  Learn More
-                </a>
+                <div className="service-card-body">
+                  <h3>{service.title}</h3>
+                  <p>{service.text}</p>
+                  <a
+                    href="#contact"
+                    className="button-primary button-card"
+                    onClick={() => handleClick(`Learn More ${service.title}`, 'services')}
+                  >
+                    Learn More
+                  </a>
+                </div>
               </article>
             ))}
           </div>
