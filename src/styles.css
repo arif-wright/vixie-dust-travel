@@ -61,7 +61,7 @@ body {
 .hero-image {
   background-image:
     linear-gradient(180deg, rgba(255, 236, 233, 0.25), rgba(255, 236, 233, 0.72)),
-    url('https://images.unsplash.com/photo-1545231027-637d2f6210f8?auto=format&fit=crop&w=2000&q=80');
+    url('/hero.png');
   background-size: cover;
   background-position: center;
   filter: saturate(1.04) contrast(0.9) brightness(1.03);
@@ -81,24 +81,6 @@ body {
   position: relative;
   z-index: 2;
   max-width: 48rem;
-}
-
-.hero-divider {
-  position: relative;
-  z-index: 4;
-  margin-top: clamp(-10.4rem, -15vw, -8rem);
-  width: 100%;
-  line-height: 0;
-  pointer-events: none;
-  overflow: hidden;
-}
-
-.hero-divider-image {
-  display: block;
-  width: 100%;
-  max-width: none;
-  height: auto;
-  margin: 0;
 }
 
 .hero-title {
