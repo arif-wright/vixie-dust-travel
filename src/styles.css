@@ -386,20 +386,23 @@ body {
 .service-card-cloud-row {
   position: relative;
   z-index: 3;
-  height: 70px;
-  top: -58px;
+  height: 64px;
+  top: -44px;
   margin-top: 0;
-  margin-bottom: -58px;
+  margin-bottom: -44px;
   background: transparent;
   pointer-events: none;
   overflow: hidden;
 }
 
 .service-cloud-image {
-  display: block;
+  position: absolute;
+  inset: 0;
   width: 100%;
-  height: auto;
-  transform: translateY(-72%);
+  height: 100%;
+  object-fit: cover;
+  object-position: center bottom;
+  transform: none;
   opacity: 1;
 }
 
