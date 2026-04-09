@@ -308,18 +308,7 @@ body {
 }
 
 .service-card-top::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -1px;
-  height: 18px;
-  background:
-    radial-gradient(circle at 14% 100%, rgba(255, 253, 252, 0.88) 0 12px, transparent 13px),
-    radial-gradient(circle at 46% 100%, rgba(255, 253, 252, 0.9) 0 14px, transparent 15px),
-    radial-gradient(circle at 74% 100%, rgba(255, 253, 252, 0.86) 0 11px, transparent 12px);
-  opacity: 0.8;
-  pointer-events: none;
+  display: none;
 }
 
 .service-card-top::before {
@@ -389,18 +378,18 @@ body {
   position: relative;
   z-index: 2;
   background: #fffdfc;
-  margin-top: -6px;
+  margin-top: -18px;
   padding: 2.05rem 1rem 1.25rem;
 }
 
 .service-card-body::before {
   content: '';
   position: absolute;
-  z-index: 1;
+  z-index: 2;
   left: -10%;
   right: -10%;
-  top: -74px;
-  height: 98px;
+  top: -88px;
+  height: 112px;
   background:
     radial-gradient(circle at 14% 100%, #fffdfc 0 28px, transparent 29px),
     radial-gradient(circle at 33% 100%, #fffdfc 0 35px, transparent 36px),
@@ -408,6 +397,18 @@ body {
     radial-gradient(circle at 67% 100%, #fffdfc 0 35px, transparent 36px),
     radial-gradient(circle at 86% 100%, #fffdfc 0 28px, transparent 29px);
   filter: drop-shadow(0 -1px 0 rgba(235, 220, 223, 0.95));
+  pointer-events: none;
+}
+
+.service-card-body::after {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  right: 0;
+  top: -1px;
+  height: 40px;
+  background: #fffdfc;
   pointer-events: none;
 }
 
