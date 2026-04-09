@@ -311,16 +311,30 @@ body {
   content: '';
   position: absolute;
   z-index: 1;
-  left: -8%;
-  right: -8%;
-  top: 50%;
-  bottom: -1px;
+  left: -10%;
+  right: -10%;
+  top: 46%;
+  height: 60px;
   background:
-    radial-gradient(circle at 50% 0, #fffdfc 62%, transparent 63%) 0 0 / 22% 52px repeat-x,
-    linear-gradient(#fffdfc, #fffdfc);
-  background-position:
-    0 0,
-    0 24px;
+    radial-gradient(circle at 6% 100%, #fffdfc 0 30px, transparent 31px),
+    radial-gradient(circle at 20% 100%, #fffdfc 0 32px, transparent 33px),
+    radial-gradient(circle at 36% 100%, #fffdfc 0 28px, transparent 29px),
+    radial-gradient(circle at 52% 100%, #fffdfc 0 33px, transparent 34px),
+    radial-gradient(circle at 68% 100%, #fffdfc 0 29px, transparent 30px),
+    radial-gradient(circle at 84% 100%, #fffdfc 0 32px, transparent 33px),
+    radial-gradient(circle at 98% 100%, #fffdfc 0 30px, transparent 31px);
+  filter: drop-shadow(0 -1px 0 rgba(255, 255, 255, 0.9));
+}
+
+.service-card-top::before {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  right: 0;
+  top: calc(46% + 28px);
+  bottom: -1px;
+  background: #fffdfc;
 }
 
 .service-card-top--castle {
