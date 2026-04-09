@@ -66,7 +66,7 @@ function App() {
         <section className="welcome" id="welcome">
           <div className="welcome-grid">
             <div className="mascot-wrap" aria-hidden="true">
-              <img src="/logo-2.png" alt="" className="mascot" />
+              <img src="/logo-3.png" alt="" className="mascot" />
               <span className="wand-star">✦</span>
             </div>
             <div className="welcome-copy">

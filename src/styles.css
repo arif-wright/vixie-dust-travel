@@ -184,10 +184,16 @@ body {
   position: relative;
   display: grid;
   place-items: center;
+  width: min(100%, 332px);
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
 }
 
 .mascot {
-  width: min(100%, 290px);
+  width: 122%;
+  height: 122%;
+  object-fit: cover;
+  object-position: center;
   filter: drop-shadow(0 10px 24px rgba(235, 141, 91, 0.2));
 }
 
