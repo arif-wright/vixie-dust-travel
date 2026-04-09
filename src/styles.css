@@ -294,31 +294,43 @@ body {
 .service-card-top {
   position: relative;
   margin: 0 -1rem 0.7rem;
-  padding: 1.15rem 1rem 1.55rem;
+  padding: 1.15rem 1rem 1.7rem;
+  background-image:
+    linear-gradient(180deg, rgba(255, 232, 239, 0.5), rgba(255, 246, 241, 0.72)),
+    url('/card-bg.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .service-card-top::after {
   content: '';
   position: absolute;
-  left: -7%;
-  right: -7%;
+  left: -6%;
+  right: -6%;
   bottom: -1px;
-  height: 47px;
+  height: 58px;
   background:
-    radial-gradient(circle at 0 100%, #fffdfc 58%, transparent 59%) 0 0 / 22% 100% repeat-x,
+    radial-gradient(circle at 50% 98%, #fffdfc 64%, transparent 65%) 0 0 / 20% 100% repeat-x,
     linear-gradient(#fffdfc, #fffdfc);
 }
 
 .service-card-top--castle {
-  background: linear-gradient(180deg, #e8def8 0%, #f3e9ff 100%);
+  background-image:
+    linear-gradient(180deg, rgba(224, 213, 255, 0.45), rgba(249, 241, 255, 0.62)),
+    url('/card-bg.png');
 }
 
 .service-card-top--ship {
-  background: linear-gradient(180deg, #ffe0dc 0%, #ffece9 100%);
+  background-image:
+    linear-gradient(180deg, rgba(255, 221, 218, 0.46), rgba(255, 240, 236, 0.62)),
+    url('/card-bg.png');
 }
 
 .service-card-top--palms {
-  background: linear-gradient(180deg, #e6edff 0%, #f0f5ff 100%);
+  background-image:
+    linear-gradient(180deg, rgba(221, 232, 255, 0.48), rgba(241, 246, 255, 0.62)),
+    url('/card-bg.png');
 }
 
 .service-icon--castle {
