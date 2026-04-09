@@ -397,18 +397,16 @@ body {
   content: '';
   position: absolute;
   z-index: 1;
-  left: -12%;
-  right: -12%;
-  top: -40px;
-  height: 62px;
+  left: -10%;
+  right: -10%;
+  top: -42px;
+  height: 64px;
   background:
-    radial-gradient(circle at 5% 108%, #fffdfc 0 31px, transparent 32px),
-    radial-gradient(circle at 20% 95%, #fffdfc 0 37px, transparent 38px),
-    radial-gradient(circle at 37% 111%, #fffdfc 0 29px, transparent 30px),
-    radial-gradient(circle at 53% 92%, #fffdfc 0 41px, transparent 42px),
-    radial-gradient(circle at 71% 109%, #fffdfc 0 30px, transparent 31px),
-    radial-gradient(circle at 86% 96%, #fffdfc 0 36px, transparent 37px),
-    radial-gradient(circle at 101% 110%, #fffdfc 0 30px, transparent 31px);
+    radial-gradient(circle at 8% 100%, #fffdfc 0 29px, transparent 30px),
+    radial-gradient(circle at 27% 100%, #fffdfc 0 24px, transparent 25px),
+    radial-gradient(circle at 50% 100%, #fffdfc 0 38px, transparent 39px),
+    radial-gradient(circle at 73% 100%, #fffdfc 0 24px, transparent 25px),
+    radial-gradient(circle at 92% 100%, #fffdfc 0 29px, transparent 30px);
   filter: drop-shadow(0 -1px 0 rgba(235, 220, 223, 0.95));
   pointer-events: none;
 }
