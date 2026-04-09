@@ -87,15 +87,18 @@ body {
   position: relative;
   z-index: 4;
   margin-top: clamp(-6.2rem, -9vw, -4.2rem);
+  width: 100%;
   line-height: 0;
   pointer-events: none;
+  overflow: hidden;
 }
 
 .hero-divider-image {
   display: block;
-  width: min(100%, 1536px);
+  width: 100%;
+  max-width: none;
   height: auto;
-  margin: 0 auto;
+  margin: 0;
 }
 
 .hero-title {
