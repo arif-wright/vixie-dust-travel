@@ -37,6 +37,50 @@ const testimonials = [
   },
 ]
 
+const magicSteps = [
+  {
+    title: 'Dream It',
+    text: 'Share your wish-list, travel dates, and the vibe you want your vacation to have.',
+  },
+  {
+    title: 'Design It',
+    text: 'We handpick resorts, routes, and experiences that match your family perfectly.',
+  },
+  {
+    title: 'Book It',
+    text: 'You get clear recommendations and guided booking support with zero guesswork.',
+  },
+  {
+    title: 'Enjoy It',
+    text: 'Head out with confidence, pixie-dusted plans, and magical moments already in motion.',
+  },
+]
+
+const trustBadges = [
+  'Personalized Planning',
+  'Family-Friendly Expertise',
+  'Stress-Free Booking Support',
+  'Fast, Thoughtful Replies',
+]
+
+const faqItems = [
+  {
+    question: 'Do you charge planning fees?',
+    answer:
+      'Most vacation packages we plan do not require a separate planning fee. For specialty itineraries, we always explain pricing up front before any commitment.',
+  },
+  {
+    question: 'Can you help if we are not sure where to go yet?',
+    answer:
+      'Absolutely. Many families come to us with only dates and a travel style in mind. We help narrow the options into a magical shortlist.',
+  },
+  {
+    question: 'Do you only plan Disney vacations?',
+    answer:
+      'Disney is one of our specialties, but we also plan cruises and sunny getaways tailored to your family and budget.',
+  },
+]
+
 function App() {
   const pointerTrailRef = useRef(null)
 
@@ -167,6 +211,32 @@ function App() {
           </div>
         </section>
 
+        <section className="magic-process cloud-top" id="process" aria-labelledby="process-title">
+          <div className="section-head">
+            <h2 id="process-title">How The Magic Happens</h2>
+            <p>A simple, joyful process from first idea to wheels up.</p>
+          </div>
+          <div className="magic-step-grid">
+            {magicSteps.map((step, index) => (
+              <article key={step.title} className="magic-step-card">
+                <span className="magic-step-badge">0{index + 1}</span>
+                <h3>{step.title}</h3>
+                <p>{step.text}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="pixie-strip" aria-label="Why families choose Vixie Dust">
+          <div className="pixie-strip-inner">
+            {trustBadges.map((badge) => (
+              <span key={badge} className="pixie-chip">
+                ✦ {badge}
+              </span>
+            ))}
+          </div>
+        </section>
+
         <section className="testimonials cloud-top" id="stories" aria-labelledby="stories-title">
           <div className="section-head section-head--tight">
             <h2 id="stories-title">What Our Happy Travelers Are Saying</h2>
@@ -177,6 +247,20 @@ function App() {
                 <p>“{item.quote}”</p>
                 <cite>{item.name}</cite>
               </blockquote>
+            ))}
+          </div>
+        </section>
+
+        <section className="faq cloud-top" id="faq" aria-labelledby="faq-title">
+          <div className="section-head section-head--tight">
+            <h2 id="faq-title">Frequently Asked Questions</h2>
+          </div>
+          <div className="faq-list">
+            {faqItems.map((item) => (
+              <details key={item.question} className="faq-item">
+                <summary>{item.question}</summary>
+                <p>{item.answer}</p>
+              </details>
             ))}
           </div>
         </section>
