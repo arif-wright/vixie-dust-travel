@@ -42,6 +42,41 @@ body {
   overflow-x: clip;
 }
 
+.pointer-sparkle-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  pointer-events: none;
+}
+
+.pointer-sparkle {
+  position: absolute;
+  opacity: 0;
+  clip-path: polygon(50% 0%, 58% 42%, 100% 50%, 58% 58%, 50% 100%, 42% 58%, 0% 50%, 42% 42%);
+  background:
+    radial-gradient(circle at 38% 38%, rgba(255, 255, 255, 0.96) 0 14%, rgba(250, 241, 255, 0.95) 15%, rgba(208, 159, 230, 0.93) 44%, rgba(135, 70, 163, 0.9) 72%, rgba(74, 33, 98, 0.86) 100%);
+  transform: rotate(var(--sparkle-rotate, 0deg));
+  box-shadow:
+    0 0 0 1px rgba(249, 234, 255, 0.9),
+    0 0 12px rgba(217, 164, 236, 0.62),
+    0 0 28px rgba(126, 69, 159, 0.42);
+  animation: pointer-sparkle-fade ease-out forwards;
+}
+
+@keyframes pointer-sparkle-fade {
+  0% {
+    opacity: 0;
+    transform: translate(0, 2px) rotate(var(--sparkle-rotate, 0deg)) scale(0.55);
+  }
+  35% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--sparkle-drift-x, 0px), calc(-16px + var(--sparkle-drift-y, 0px))) rotate(calc(var(--sparkle-rotate, 0deg) + 12deg)) scale(1.08);
+  }
+}
+
 .hero {
   position: relative;
   min-height: min(77vh, 44rem);
@@ -497,6 +532,10 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .pointer-sparkle-layer {
+    display: none;
+  }
+
   .service-card,
   .service-icon {
     transition: none;

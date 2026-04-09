@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react'
 import { trackEvent } from './lib/analytics'
 
 const services = [
@@ -37,12 +38,55 @@ const testimonials = [
 ]
 
 function App() {
+  const pointerTrailRef = useRef(null)
+
+  useEffect(() => {
+    const layer = pointerTrailRef.current
+    if (!layer) return undefined
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    const isCoarsePointer = window.matchMedia('(pointer: coarse)').matches
+    if (prefersReducedMotion || isCoarsePointer) return undefined
+
+    let lastTime = 0
+    const minInterval = 30
+
+    const spawnSparkle = (x, y) => {
+      const sparkle = document.createElement('span')
+      sparkle.className = 'pointer-sparkle'
+
+      const size = 6 + Math.random() * 8
+      sparkle.style.left = `${x - size / 2}px`
+      sparkle.style.top = `${y - size / 2}px`
+      sparkle.style.width = `${size}px`
+      sparkle.style.height = `${size}px`
+      sparkle.style.setProperty('--sparkle-rotate', `${Math.random() * 70 - 35}deg`)
+      sparkle.style.setProperty('--sparkle-drift-x', `${Math.random() * 18 - 9}px`)
+      sparkle.style.setProperty('--sparkle-drift-y', `${Math.random() * 16 - 8}px`)
+      sparkle.style.animationDuration = `${520 + Math.random() * 340}ms`
+
+      layer.appendChild(sparkle)
+      window.setTimeout(() => sparkle.remove(), 980)
+    }
+
+    const handleMove = (event) => {
+      const now = performance.now()
+      if (now - lastTime < minInterval) return
+      lastTime = now
+      spawnSparkle(event.clientX, event.clientY)
+    }
+
+    window.addEventListener('mousemove', handleMove)
+    return () => window.removeEventListener('mousemove', handleMove)
+  }, [])
+
   const handleClick = (label, location) => {
     trackEvent('cta_click', { label, location })
   }
 
   return (
     <div className="site-shell">
+      <div ref={pointerTrailRef} className="pointer-sparkle-layer" aria-hidden="true" />
       <main>
         <section className="hero" aria-labelledby="hero-title">
           <div className="hero-image" aria-hidden="true" />
