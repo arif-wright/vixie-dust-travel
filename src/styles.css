@@ -375,14 +375,19 @@ body {
   min-height: 2.7rem;
   padding-inline: 1.2rem;
   font-size: 0.96rem;
+  margin-top: auto;
 }
 
 .service-card-body {
   position: relative;
   z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background: #fffdfc;
   margin-top: 0;
   padding: 1.2rem 1rem 1.25rem;
+  min-height: 318px;
 }
 
 .service-card-body > * {
