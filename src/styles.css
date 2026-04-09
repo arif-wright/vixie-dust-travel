@@ -397,16 +397,16 @@ body {
   content: '';
   position: absolute;
   z-index: 1;
-  left: -8%;
-  right: -8%;
-  top: -62px;
-  height: 84px;
+  left: -10%;
+  right: -10%;
+  top: -74px;
+  height: 98px;
   background:
-    radial-gradient(circle at 12% 100%, #fffdfc 0 22px, transparent 23px),
-    radial-gradient(circle at 31% 100%, #fffdfc 0 29px, transparent 30px),
-    radial-gradient(circle at 50% 100%, #fffdfc 0 37px, transparent 38px),
-    radial-gradient(circle at 69% 100%, #fffdfc 0 29px, transparent 30px),
-    radial-gradient(circle at 88% 100%, #fffdfc 0 22px, transparent 23px);
+    radial-gradient(circle at 14% 100%, #fffdfc 0 28px, transparent 29px),
+    radial-gradient(circle at 33% 100%, #fffdfc 0 35px, transparent 36px),
+    radial-gradient(circle at 50% 100%, #fffdfc 0 45px, transparent 46px),
+    radial-gradient(circle at 67% 100%, #fffdfc 0 35px, transparent 36px),
+    radial-gradient(circle at 86% 100%, #fffdfc 0 28px, transparent 29px);
   filter: drop-shadow(0 -1px 0 rgba(235, 220, 223, 0.95));
   pointer-events: none;
 }
