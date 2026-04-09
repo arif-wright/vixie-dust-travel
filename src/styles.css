@@ -86,7 +86,7 @@ body {
 .hero-divider {
   position: relative;
   z-index: 4;
-  margin-top: clamp(-6.2rem, -9vw, -4.2rem);
+  margin-top: clamp(-9.2rem, -13vw, -6.8rem);
   width: 100%;
   line-height: 0;
   pointer-events: none;
