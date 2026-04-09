@@ -59,8 +59,8 @@ body {
 }
 
 .hero-image {
-  background-image: url('/hero.png');
-  background-size: contain;
+  background-image: url('/hero-2.png');
+  background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
   filter: none;
