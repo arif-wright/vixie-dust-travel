@@ -98,6 +98,13 @@ function App() {
               <article key={service.id} className="service-card">
                 <div className={`service-card-top service-card-top--${service.icon}`} aria-hidden="true">
                   <div className={`service-icon service-icon--${service.icon}`} />
+                  <div className="service-clouds">
+                    <span className="service-cloud service-cloud--1" />
+                    <span className="service-cloud service-cloud--2" />
+                    <span className="service-cloud service-cloud--3" />
+                    <span className="service-cloud service-cloud--4" />
+                    <span className="service-cloud service-cloud--5" />
+                  </div>
                 </div>
                 <div className="service-card-body">
                   <h3>{service.title}</h3>
