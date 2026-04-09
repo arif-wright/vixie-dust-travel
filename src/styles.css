@@ -308,7 +308,18 @@ body {
 }
 
 .service-card-top::after {
-  display: none;
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 18px;
+  background:
+    radial-gradient(circle at 14% 100%, rgba(255, 253, 252, 0.88) 0 12px, transparent 13px),
+    radial-gradient(circle at 46% 100%, rgba(255, 253, 252, 0.9) 0 14px, transparent 15px),
+    radial-gradient(circle at 74% 100%, rgba(255, 253, 252, 0.86) 0 11px, transparent 12px);
+  opacity: 0.8;
+  pointer-events: none;
 }
 
 .service-card-top::before {
@@ -386,19 +397,19 @@ body {
   content: '';
   position: absolute;
   z-index: 1;
-  left: -10%;
-  right: -10%;
-  top: -36px;
-  height: 52px;
+  left: -12%;
+  right: -12%;
+  top: -40px;
+  height: 62px;
   background:
-    radial-gradient(circle at 6% 100%, #fffdfc 0 24px, transparent 25px),
-    radial-gradient(circle at 20% 100%, #fffdfc 0 31px, transparent 32px),
-    radial-gradient(circle at 34% 100%, #fffdfc 0 26px, transparent 27px),
-    radial-gradient(circle at 49% 100%, #fffdfc 0 34px, transparent 35px),
-    radial-gradient(circle at 64% 100%, #fffdfc 0 27px, transparent 28px),
-    radial-gradient(circle at 79% 100%, #fffdfc 0 32px, transparent 33px),
-    radial-gradient(circle at 94% 100%, #fffdfc 0 25px, transparent 26px);
-  filter: drop-shadow(0 -1px 0 rgba(236, 223, 224, 0.9));
+    radial-gradient(circle at 5% 108%, #fffdfc 0 31px, transparent 32px),
+    radial-gradient(circle at 20% 95%, #fffdfc 0 37px, transparent 38px),
+    radial-gradient(circle at 37% 111%, #fffdfc 0 29px, transparent 30px),
+    radial-gradient(circle at 53% 92%, #fffdfc 0 41px, transparent 42px),
+    radial-gradient(circle at 71% 109%, #fffdfc 0 30px, transparent 31px),
+    radial-gradient(circle at 86% 96%, #fffdfc 0 36px, transparent 37px),
+    radial-gradient(circle at 101% 110%, #fffdfc 0 30px, transparent 31px);
+  filter: drop-shadow(0 -1px 0 rgba(235, 220, 223, 0.95));
   pointer-events: none;
 }
 
