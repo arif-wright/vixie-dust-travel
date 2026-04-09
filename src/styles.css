@@ -308,21 +308,7 @@ body {
 }
 
 .service-card-top::after {
-  content: '';
-  position: absolute;
-  z-index: 1;
-  left: -9%;
-  right: -9%;
-  bottom: -26px;
-  height: 56px;
-  background:
-    radial-gradient(circle at 7% 0, #fffdfc 0 30px, transparent 31px),
-    radial-gradient(circle at 23% 0, #fffdfc 0 33px, transparent 34px),
-    radial-gradient(circle at 39% 0, #fffdfc 0 29px, transparent 30px),
-    radial-gradient(circle at 55% 0, #fffdfc 0 34px, transparent 35px),
-    radial-gradient(circle at 71% 0, #fffdfc 0 30px, transparent 31px),
-    radial-gradient(circle at 87% 0, #fffdfc 0 33px, transparent 34px);
-  filter: drop-shadow(0 1px 0 rgba(229, 214, 216, 0.95));
+  display: none;
 }
 
 .service-card-top::before {
@@ -394,6 +380,31 @@ body {
   background: #fffdfc;
   margin-top: -6px;
   padding: 2.05rem 1rem 1.25rem;
+}
+
+.service-card-body::before {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  left: -10%;
+  right: -10%;
+  top: -36px;
+  height: 52px;
+  background:
+    radial-gradient(circle at 6% 100%, #fffdfc 0 24px, transparent 25px),
+    radial-gradient(circle at 20% 100%, #fffdfc 0 31px, transparent 32px),
+    radial-gradient(circle at 34% 100%, #fffdfc 0 26px, transparent 27px),
+    radial-gradient(circle at 49% 100%, #fffdfc 0 34px, transparent 35px),
+    radial-gradient(circle at 64% 100%, #fffdfc 0 27px, transparent 28px),
+    radial-gradient(circle at 79% 100%, #fffdfc 0 32px, transparent 33px),
+    radial-gradient(circle at 94% 100%, #fffdfc 0 25px, transparent 26px);
+  filter: drop-shadow(0 -1px 0 rgba(236, 223, 224, 0.9));
+  pointer-events: none;
+}
+
+.service-card-body > * {
+  position: relative;
+  z-index: 2;
 }
 
 .testimonials {
