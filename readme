@@ -27,6 +27,7 @@ What is live in code now
 - Dev-only CRM preview for validating the intake flow
 - Starter Supabase schema in `supabase/schema.sql`
 - Admin route with Supabase email/password sign-in for private lead review
+- Notification framework scaffold in `src/lib/leadNotifications.js` and `supabase/functions/send-lead-notification/`
 
 Environment setup
 -----------------
@@ -37,26 +38,28 @@ Environment setup
 
 Recommended next build steps
 ----------------------------
-1. Replace local inquiry storage with a real backend
-   - Best fit: Supabase for auth, database, and admin-friendly querying
-   - Alternate lightweight fit: Airtable if speed matters more than long-term control
-
-2. Add email automation
+1. Add email automation
    - Immediate inquiry confirmation
    - Internal notification to the advisor
    - Nurture sequence for undecided leads
    - Post-trip review and referral follow-up
 
-3. Add real merch commerce
+2. Add real merch commerce
    - Recommended platform: Shopify
    - Keep product catalog curated and trip-themed
    - Use bundles tied to Disney trips, cruises, and seasonal travel
 
-4. Expand content and SEO
+3. Expand content and SEO
    - Destination guides
    - Planning checklists
    - FAQ-rich service pages
    - Blog posts targeting family travel search intent
+
+4. Replace placeholder homepage copy with client-approved messaging
+   - Hero headline and subhead
+   - Welcome/brand story section
+   - Signature vacations blurbs
+   - About page voice and positioning
 
 5. Add analytics and attribution
    - Inquiry starts
