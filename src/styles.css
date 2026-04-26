@@ -666,10 +666,41 @@ summary:focus-visible {
     border-color 180ms ease;
 }
 
+.signature-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.52;
+  background:
+    radial-gradient(circle at 14% 8%, rgba(246, 208, 112, 0.7) 0 1.6px, transparent 2.2px),
+    radial-gradient(circle at 26% 12%, rgba(255, 244, 205, 0.75) 0 1.2px, transparent 2px),
+    radial-gradient(circle at 79% 10%, rgba(246, 208, 112, 0.7) 0 1.7px, transparent 2.3px),
+    radial-gradient(circle at 86% 20%, rgba(255, 244, 205, 0.75) 0 1.2px, transparent 2px),
+    radial-gradient(circle at 68% 28%, rgba(246, 208, 112, 0.54) 0 1.3px, transparent 2px);
+  transition: opacity 200ms ease;
+}
+
+.signature-card::after {
+  content: '✦';
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  z-index: 2;
+  font-size: 0.92rem;
+  color: #f2cf78;
+}
+
 .signature-card:hover {
   transform: translateY(-4px);
   border-color: var(--line-strong);
   box-shadow: 0 24px 44px -28px rgba(96, 54, 70, 0.4);
+}
+
+.signature-card:hover::before {
+  opacity: 0.92;
+  animation: sparkle-pulse 2200ms ease-in-out infinite;
 }
 
 .signature-card-top {
@@ -680,6 +711,21 @@ summary:focus-visible {
     url('/card-bg.png');
   background-size: cover;
   background-position: center;
+}
+
+.signature-card-top::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  background: linear-gradient(112deg, transparent 32%, rgba(255, 250, 232, 0.54) 50%, transparent 68%);
+  transform: translateX(-135%);
+}
+
+.signature-card:hover .signature-card-top::after {
+  opacity: 1;
+  animation: magic-sweep 900ms ease;
 }
 
 .signature-card-top--castle {
@@ -710,6 +756,14 @@ summary:focus-visible {
   border-radius: 50%;
   border: 5px solid rgba(255, 255, 255, 0.92);
   box-shadow: 0 7px 18px -13px rgba(88, 55, 64, 0.52);
+  transition: transform 240ms ease, box-shadow 240ms ease;
+}
+
+.signature-card:hover .signature-icon {
+  transform: translateX(-50%) translateY(-4px) scale(1.03);
+  box-shadow:
+    0 11px 24px -13px rgba(88, 55, 64, 0.56),
+    0 0 0 6px rgba(255, 242, 212, 0.28);
 }
 
 .signature-icon--castle {
@@ -796,6 +850,24 @@ summary:focus-visible {
   min-height: 2.7rem;
   padding-inline: 1.1rem;
   font-size: 0.95rem;
+}
+
+@keyframes sparkle-pulse {
+  0%, 100% {
+    filter: saturate(1);
+  }
+  50% {
+    filter: saturate(1.12) brightness(1.06);
+  }
+}
+
+@keyframes magic-sweep {
+  0% {
+    transform: translateX(-135%);
+  }
+  100% {
+    transform: translateX(135%);
+  }
 }
 
 .section-contrast {
@@ -1156,6 +1228,20 @@ summary:focus-visible {
 
   .pointer-sparkle-layer {
     display: none;
+  }
+
+  .signature-card,
+  .signature-icon {
+    transition: none;
+  }
+
+  .signature-card:hover {
+    transform: none;
+  }
+
+  .signature-card:hover::before,
+  .signature-card:hover .signature-card-top::after {
+    animation: none;
   }
 
   .button-primary,
