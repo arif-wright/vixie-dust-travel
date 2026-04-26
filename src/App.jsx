@@ -1,88 +1,124 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
+import { createLead, exportLeadsToCsv, getLeads } from './lib/crm'
 import { trackEvent } from './lib/analytics'
 
-const services = [
+const specialties = [
   {
-    id: 'disney',
-    title: 'Disney Vacations',
-    text: 'Family-friendly, fantasy-filled trips with thoughtful planning for park days, resorts, and magical moments.',
-    icon: 'castle',
+    title: 'Disney & Theme Park Trips',
+    description: 'Position her as the planner who knows park strategy, dining windows, resort tradeoffs, and family pacing.',
+    bullets: ['Park-day game plans', 'Resort matching', 'Dining and experience guidance'],
   },
   {
-    id: 'cruises',
-    title: 'Magical Cruises',
-    text: 'Sail-away vacations with curated ship choices, smooth itineraries, and joyful onboard experiences.',
-    icon: 'ship',
+    title: 'Cruises & Group Sailings',
+    description: 'Cruises create repeat business, family referrals, and easy opportunities for themed merch bundles.',
+    bullets: ['First-timer cruise support', 'Cabin and ship selection', 'Group and reunion coordination'],
   },
   {
-    id: 'sunny',
-    title: 'Sunny Getaways',
-    text: 'Beachy escapes, tropical resorts, and warm-weather retreats for easy family memories.',
-    icon: 'palms',
+    title: 'Sunny Family Escapes',
+    description: 'Round out the brand with warm-weather trips that keep revenue flowing beyond one destination niche.',
+    bullets: ['All-inclusive matchmaking', 'Budget-conscious options', 'Stress-free family itineraries'],
   },
 ]
 
-const testimonials = [
+const revenueStreams = [
   {
-    quote: 'Every detail felt easy and magical. We just showed up and enjoyed every second.',
-    name: 'The Ramirez Family',
+    title: 'Travel Bookings',
+    detail: 'High-trust service pages, a strong inquiry form, social proof, and fast follow-up should be the main conversion engine.',
   },
   {
-    quote: 'She planned our dream cruise and made it completely stress-free.',
-    name: 'Alyssa M.',
+    title: 'Merch & Bundles',
+    detail: 'Keep the catalog curated: park-day tees, cruise countdown kits, luggage tags, and trip-prep bundles tied to bookings.',
   },
   {
-    quote: 'Our Disney trip felt like a storybook. We are already planning our next one.',
-    name: 'The Chens',
-  },
-]
-
-const magicSteps = [
-  {
-    title: 'Dream It',
-    text: 'Share your wish-list, travel dates, and the vibe you want your vacation to have.',
-  },
-  {
-    title: 'Design It',
-    text: 'We handpick resorts, routes, and experiences that match your family perfectly.',
-  },
-  {
-    title: 'Book It',
-    text: 'You get clear recommendations and guided booking support with zero guesswork.',
-  },
-  {
-    title: 'Enjoy It',
-    text: 'Head out with confidence, pixie-dusted plans, and magical moments already in motion.',
+    title: 'Audience Growth',
+    detail: 'Use destination guides, planning checklists, and email nurture flows to turn visitors into future travelers and repeat buyers.',
   },
 ]
 
-const trustBadges = [
-  'Personalized Planning',
-  'Family-Friendly Expertise',
-  'Stress-Free Booking Support',
-  'Fast, Thoughtful Replies',
+const siteMap = [
+  'Home with clear niche positioning',
+  'About page with certifications, specialties, and personal story',
+  'Service pages for Disney, cruises, and sunny getaways',
+  'Trip inquiry form with qualifying questions',
+  'Client stories and testimonials',
+  'Blog and free planning resources for SEO',
+  'Merch shop with curated collections and bundles',
+  'FAQ, policies, and consultation details',
 ]
 
-const faqItems = [
+const merchIdeas = [
   {
-    question: 'Do you charge planning fees?',
+    title: 'Park Day Essentials',
+    price: '$28-$64',
+    description: 'Matching shirts, autograph books, tote bags, and lanyards for Disney families.',
+  },
+  {
+    title: 'Cruise Countdown Kits',
+    price: '$18-$52',
+    description: 'Cabin door magnets, sail-away tumblers, packing cubes, and pre-trip countdown merch.',
+  },
+  {
+    title: 'Travel Club Drops',
+    price: '$14-$42',
+    description: 'Limited seasonal releases for loyal clients and social followers to build community around the brand.',
+  },
+]
+
+const contentIdeas = [
+  'Best Disney resorts for families with toddlers',
+  'When to book a cruise for the best cabin options',
+  'What to pack for a Caribbean family vacation',
+  'The difference between concierge planning and DIY booking',
+]
+
+const faqs = [
+  {
+    question: 'Should the shop compete with the travel side of the site?',
     answer:
-      'Most vacation packages we plan do not require a separate planning fee. For specialty itineraries, we always explain pricing up front before any commitment.',
+      'No. Travel should stay the primary path. The shop should reinforce the brand, increase average customer value, and create repeat engagement.',
   },
   {
-    question: 'Can you help if we are not sure where to go yet?',
+    question: 'What makes the biggest difference for growth?',
     answer:
-      'Absolutely. Many families come to us with only dates and a travel style in mind. We help narrow the options into a magical shortlist.',
+      'Clear specialization, fast lead follow-up, real testimonials, consistent content, and a system for nurturing every inquiry after it comes in.',
   },
   {
-    question: 'Do you only plan Disney vacations?',
+    question: 'Do we need a full CRM right away?',
     answer:
-      'Disney is one of our specialties, but we also plan cruises and sunny getaways tailored to your family and budget.',
+      'Not on day one. A lightweight pipeline that captures qualified inquiries, tracks follow-up, and exports clean lead data is enough to start strong.',
   },
 ]
+
+const defaultForm = {
+  name: '',
+  email: '',
+  phone: '',
+  tripType: 'Disney',
+  travelWindow: '',
+  budget: '',
+  partySize: '',
+  merchInterest: 'Yes',
+  notes: '',
+}
+
+function formatDate(value) {
+  return new Intl.DateTimeFormat('en-US', {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric',
+  }).format(new Date(value))
+}
 
 function App() {
   const pointerTrailRef = useRef(null)
+  const inquiryRef = useRef(null)
+  const [form, setForm] = useState(defaultForm)
+  const [submitState, setSubmitState] = useState('idle')
+  const [leads, setLeads] = useState([])
+
+  useEffect(() => {
+    setLeads(getLeads())
+  }, [])
 
   useEffect(() => {
     const layer = pointerTrailRef.current
@@ -124,160 +160,433 @@ function App() {
     return () => window.removeEventListener('mousemove', handleMove)
   }, [])
 
-  const handleClick = (label, location) => {
+  const crmSummary = useMemo(() => {
+    const interestedInMerch = leads.filter((lead) => lead.merchInterest === 'Yes').length
+    return {
+      total: leads.length,
+      newLeads: leads.filter((lead) => lead.stage === 'new').length,
+      merchInterested: interestedInMerch,
+    }
+  }, [leads])
+
+  const handleScrollToInquiry = (label, location) => {
     trackEvent('cta_click', { label, location })
+    inquiryRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
+
+  const handleChange = (event) => {
+    const { name, value } = event.target
+    setForm((current) => ({ ...current, [name]: value }))
+  }
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
+
+    const lead = createLead({
+      ...form,
+      stage: 'new',
+      source: 'website',
+    })
+
+    setLeads((current) => [lead, ...current])
+    setForm(defaultForm)
+    setSubmitState('success')
+    trackEvent('travel_inquiry_submitted', {
+      tripType: lead.tripType,
+      merchInterest: lead.merchInterest,
+    })
+  }
+
+  const handleExport = () => {
+    exportLeadsToCsv(leads)
+    trackEvent('crm_export_clicked', {
+      leadCount: leads.length,
+    })
   }
 
   return (
     <div className="site-shell">
       <div ref={pointerTrailRef} className="pointer-sparkle-layer" aria-hidden="true" />
-      <main>
+
+      <header className="topbar">
+        <a href="#top" className="brand-lockup">
+          <img src="/logo-face.svg" alt="" aria-hidden="true" className="brand-mark" />
+          <div>
+            <span className="brand-name">Vixie Dust Travel</span>
+            <span className="brand-tag">Travel planning + brand merch</span>
+          </div>
+        </a>
+        <nav className="topnav" aria-label="Primary">
+          <a href="#services">Services</a>
+          <a href="#shop">Shop</a>
+          <a href="#growth">Growth Engine</a>
+          <a href="#inquiry">Inquiry</a>
+        </nav>
+      </header>
+
+      <main id="top">
         <section className="hero" aria-labelledby="hero-title">
-          <div className="hero-image" aria-hidden="true" />
-          <div className="hero-glow" aria-hidden="true" />
-          <div className="hero-content">
-            <h1 id="hero-title" className="hero-title">
-              Sprinkling Magic
-              <span>on Every Journey</span>
-            </h1>
-            <p className="hero-subtitle">Making your dream vacation a reality with a touch of pixie dust.</p>
-            <a
-              href="#contact"
-              className="button-primary"
-              onClick={() => handleClick('Start Your Magical Journey', 'hero')}
-            >
-              Start Your Magical Journey
-            </a>
+          <div className="hero-backdrop" aria-hidden="true" />
+          <div className="hero-content shell">
+            <div className="hero-copy">
+              <p className="eyebrow">Build the business, not just the brochure site</p>
+              <h1 id="hero-title">
+                A travel brand that books dream trips, sells merch, and turns inquiries into long-term clients.
+              </h1>
+              <p className="hero-subtitle">
+                The strongest version of this site should do three jobs at once: earn trust, capture qualified leads,
+                and create a second revenue stream through curated travel merch.
+              </p>
+              <div className="hero-actions">
+                <button
+                  type="button"
+                  className="button-primary"
+                  onClick={() => handleScrollToInquiry('Plan a Trip', 'hero')}
+                >
+                  Build the inquiry funnel
+                </button>
+                <a href="#shop" className="button-secondary" onClick={() => trackEvent('cta_click', { label: 'View merch strategy', location: 'hero' })}>
+                  View merch strategy
+                </a>
+              </div>
+              <div className="hero-metrics" aria-label="Recommended business priorities">
+                <article>
+                  <strong>1</strong>
+                  <span>Lead capture should beat email-only outreach</span>
+                </article>
+                <article>
+                  <strong>2</strong>
+                  <span>Niche specialization should lead the messaging</span>
+                </article>
+                <article>
+                  <strong>3</strong>
+                  <span>Merch should support bookings, not distract from them</span>
+                </article>
+              </div>
+            </div>
+
+            <aside className="hero-panel">
+              <p className="panel-label">Recommended core offer stack</p>
+              <ul className="offer-list">
+                <li>Primary revenue: travel planning and bookings</li>
+                <li>Secondary revenue: curated merch and bundles</li>
+                <li>Lead magnet: free trip planning guide or checklist</li>
+                <li>Nurture engine: email follow-up and review requests</li>
+              </ul>
+              <div className="hero-note">
+                <p>Best first niche</p>
+                <strong>Disney + cruises + family travel</strong>
+                <span>Clear enough to market, broad enough to grow.</span>
+              </div>
+            </aside>
           </div>
         </section>
 
-        <section className="welcome" id="welcome">
-          <div className="welcome-grid">
-            <div className="mascot-wrap" aria-hidden="true">
-              <img src="/logo-3.png" alt="" className="mascot" />
-              <span className="wand-star">✦</span>
+        <section className="section soft-band">
+          <div className="shell band-grid">
+            <div>
+              <p className="eyebrow">Success model</p>
+              <h2>What will make her career actually grow</h2>
             </div>
-            <div className="welcome-copy">
-              <h2>Welcome to Vixie Dust Travels!</h2>
-              <p className="welcome-lead">Hi! We’re your fairy godmother for family vacations.</p>
+            <div className="band-points">
+              <span>Clear specialty positioning</span>
+              <span>Fast follow-up on every inquiry</span>
+              <span>Repeatable content that ranks in search</span>
+              <span>Merch that reinforces the travel brand</span>
+            </div>
+          </div>
+        </section>
+
+        <section className="section" id="services">
+          <div className="shell">
+            <div className="section-head">
+              <p className="eyebrow">Travel services</p>
+              <h2>Service pages should make it obvious who she is perfect for</h2>
               <p>
-                Planning Disney, cruises, and tropical vacations isn’t just our job, it’s our passion. With a
-                sprinkle of magic, we craft personalized trips that bring smiles, wonder, and unforgettable memories.
+                Visitors should land on a page that mirrors the trip they want, then move directly into a qualified
+                inquiry flow.
               </p>
-              <a
-                href="#services"
-                className="button-primary button-secondary-size"
-                onClick={() => handleClick('Learn More Welcome', 'welcome')}
-              >
-                Learn More
+            </div>
+            <div className="card-grid three-up">
+              {specialties.map((item) => (
+                <article key={item.title} className="info-card">
+                  <h3>{item.title}</h3>
+                  <p>{item.description}</p>
+                  <ul>
+                    {item.bullets.map((bullet) => (
+                      <li key={bullet}>{bullet}</li>
+                    ))}
+                  </ul>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="section section-contrast" id="growth">
+          <div className="shell">
+            <div className="section-head">
+              <p className="eyebrow">Growth engine</p>
+              <h2>The site should support three revenue and retention loops</h2>
+              <p>
+                Booking revenue pays the bills, merch strengthens the brand, and content plus email keeps the audience
+                coming back.
+              </p>
+            </div>
+            <div className="card-grid three-up">
+              {revenueStreams.map((item) => (
+                <article key={item.title} className="feature-card">
+                  <h3>{item.title}</h3>
+                  <p>{item.detail}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="section" id="shop">
+          <div className="shell split-layout">
+            <div>
+              <p className="eyebrow">Merch strategy</p>
+              <h2>Sell a curated shop that feels like part of the travel experience</h2>
+              <p className="section-copy">
+                Start with a small catalog that naturally fits pre-trip excitement, travel-day prep, and post-booking
+                upsells. This should feel like a club, not a generic gift store.
+              </p>
+              <a href="#inquiry" className="button-secondary" onClick={() => trackEvent('cta_click', { label: 'Discuss merch plan', location: 'shop' })}>
+                Tie merch into trip planning
               </a>
             </div>
+            <div className="card-grid merch-grid">
+              {merchIdeas.map((item) => (
+                <article key={item.title} className="merch-card">
+                  <span className="pill">{item.price}</span>
+                  <h3>{item.title}</h3>
+                  <p>{item.description}</p>
+                </article>
+              ))}
+            </div>
           </div>
         </section>
 
-        <section className="services cloud-top" id="services" aria-labelledby="services-title">
-          <div className="section-head">
-            <h2 id="services-title">Our Services</h2>
-            <p>Travel planning as enchanting as the Magic Kingdom</p>
-          </div>
-
-          <div className="service-grid">
-            {services.map((service) => (
-              <article key={service.id} className="service-card">
-                <div className={`service-card-top service-card-top--${service.icon}`} aria-hidden="true">
-                  <div className={`service-icon service-icon--${service.icon}`} />
-                </div>
-                <div className="service-card-cloud-row" aria-hidden="true">
-                  <img src="/cloud-divider.png" alt="" className="service-cloud-image" />
-                  <span className="service-cloud service-cloud--outer-left" />
-                  <span className="service-cloud service-cloud--inner-left" />
-                  <span className="service-cloud service-cloud--center" />
-                  <span className="service-cloud service-cloud--inner-right" />
-                  <span className="service-cloud service-cloud--outer-right" />
-                </div>
-                <div className="service-card-body">
-                  <h3>{service.title}</h3>
-                  <p>{service.text}</p>
-                  <a
-                    href="#contact"
-                    className="button-primary button-card"
-                    onClick={() => handleClick(`Learn More ${service.title}`, 'services')}
-                  >
-                    Learn More
-                  </a>
-                </div>
-              </article>
-            ))}
+        <section className="section section-highlight">
+          <div className="shell process-grid">
+            <article className="process-card">
+              <p className="eyebrow">Site map</p>
+              <h2>Pages worth building next</h2>
+              <ul className="stack-list">
+                {siteMap.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </article>
+            <article className="process-card">
+              <p className="eyebrow">Content engine</p>
+              <h2>Topics that bring in qualified traffic</h2>
+              <ul className="stack-list">
+                {contentIdeas.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </article>
           </div>
         </section>
 
-        <section className="magic-process cloud-top" id="process" aria-labelledby="process-title">
-          <div className="section-head">
-            <h2 id="process-title">How The Magic Happens</h2>
-            <p>A simple, joyful process from first idea to wheels up.</p>
-          </div>
-          <div className="magic-step-grid">
-            {magicSteps.map((step, index) => (
-              <article key={step.title} className="magic-step-card">
-                <span className="magic-step-badge">0{index + 1}</span>
-                <h3>{step.title}</h3>
-                <p>{step.text}</p>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section className="pixie-strip" aria-label="Why families choose Vixie Dust">
-          <div className="pixie-strip-inner">
-            {trustBadges.map((badge) => (
-              <span key={badge} className="pixie-chip">
-                ✦ {badge}
-              </span>
-            ))}
+        <section className="section">
+          <div className="shell proof-grid">
+            <article className="proof-card">
+              <p className="eyebrow">Lead magnet</p>
+              <h3>Offer a free planning checklist or destination guide</h3>
+              <p>
+                This turns casual browsers into email subscribers and gives her a reason to stay in touch before
+                someone is ready to book.
+              </p>
+            </article>
+            <article className="proof-card">
+              <p className="eyebrow">Referral flywheel</p>
+              <h3>Use reviews, return clients, and trip photos as growth assets</h3>
+              <p>
+                Every finished trip should lead to a testimonial request, a referral ask, and a future merch or trip
+                touchpoint.
+              </p>
+            </article>
           </div>
         </section>
 
-        <section className="testimonials cloud-top" id="stories" aria-labelledby="stories-title">
-          <div className="section-head section-head--tight">
-            <h2 id="stories-title">What Our Happy Travelers Are Saying</h2>
-          </div>
-          <div className="testimonial-grid">
-            {testimonials.map((item) => (
-              <blockquote key={item.name} className="testimonial-card">
-                <p>“{item.quote}”</p>
-                <cite>{item.name}</cite>
-              </blockquote>
-            ))}
-          </div>
-        </section>
-
-        <section className="faq cloud-top" id="faq" aria-labelledby="faq-title">
-          <div className="section-head section-head--tight">
-            <h2 id="faq-title">Frequently Asked Questions</h2>
-          </div>
-          <div className="faq-list">
-            {faqItems.map((item) => (
-              <details key={item.question} className="faq-item">
-                <summary>{item.question}</summary>
-                <p>{item.answer}</p>
-              </details>
-            ))}
+        <section className="section section-contrast">
+          <div className="shell">
+            <div className="section-head">
+              <p className="eyebrow">FAQ</p>
+              <h2>Strategic questions we should answer with the site</h2>
+            </div>
+            <div className="faq-list">
+              {faqs.map((item) => (
+                <details key={item.question} className="faq-item">
+                  <summary>{item.question}</summary>
+                  <p>{item.answer}</p>
+                </details>
+              ))}
+            </div>
           </div>
         </section>
 
-        <section className="contact" id="contact" aria-labelledby="contact-title">
-          <div className="contact-card">
-            <h2 id="contact-title">Let’s Plan Your Magical Escape</h2>
-            <p>Tell us where you want to go and we’ll start designing your pixie-dusted itinerary.</p>
-            <a
-              href="mailto:hello@vixiedusttravel.com"
-              className="button-primary"
-              onClick={() => handleClick('Email CTA', 'contact')}
-            >
-              Begin Planning
-            </a>
+        <section className="section contact-section" id="inquiry" ref={inquiryRef}>
+          <div className="shell inquiry-layout">
+            <div className="contact-copy">
+              <p className="eyebrow">Inquiry funnel</p>
+              <h2>Replace the email-only CTA with a form that qualifies and organizes every lead</h2>
+              <p>
+                This is the first version of a lightweight CRM flow: capture good information, store it cleanly, and
+                make follow-up easier than digging through an inbox.
+              </p>
+              <div className="mini-stats">
+                <span>Better lead qualification</span>
+                <span>Cleaner follow-up</span>
+                <span>Merch upsell signal</span>
+              </div>
+            </div>
+
+            <form className="inquiry-form" onSubmit={handleSubmit}>
+              <div className="field-grid">
+                <label>
+                  Name
+                  <input name="name" value={form.name} onChange={handleChange} required />
+                </label>
+                <label>
+                  Email
+                  <input name="email" type="email" value={form.email} onChange={handleChange} required />
+                </label>
+                <label>
+                  Phone
+                  <input name="phone" value={form.phone} onChange={handleChange} />
+                </label>
+                <label>
+                  Trip type
+                  <select name="tripType" value={form.tripType} onChange={handleChange}>
+                    <option>Disney</option>
+                    <option>Cruise</option>
+                    <option>Sunny getaway</option>
+                    <option>Undecided</option>
+                  </select>
+                </label>
+                <label>
+                  Travel window
+                  <input name="travelWindow" value={form.travelWindow} onChange={handleChange} placeholder="Spring 2027" />
+                </label>
+                <label>
+                  Budget range
+                  <select name="budget" value={form.budget} onChange={handleChange}>
+                    <option value="">Select one</option>
+                    <option>Under $3,000</option>
+                    <option>$3,000-$6,000</option>
+                    <option>$6,000-$10,000</option>
+                    <option>$10,000+</option>
+                  </select>
+                </label>
+                <label>
+                  Party size
+                  <input name="partySize" value={form.partySize} onChange={handleChange} placeholder="2 adults, 2 kids" />
+                </label>
+                <label>
+                  Interested in merch?
+                  <select name="merchInterest" value={form.merchInterest} onChange={handleChange}>
+                    <option>Yes</option>
+                    <option>Maybe later</option>
+                    <option>No</option>
+                  </select>
+                </label>
+              </div>
+              <label>
+                Notes
+                <textarea
+                  name="notes"
+                  value={form.notes}
+                  onChange={handleChange}
+                  rows="4"
+                  placeholder="Tell us about your ideal trip, who is traveling, and what kind of help you want."
+                />
+              </label>
+              <div className="form-actions">
+                <button type="submit" className="button-primary">
+                  Save inquiry
+                </button>
+                <a href="mailto:hello@vixiedusttravel.com" className="button-secondary">
+                  Keep email as a backup
+                </a>
+              </div>
+              {submitState === 'success' ? (
+                <p className="form-success">Inquiry saved locally. Next step: connect this flow to email, Airtable, or Supabase.</p>
+              ) : null}
+            </form>
           </div>
         </section>
+
+        {import.meta.env.DEV ? (
+          <section className="section dev-console">
+            <div className="shell">
+              <div className="section-head">
+                <p className="eyebrow">Dev-only CRM preview</p>
+                <h2>Lightweight pipeline prototype</h2>
+                <p>This local dashboard is a quick stand-in for the CRM workflow we can wire to a real backend next.</p>
+              </div>
+              <div className="crm-summary">
+                <article>
+                  <strong>{crmSummary.total}</strong>
+                  <span>Total leads captured</span>
+                </article>
+                <article>
+                  <strong>{crmSummary.newLeads}</strong>
+                  <span>Fresh leads awaiting follow-up</span>
+                </article>
+                <article>
+                  <strong>{crmSummary.merchInterested}</strong>
+                  <span>Leads open to merch offers</span>
+                </article>
+              </div>
+              <div className="crm-toolbar">
+                <p>Use this to prove the intake flow before we connect storage, automation, and admin auth.</p>
+                <button type="button" className="button-secondary" onClick={handleExport} disabled={leads.length === 0}>
+                  Export CSV
+                </button>
+              </div>
+              <div className="crm-table-wrap">
+                <table className="crm-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Trip type</th>
+                      <th>Budget</th>
+                      <th>Merch</th>
+                      <th>Created</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {leads.length > 0 ? (
+                      leads.map((lead) => (
+                        <tr key={lead.id}>
+                          <td>
+                            <strong>{lead.name}</strong>
+                            <span>{lead.email}</span>
+                          </td>
+                          <td>{lead.tripType}</td>
+                          <td>{lead.budget || 'Unknown'}</td>
+                          <td>{lead.merchInterest}</td>
+                          <td>{formatDate(lead.createdAt)}</td>
+                        </tr>
+                      ))
+                    ) : (
+                      <tr>
+                        <td colSpan="5" className="empty-state">
+                          No saved leads yet. Submit the inquiry form to test the pipeline.
+                        </td>
+                      </tr>
+                    )}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+        ) : null}
       </main>
     </div>
   )
