@@ -23,8 +23,16 @@ What is live in code now
 - Brand-forward homepage with clearer business positioning
 - Dedicated route structure for future growth
 - Inquiry form that captures lead qualification details
-- Local CRM helper in `src/lib/crm.js`
+- CRM helper in `src/lib/crm.js` with Supabase support and local fallback
 - Dev-only CRM preview for validating the intake flow
+- Starter Supabase schema in `supabase/schema.sql`
+
+Environment setup
+-----------------
+- Copy `.env.example` to `.env`
+- Add `VITE_SUPABASE_URL`
+- Add `VITE_SUPABASE_ANON_KEY`
+- If env vars are missing, the inquiry flow falls back to local browser storage
 
 Recommended next build steps
 ----------------------------

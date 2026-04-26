@@ -664,6 +664,13 @@ summary:focus-visible {
   padding: 1.35rem;
 }
 
+.crm-mode {
+  margin: 0 0 1rem;
+  color: #8b6273;
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
 .field-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -697,6 +704,12 @@ summary:focus-visible {
   margin: 1rem 0 0;
   color: #7b5466;
   font-weight: 600;
+}
+
+.form-error {
+  margin: 1rem 0 0;
+  color: #9a3f4e;
+  font-weight: 700;
 }
 
 .faq-list {

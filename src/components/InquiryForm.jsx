@@ -1,12 +1,28 @@
-import { useMemo, useState } from 'react'
-import { createLead, exportLeadsToCsv, getLeads } from '../lib/crm'
+import { useEffect, useMemo, useState } from 'react'
+import { createLead, exportLeadsToCsv, getCrmModeLabel, getLeads } from '../lib/crm'
 import { trackEvent } from '../lib/analytics'
 import { defaultInquiryForm, formatDate } from '../siteData'
 
 export function InquiryForm() {
   const [form, setForm] = useState(defaultInquiryForm)
   const [submitState, setSubmitState] = useState('idle')
-  const [leads, setLeads] = useState(() => getLeads())
+  const [leads, setLeads] = useState([])
+  const [errorMessage, setErrorMessage] = useState('')
+
+  useEffect(() => {
+    let active = true
+
+    async function loadLeads() {
+      const nextLeads = await getLeads()
+      if (active) setLeads(nextLeads)
+    }
+
+    loadLeads()
+
+    return () => {
+      active = false
+    }
+  }, [])
 
   const crmSummary = useMemo(() => {
     const merchInterested = leads.filter((lead) => lead.merchInterest === 'Yes').length
@@ -21,24 +37,32 @@ export function InquiryForm() {
     const { name, value } = event.target
     setForm((current) => ({ ...current, [name]: value }))
     if (submitState !== 'idle') setSubmitState('idle')
+    if (errorMessage) setErrorMessage('')
   }
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault()
+    setSubmitState('submitting')
+    setErrorMessage('')
 
-    const lead = createLead({
-      ...form,
-      stage: 'new',
-      source: 'website',
-    })
+    try {
+      const lead = await createLead({
+        ...form,
+        stage: 'new',
+        source: 'website',
+      })
 
-    setLeads((current) => [lead, ...current])
-    setForm(defaultInquiryForm)
-    setSubmitState('success')
-    trackEvent('travel_inquiry_submitted', {
-      tripType: lead.tripType,
-      merchInterest: lead.merchInterest,
-    })
+      setLeads((current) => [lead, ...current])
+      setForm(defaultInquiryForm)
+      setSubmitState('success')
+      trackEvent('travel_inquiry_submitted', {
+        tripType: lead.tripType,
+        merchInterest: lead.merchInterest,
+      })
+    } catch {
+      setSubmitState('error')
+      setErrorMessage('We could not save this inquiry right now. Please use the email backup while we reconnect the CRM.')
+    }
   }
 
   const handleExport = () => {
@@ -49,6 +73,7 @@ export function InquiryForm() {
   return (
     <>
       <form className="inquiry-form" onSubmit={handleSubmit}>
+        <p className="crm-mode">{getCrmModeLabel()}</p>
         <div className="field-grid">
           <label>
             Name
@@ -111,8 +136,8 @@ export function InquiryForm() {
         </label>
 
         <div className="form-actions">
-          <button type="submit" className="button-primary">
-            Save inquiry
+          <button type="submit" className="button-primary" disabled={submitState === 'submitting'}>
+            {submitState === 'submitting' ? 'Saving inquiry...' : 'Save inquiry'}
           </button>
           <a href="mailto:hello@vixiedusttravel.com" className="button-secondary">
             Keep email as backup
@@ -121,9 +146,10 @@ export function InquiryForm() {
 
         {submitState === 'success' ? (
           <p className="form-success">
-            Inquiry saved locally. Next step: connect this flow to a real database and email automation.
+            Inquiry saved successfully. Next step: connect notifications and follow-up automation.
           </p>
         ) : null}
+        {submitState === 'error' ? <p className="form-error">{errorMessage}</p> : null}
       </form>
 
       {import.meta.env.DEV ? (
