@@ -2,48 +2,48 @@ export const specialties = [
   {
     title: 'Disney & Theme Park Trips',
     description:
-      'Park strategy, resort matching, dining guidance, and pacing support for families who want the magic without the stress spiral.',
-    bullets: ['Disney World and Disneyland trip design', 'Resort, ticket, and dining guidance', 'Family-first park pacing'],
+      'From resort picks to park-day pacing, we help families enjoy the magic without the overwhelm that can come with planning every detail alone.',
+    bullets: ['Disney World and Disneyland planning', 'Resort, ticket, and dining guidance', 'Family-friendly park strategy'],
     visual: 'castle',
   },
   {
     title: 'Cruises & Group Sailings',
     description:
-      'Cruises create repeat business, strong referral energy, and natural merch opportunities before and after the trip.',
-    bullets: ['First-time cruiser hand-holding', 'Cabin and itinerary strategy', 'Group trip coordination'],
+      'Whether it is your first sailing or a special trip with loved ones, we help match you with the right ship, route, and onboard experience.',
+    bullets: ['Cruise line and itinerary matching', 'Cabin guidance and planning support', 'Family and group trip coordination'],
     visual: 'ship',
   },
   {
     title: 'Sunny Family Escapes',
     description:
-      'All-inclusives and beach getaways keep the business active year-round and offer a softer entry point for new clients.',
-    bullets: ['Warm-weather resort matchmaking', 'Budget-aware trip options', 'Simple family itineraries'],
+      'Beach vacations, all-inclusives, and warm-weather getaways designed for easy memories, smoother planning, and more time to simply enjoy being together.',
+    bullets: ['All-inclusive and resort recommendations', 'Budget-aware vacation options', 'Stress-free family itineraries'],
     visual: 'palms',
   },
 ]
 
 export const brandWelcome = {
   title: 'Welcome to Vixie Dust Travels',
-  lead: 'The fox belongs on the homepage because the brand works best when it feels personal, warm, and unmistakable.',
+  lead: 'Planning unforgettable vacations should feel exciting, not exhausting.',
   body:
-    'This business is strongest when strategy and personality show up together. The site should feel polished enough to earn trust, but still magical enough that families remember who planned the trip.',
+    'At Vixie Dust Travels, we help families plan magical getaways with thoughtful guidance, personal service, and a little extra pixie dust along the way. From theme parks to cruises to sunny escapes, we are here to make the process feel easier from the very first idea to the day you leave.',
 }
 
 export const revenueStreams = [
   {
-    title: 'Travel Bookings',
+    title: 'Personalized Planning',
     detail:
-      'This should stay the primary conversion path, supported by high-trust service pages, qualification forms, and fast follow-up.',
+      'Every trip starts with your family, your budget, and the kind of memories you want to make together.',
   },
   {
-    title: 'Curated Merch',
+    title: 'Thoughtful Support',
     detail:
-      'Merch works best when it feels like part of the trip experience: countdown items, matching travel gear, and celebratory bundles.',
+      'We help simplify the details so you can feel confident in your plans instead of buried in options.',
   },
   {
-    title: 'Audience Nurture',
+    title: 'Magical Extras',
     detail:
-      'Email guides, search-friendly content, and review/referral loops help the brand compound instead of restarting from zero each month.',
+      'Our shop is designed to add a little more fun to the journey with trip-themed goodies and travel-inspired keepsakes.',
   },
 ]
 
@@ -51,17 +51,17 @@ export const merchIdeas = [
   {
     title: 'Park Day Essentials',
     price: '$28-$64',
-    description: 'Matching shirts, tote bags, autograph books, and lanyards that fit the family-trip niche.',
+    description: 'Matching tees, tote bags, and must-have extras for families getting ready for a magical park day.',
   },
   {
     title: 'Cruise Countdown Kits',
     price: '$18-$52',
-    description: 'Door magnets, tumblers, packing helpers, and countdown gifts that build excitement before sailing.',
+    description: 'Fun pre-cruise touches like countdown goodies, cabin magnets, and travel-ready essentials.',
   },
   {
     title: 'Travel Club Drops',
     price: '$14-$42',
-    description: 'Small seasonal launches for loyal clients and followers to create identity around the brand.',
+    description: 'Seasonal travel-inspired items made for families who love making every trip feel a little more special.',
   },
 ]
 
@@ -102,42 +102,42 @@ export const faqs = [
 ]
 
 export const proofPoints = [
-  'Clear specialty positioning',
-  'Fast follow-up on every inquiry',
-  'Repeatable SEO-friendly content',
-  'Merch that deepens brand loyalty',
+  'Personalized vacation planning',
+  'Friendly, responsive support',
+  'Family-focused travel guidance',
+  'Magical touches along the way',
 ]
 
 export const planningPillars = [
   {
-    title: 'Niche clarity',
-    detail: 'Become known for Disney, cruises, and family-friendly escapes before expanding wider.',
+    title: 'Plan with care',
+    detail: 'Trips are tailored to your family, your style, and your budget.',
   },
   {
-    title: 'Lead handling',
-    detail: 'Every inquiry should be captured, qualified, tracked, and followed up quickly.',
+    title: 'Travel with confidence',
+    detail: 'You get support and guidance that help the details feel much less stressful.',
   },
   {
-    title: 'Repeat revenue',
-    detail: 'Use post-booking merch, referrals, and return-client nurture to grow lifetime value.',
+    title: 'Make lasting memories',
+    detail: 'The goal is simple: more joy, more wonder, and more time together.',
   },
 ]
 
 export const servicePackages = [
   {
     title: 'Disney Planning',
-    description: 'Ideal for families who want expert help navigating a high-detail trip with lots of moving parts.',
-    includes: ['Trip planning roadmap', 'Resort and ticket guidance', 'Dining and experience strategy'],
+    description: 'Perfect for families who want help navigating all the moving parts of a Disney vacation with less stress and more fun.',
+    includes: ['Trip planning guidance', 'Resort and ticket recommendations', 'Dining and park strategy'],
   },
   {
     title: 'Cruise Planning',
-    description: 'Great for first-time cruisers, multi-generational groups, and travelers comparing ships and routes.',
-    includes: ['Ship and itinerary matching', 'Cabin guidance', 'Packing and embarkation prep'],
+    description: 'A great fit for first-time cruisers, returning guests, and families comparing ships, routes, and onboard experiences.',
+    includes: ['Ship and itinerary matching', 'Cabin recommendations', 'Embarkation and packing prep'],
   },
   {
     title: 'Sun & Sand Escapes',
-    description: 'A simpler offer for beach-focused families who want warmth, ease, and a clean booking process.',
-    includes: ['Resort shortlist', 'Budget alignment', 'Family-friendly activity ideas'],
+    description: 'For families dreaming of warm weather, beach days, and a vacation that feels easy from start to finish.',
+    includes: ['Resort recommendations', 'Budget-friendly options', 'Family-friendly activity ideas'],
   },
 ]
 

@@ -9,13 +9,13 @@ export function HomePage() {
         <div className="hero-backdrop" aria-hidden="true" />
         <div className="hero-content shell">
           <div className="hero-copy">
-            <p className="eyebrow">Build the business, not just the brochure site</p>
+            <p className="eyebrow">Magical vacations made simple</p>
             <h1 id="hero-title">
-              A travel brand that books dream trips, sells merch, and turns inquiries into long-term clients.
+              Helping families plan unforgettable vacations with less stress and more magic.
             </h1>
             <p className="hero-subtitle">
-              The strongest version of this site should earn trust, capture qualified leads, and create a second
-              revenue stream through curated travel merch.
+              From Disney vacations and cruises to sunny getaways, Vixie Dust Travels is here to make planning feel
+              easier, more personal, and a whole lot more fun.
             </p>
             <div className="hero-actions">
               <Link
@@ -23,14 +23,14 @@ export function HomePage() {
                 className="button-primary"
                 onClick={() => trackEvent('cta_click', { label: 'Start inquiry route', location: 'home_hero' })}
               >
-                Start the inquiry funnel
+                Start planning
               </Link>
               <Link
                 to="/shop"
                 className="button-secondary"
                 onClick={() => trackEvent('cta_click', { label: 'View merch route', location: 'home_hero' })}
               >
-                View merch strategy
+                Visit the shop
               </Link>
             </div>
             <div className="hero-metrics">
@@ -44,17 +44,17 @@ export function HomePage() {
           </div>
 
           <aside className="hero-panel">
-            <p className="panel-label">Recommended core offer stack</p>
+            <p className="panel-label">Why families choose us</p>
             <ul className="offer-list">
-              <li>Primary revenue: travel planning and bookings</li>
-              <li>Secondary revenue: curated merch and bundles</li>
-              <li>Lead magnet: free trip planning guide or checklist</li>
-              <li>Nurture engine: email follow-up and review requests</li>
+              <li>Personalized trip recommendations</li>
+              <li>Family-friendly planning support</li>
+              <li>Guidance from first ideas to final details</li>
+              <li>Travel-inspired extras in the Vixie shop</li>
             </ul>
             <div className="hero-note">
-              <p>Best first niche</p>
-              <strong>Disney + cruises + family travel</strong>
-              <span>Focused enough to market and broad enough to grow.</span>
+              <p>Specialties</p>
+              <strong>Disney, cruises, and sunny family getaways</strong>
+              <span>Trips designed with care, wonder, and unforgettable memories in mind.</span>
             </div>
           </aside>
         </div>
@@ -63,8 +63,8 @@ export function HomePage() {
       <section className="section soft-band">
         <div className="shell band-grid">
           <div>
-            <p className="eyebrow">Success model</p>
-            <h2>What will make her career actually grow</h2>
+            <p className="eyebrow">What you can expect</p>
+            <h2>Vacation planning that feels thoughtful, joyful, and personal</h2>
           </div>
           <div className="band-points">
             {proofPoints.map((item) => (
@@ -83,16 +83,16 @@ export function HomePage() {
             <span className="mascot-spark mascot-spark--two">✦</span>
           </div>
           <div className="welcome-story">
-            <p className="eyebrow">Brand personality</p>
+            <p className="eyebrow">Welcome</p>
             <h2>{brandWelcome.title}</h2>
             <p className="welcome-lead">{brandWelcome.lead}</p>
             <p>{brandWelcome.body}</p>
             <div className="hero-actions">
               <Link to="/about" className="button-secondary">
-                Shape the about story
+                Meet Vixie Dust Travels
               </Link>
               <Link to="/inquire" className="button-primary">
-                Start planning a trip
+                Plan your trip
               </Link>
             </div>
           </div>
@@ -103,10 +103,10 @@ export function HomePage() {
         <div className="shell">
           <div className="section-head">
             <p className="eyebrow">Signature vacations</p>
-            <h2>Bring back the category cards as the most recognizable trip paths in the brand</h2>
+            <h2>Explore the kinds of vacations we love planning most</h2>
             <p>
-              These cards should do two jobs at once: make the brand feel familiar and magical, and give visitors a
-              clear way to self-select into the kind of trip they want help planning.
+              Whether you are dreaming of castle views, ocean breezes, or sunshine and sand, we help match your family
+              with a vacation that feels just right.
             </p>
           </div>
           <div className="signature-grid">
@@ -139,9 +139,9 @@ export function HomePage() {
       <section className="section">
         <div className="shell">
           <div className="section-head">
-            <p className="eyebrow">Service strategy</p>
-            <h2>Choose a niche people can immediately understand and trust</h2>
-            <p>Specialized messaging converts better, ranks better, and is much easier for clients to recommend.</p>
+            <p className="eyebrow">Our planning style</p>
+            <h2>Thoughtful support for every step of the journey</h2>
+            <p>We believe vacation planning should feel clear, exciting, and centered around the people traveling.</p>
           </div>
           <div className="card-grid three-up">
             {specialties.map((item) => (
@@ -162,9 +162,9 @@ export function HomePage() {
       <section className="section section-contrast">
         <div className="shell">
           <div className="section-head">
-            <p className="eyebrow">Revenue engine</p>
-            <h2>The business should be designed around repeatable growth loops</h2>
-            <p>Bookings lead the business, merch raises lifetime value, and content plus email keeps new people coming in.</p>
+            <p className="eyebrow">Why Vixie Dust</p>
+            <h2>A little more support, a little more sparkle, and a lot more peace of mind</h2>
+            <p>We are here to help take the stress out of planning so you can focus on what matters most: the memories you are about to make.</p>
           </div>
           <div className="card-grid three-up">
             {revenueStreams.map((item) => (
@@ -180,14 +180,14 @@ export function HomePage() {
       <section className="section">
         <div className="shell split-layout">
           <div>
-            <p className="eyebrow">Merch direction</p>
-            <h2>Keep the shop curated so it feels like an extension of the trip experience</h2>
+            <p className="eyebrow">The Vixie shop</p>
+            <h2>Travel-inspired extras to make the journey even more fun</h2>
             <p className="section-copy">
-              The best merch here is identity-driven and trip-tied, not generic. Think countdown bundles, matching gear,
-              and items clients are excited to show off.
+              From matching travel goodies to countdown-worthy gifts, our shop is designed to bring a little extra joy
+              to the adventures ahead.
             </p>
             <Link to="/shop" className="button-secondary">
-              Explore the shop structure
+              Explore the shop
             </Link>
           </div>
           <div className="card-grid merch-grid">
