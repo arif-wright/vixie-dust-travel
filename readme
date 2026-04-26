@@ -110,3 +110,11 @@ Admin workflow
 - Public site visitors can submit inquiries anonymously
 - Advisors can sign in through the `/admin` route using Supabase email/password auth
 - Authenticated users can read and update lead stages
+
+Supabase admin setup
+--------------------
+1. Open Supabase `Authentication` -> `Users`
+2. Create the advisor user with an email and password
+3. Confirm the updated `supabase/schema.sql` has been run so authenticated users can `select` and `update` leads
+4. Add `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` to Vercel
+5. Visit `#/admin` and sign in with the advisor email and password

@@ -15,6 +15,8 @@ export function AdminPage() {
   const [leads, setLeads] = useState([])
   const [leadError, setLeadError] = useState('')
   const [leadLoading, setLeadLoading] = useState(false)
+  const [searchTerm, setSearchTerm] = useState('')
+  const [stageFilter, setStageFilter] = useState('all')
 
   useEffect(() => {
     let active = true
@@ -79,6 +81,33 @@ export function AdminPage() {
       booked: leads.filter((lead) => lead.stage === 'booked').length,
     }
   }, [leads])
+
+  const filteredLeads = useMemo(() => {
+    const normalizedQuery = searchTerm.trim().toLowerCase()
+
+    return leads.filter((lead) => {
+      const matchesStage = stageFilter === 'all' ? true : lead.stage === stageFilter
+      if (!matchesStage) return false
+
+      if (!normalizedQuery) return true
+
+      const searchableText = [
+        lead.name,
+        lead.email,
+        lead.phone,
+        lead.tripType,
+        lead.travelWindow,
+        lead.budget,
+        lead.partySize,
+        lead.notes,
+      ]
+        .filter(Boolean)
+        .join(' ')
+        .toLowerCase()
+
+      return searchableText.includes(normalizedQuery)
+    })
+  }, [leads, searchTerm, stageFilter])
 
   const handleSignIn = async (event) => {
     event.preventDefault()
@@ -187,13 +216,36 @@ export function AdminPage() {
               <div className="crm-toolbar">
                 <p>Signed in as {session.user.email}. Review inquiries, export them, and mark follow-up progress.</p>
                 <div className="toolbar-actions">
-                  <button type="button" className="button-secondary" onClick={() => exportLeadsToCsv(leads)} disabled={leads.length === 0}>
+                  <button type="button" className="button-secondary" onClick={() => exportLeadsToCsv(filteredLeads)} disabled={filteredLeads.length === 0}>
                     Export CSV
                   </button>
                   <button type="button" className="button-secondary" onClick={() => signOut()}>
                     Sign out
                   </button>
                 </div>
+              </div>
+
+              <div className="crm-filters">
+                <label className="filter-field">
+                  Search leads
+                  <input
+                    type="text"
+                    value={searchTerm}
+                    onChange={(event) => setSearchTerm(event.target.value)}
+                    placeholder="Search by name, email, trip type, budget..."
+                  />
+                </label>
+                <label className="filter-field">
+                  Stage
+                  <select value={stageFilter} onChange={(event) => setStageFilter(event.target.value)}>
+                    <option value="all">All stages</option>
+                    {stageOptions.map((option) => (
+                      <option key={option} value={option}>
+                        {option}
+                      </option>
+                    ))}
+                  </select>
+                </label>
               </div>
 
               {leadError ? <p className="form-error">{leadError}</p> : null}
@@ -217,8 +269,8 @@ export function AdminPage() {
                           Loading leads...
                         </td>
                       </tr>
-                    ) : leads.length > 0 ? (
-                      leads.map((lead) => (
+                    ) : filteredLeads.length > 0 ? (
+                      filteredLeads.map((lead) => (
                         <tr key={lead.id}>
                           <td>
                             <strong>{lead.name}</strong>
@@ -245,13 +297,18 @@ export function AdminPage() {
                               ))}
                             </select>
                           </td>
-                          <td>{formatDate(lead.createdAt)}</td>
+                          <td>
+                            <strong>{formatDate(lead.createdAt)}</strong>
+                            {lead.notes ? <span className="lead-note-preview">{lead.notes}</span> : <span>No notes yet</span>}
+                          </td>
                         </tr>
                       ))
                     ) : (
                       <tr>
                         <td colSpan="6" className="empty-state">
-                          No leads yet. Once the public inquiry form is used, they will appear here.
+                          {leads.length === 0
+                            ? 'No leads yet. Once the public inquiry form is used, they will appear here.'
+                            : 'No leads match the current search or stage filter.'}
                         </td>
                       </tr>
                     )}
