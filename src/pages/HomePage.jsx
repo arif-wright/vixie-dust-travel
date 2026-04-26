@@ -60,24 +60,44 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="storybook-services">
+      <div className="storybook-divider" aria-hidden="true">
+        <img src="/cloud-divider.png" alt="" />
+      </div>
+
+      <section className="storybook-services section-signature storybook-services--signature">
         <div className="container">
           <p className="storybook-section-label storybook-section-label--centered">Our Services</p>
           <h2 className="storybook-centered-heading">Thoughtfully planned trips with a touch of pixie dust.</h2>
-          <div className="storybook-service-cards">
+          <div className="signature-grid storybook-signature-grid">
             {specialties.map((item) => (
-              <article key={item.title} className="storybook-card">
-                <div className={`storybook-card-icon storybook-card-icon--${item.visual}`} aria-hidden="true" />
-                <h3>{item.title}</h3>
-                <p>{item.description}</p>
-                <Link to="/services" className="storybook-inline-link">
-                  Explore this trip
-                </Link>
+              <article key={item.title} className="signature-card storybook-signature-card">
+                <div className={`signature-card-top signature-card-top--${item.visual}`} aria-hidden="true">
+                  <div className={`signature-icon signature-icon--${item.visual}`} />
+                </div>
+                <div className="signature-cloud-row" aria-hidden="true">
+                  <img src="/cloud-divider.png" alt="" className="signature-cloud-image" />
+                </div>
+                <div className="signature-card-body">
+                  <h3>{item.title}</h3>
+                  <p>{item.description}</p>
+                  <ul>
+                    {item.bullets.map((bullet) => (
+                      <li key={bullet}>{bullet}</li>
+                    ))}
+                  </ul>
+                  <Link to="/services" className="storybook-inline-link">
+                    Explore this trip
+                  </Link>
+                </div>
               </article>
             ))}
           </div>
         </div>
       </section>
+
+      <div className="storybook-divider storybook-divider--gold" aria-hidden="true">
+        <img src="/cloud-divider.png" alt="" />
+      </div>
 
       <section className="storybook-promise container">
         <div className="storybook-promise-panel">
@@ -89,6 +109,10 @@ export function HomePage() {
           </p>
         </div>
       </section>
+
+      <div className="storybook-divider" aria-hidden="true">
+        <img src="/cloud-divider.png" alt="" />
+      </div>
 
       <section className="storybook-cta">
         <div className="container storybook-cta-inner">
