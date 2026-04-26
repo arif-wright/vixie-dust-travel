@@ -163,15 +163,22 @@ button {
   gap: 1rem;
 }
 
-.topnav a {
+.nav-link {
   color: var(--ink-soft);
   text-decoration: none;
   font-weight: 600;
 }
 
-.topnav a:hover,
-.topnav a:focus-visible {
+.nav-link:hover,
+.nav-link:focus-visible,
+.nav-link--active {
   color: var(--ink);
+}
+
+.nav-link--active {
+  text-decoration: underline;
+  text-decoration-color: rgba(223, 123, 65, 0.58);
+  text-underline-offset: 0.32rem;
 }
 
 .hero {
@@ -428,6 +435,35 @@ summary:focus-visible {
   padding: 4.3rem 0;
 }
 
+.page-main {
+  padding-top: 1.5rem;
+}
+
+.page-hero {
+  padding: 2.8rem 1.45rem 1.1rem;
+  border-radius: 32px;
+  border: 1px solid rgba(235, 217, 219, 0.92);
+  background:
+    radial-gradient(circle at top right, rgba(243, 207, 112, 0.22), transparent 28%),
+    rgba(255, 251, 247, 0.84);
+  box-shadow: var(--shadow);
+}
+
+.page-hero h1 {
+  margin: 0;
+  font-family: 'Fraunces', serif;
+  font-size: clamp(2.25rem, 4.8vw, 4.2rem);
+  line-height: 1.02;
+}
+
+.page-hero p:last-child {
+  max-width: 48rem;
+  margin: 0.95rem 0 0;
+  color: var(--ink-soft);
+  line-height: 1.58;
+  font-size: clamp(1rem, 2vw, 1.18rem);
+}
+
 .soft-band {
   padding: 1.4rem 0;
 }
@@ -565,6 +601,28 @@ summary:focus-visible {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+.callout-card {
+  padding: 1.5rem;
+  border-radius: 28px;
+  border: 1px solid rgba(235, 217, 219, 0.95);
+  background: rgba(255, 252, 248, 0.9);
+  box-shadow: var(--shadow);
+}
+
+.callout-card h2 {
+  margin: 0;
+  font-family: 'Fraunces', serif;
+  font-size: clamp(1.95rem, 4vw, 3rem);
+  line-height: 1.04;
+}
+
+.callout-card p {
+  margin: 0.9rem 0 1.2rem;
+  max-width: 48rem;
+  color: var(--ink-soft);
+  line-height: 1.58;
+}
+
 .contact-section {
   background:
     radial-gradient(circle at 12% 15%, rgba(245, 207, 102, 0.22), transparent 25%),
@@ -596,6 +654,10 @@ summary:focus-visible {
   flex-wrap: wrap;
   gap: 0.7rem;
   margin-top: 1.2rem;
+}
+
+.compact-list {
+  margin-top: 1.1rem;
 }
 
 .inquiry-form {
@@ -724,11 +786,51 @@ summary:focus-visible {
   color: var(--ink-soft);
 }
 
+.site-footer {
+  margin-top: 3rem;
+  padding: 3rem 0 4rem;
+  border-top: 1px solid rgba(235, 217, 219, 0.92);
+  background:
+    radial-gradient(circle at 20% 0%, rgba(245, 206, 107, 0.16), transparent 20%),
+    linear-gradient(180deg, #fff7f2 0%, #fffdf8 100%);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(16rem, 0.8fr);
+  gap: 1rem;
+  align-items: start;
+}
+
+.site-footer h2 {
+  margin: 0;
+  font-family: 'Fraunces', serif;
+  font-size: clamp(1.7rem, 3.5vw, 2.8rem);
+  line-height: 1.06;
+}
+
+.footer-links {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.footer-links a {
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.footer-links a:hover,
+.footer-links a:focus-visible {
+  color: var(--accent-strong);
+}
+
 @media (max-width: 1080px) {
   .hero-content,
   .split-layout,
   .inquiry-layout,
-  .band-grid {
+  .band-grid,
+  .footer-grid {
     grid-template-columns: 1fr;
   }
 
@@ -777,6 +879,10 @@ summary:focus-visible {
   .crm-toolbar {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .page-hero {
+    padding-inline: 1.15rem;
   }
 }
 

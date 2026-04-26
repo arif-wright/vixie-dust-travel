@@ -1,1 +1,97 @@
-readme
+Vixie Dust Travel
+=================
+
+Current direction
+-----------------
+- Multi-page React + Vite marketing site for a travel advisor brand
+- Primary goal: convert visitors into qualified trip inquiries
+- Secondary goal: support a curated merch shop tied to the travel brand
+- Early CRM prototype stores inquiries locally and supports CSV export during development
+
+Pages in place
+--------------
+- Home
+- About
+- Services
+- Shop
+- Resources
+- Inquiry
+
+What is live in code now
+------------------------
+- Hash-based routing for static-host friendliness
+- Brand-forward homepage with clearer business positioning
+- Dedicated route structure for future growth
+- Inquiry form that captures lead qualification details
+- Local CRM helper in `src/lib/crm.js`
+- Dev-only CRM preview for validating the intake flow
+
+Recommended next build steps
+----------------------------
+1. Replace local inquiry storage with a real backend
+   - Best fit: Supabase for auth, database, and admin-friendly querying
+   - Alternate lightweight fit: Airtable if speed matters more than long-term control
+
+2. Add email automation
+   - Immediate inquiry confirmation
+   - Internal notification to the advisor
+   - Nurture sequence for undecided leads
+   - Post-trip review and referral follow-up
+
+3. Add real merch commerce
+   - Recommended platform: Shopify
+   - Keep product catalog curated and trip-themed
+   - Use bundles tied to Disney trips, cruises, and seasonal travel
+
+4. Expand content and SEO
+   - Destination guides
+   - Planning checklists
+   - FAQ-rich service pages
+   - Blog posts targeting family travel search intent
+
+5. Add analytics and attribution
+   - Inquiry starts
+   - Inquiry submits
+   - Shop visits
+   - Product clicks
+   - Email signups
+
+Suggested CRM schema
+--------------------
+- leads
+  - id
+  - created_at
+  - name
+  - email
+  - phone
+  - trip_type
+  - travel_window
+  - budget
+  - party_size
+  - merch_interest
+  - notes
+  - stage
+  - source
+
+- follow_ups
+  - id
+  - lead_id
+  - due_at
+  - status
+  - note
+
+- merch_interest_events
+  - id
+  - lead_id
+  - collection
+  - event_type
+  - created_at
+
+Success metrics
+---------------
+- Inquiry conversion rate
+- Qualified lead rate
+- Inquiry response time
+- Email signup rate
+- Repeat booking rate
+- Merch attach rate per booked client
