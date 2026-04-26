@@ -24,8 +24,8 @@ export function HomePage() {
           <span className="hero-cloud hero-cloud--one" />
         </div>
 
-        <div className="hero-content shell hero-content--editorial">
-          <div className="hero-copy hero-copy--editorial">
+        <div className="hero-stage shell">
+          <div className="hero-copy hero-copy--spotlight">
             <p className="eyebrow">Magical vacations made personal</p>
             <h1 id="hero-title">Dreamy family trips, planned with heart and handled with care.</h1>
             <p className="hero-subtitle">
@@ -49,23 +49,25 @@ export function HomePage() {
               </Link>
             </div>
             <p className="hero-kicker">Planning should feel exciting from the first conversation, not overwhelming.</p>
+            <div className="hero-inline-points">
+              {proofPoints.slice(0, 3).map((item) => (
+                <span key={item}>{item}</span>
+              ))}
+            </div>
           </div>
 
-          <aside className="hero-story-card hero-story-card--editorial">
-            <div className="hero-mascot-scene" aria-hidden="true">
+          <aside className="hero-keepsake">
+            <div className="hero-keepsake-art" aria-hidden="true">
               <div className="hero-mascot-aura" />
               <img src="/logo-3.png" alt="" className="hero-mascot" />
               <span className="hero-mascot-spark hero-mascot-spark--one">✦</span>
               <span className="hero-mascot-spark hero-mascot-spark--two">✦</span>
             </div>
-            <div className="hero-story-note">
-              <p className="panel-label">A boutique planning experience</p>
-              <h2>Warm support. Beautiful details. Zero feeling lost.</h2>
-              <p>
-                Built for families who want expert help without losing the joy and anticipation of planning something
-                special together.
-              </p>
-            </div>
+            <p className="panel-label">Boutique planning</p>
+            <p className="hero-keepsake-copy">
+              Warm support, thoughtful recommendations, and a planning experience that feels personal from the very
+              start.
+            </p>
           </aside>
         </div>
       </section>
