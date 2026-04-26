@@ -63,7 +63,7 @@ export function SiteLayout() {
           <img src="/logo-face.svg" alt="" aria-hidden="true" className="brand-mark" />
           <div>
             <span className="brand-name">Vixie Dust Travel</span>
-            <span className="brand-tag">Travel planning + merch + client care</span>
+            <span className="brand-tag">Disney, cruises, sunshine, and a little pixie dust</span>
           </div>
         </NavLink>
 
@@ -87,7 +87,7 @@ export function SiteLayout() {
         <div className="shell footer-grid">
           <div>
             <p className="eyebrow">Vixie Dust Travel</p>
-            <h2>Build trust, capture leads, and create a brand clients want to belong to.</h2>
+            <h2>Dream bigger, plan with confidence, and make the countdown feel magical too.</h2>
           </div>
           <div className="footer-links">
             <NavLink to="/services">Services</NavLink>

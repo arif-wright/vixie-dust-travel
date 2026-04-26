@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Quicksand:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500;600&family=Quicksand:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -91,6 +91,11 @@ button {
   animation: pointer-sparkle-fade ease-out forwards;
 }
 
+.container {
+  width: min(70rem, calc(100% - 2.4rem));
+  margin: 0 auto;
+}
+
 @keyframes pointer-sparkle-fade {
   0% {
     opacity: 0;
@@ -157,6 +162,7 @@ button {
   margin-top: 0.12rem;
   color: #7f6a5c;
   font-size: 0.85rem;
+  letter-spacing: 0.02em;
 }
 
 .topnav {
@@ -192,6 +198,338 @@ button {
   bottom: -0.28rem;
   height: 1px;
   background: rgba(190, 150, 88, 0.78);
+}
+
+.home-storybook {
+  font-family: 'Poppins', sans-serif;
+  color: #2e2e2e;
+  background: #fceedc;
+}
+
+.home-storybook h1,
+.home-storybook h2,
+.home-storybook h3 {
+  font-family: 'Playfair Display', serif;
+  color: #4a2c3a;
+}
+
+.storybook-hero {
+  position: relative;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fffaf7;
+  background:
+    linear-gradient(rgba(74, 44, 58, 0.42), rgba(74, 44, 58, 0.42)),
+    url('/hero-2.png') center/cover no-repeat;
+  overflow: hidden;
+}
+
+.storybook-hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 50% 25%, rgba(255, 246, 226, 0.1), transparent 28%),
+    linear-gradient(180deg, rgba(74, 44, 58, 0.1), rgba(74, 44, 58, 0.2));
+}
+
+.storybook-hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 44rem;
+}
+
+.storybook-overline,
+.storybook-section-label {
+  margin: 0 0 0.85rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.storybook-hero h1 {
+  margin: 0;
+  font-size: clamp(2.8rem, 7vw, 4.8rem);
+  line-height: 1;
+  color: #fff7f0;
+}
+
+.storybook-hero-copy {
+  margin: 1rem auto 0;
+  max-width: 38rem;
+  font-size: clamp(1.08rem, 2vw, 1.28rem);
+  line-height: 1.7;
+  color: rgba(255, 247, 240, 0.92);
+}
+
+.storybook-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.storybook-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3.2rem;
+  padding: 0.9rem 1.65rem;
+  border-radius: 999px;
+  border: 1px solid #f4a261;
+  background: #f4a261;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    transform 180ms ease;
+}
+
+.storybook-btn:hover,
+.storybook-btn:focus-visible {
+  background: #e0894f;
+  border-color: #e0894f;
+  transform: translateY(-1px);
+}
+
+.storybook-btn--ghost {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.72);
+  color: #fff7f0;
+}
+
+.storybook-btn--ghost:hover,
+.storybook-btn--ghost:focus-visible {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: #fff;
+}
+
+.storybook-sparkle {
+  position: absolute;
+  z-index: 1;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #f4d35e;
+  opacity: 0.8;
+  animation: storybook-float 6s infinite ease-in-out;
+}
+
+.storybook-sparkle--one {
+  top: 20%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.storybook-sparkle--two {
+  top: 40%;
+  left: 80%;
+  animation-delay: 2s;
+}
+
+.storybook-sparkle--three {
+  top: 70%;
+  left: 30%;
+  animation-delay: 4s;
+}
+
+@keyframes storybook-float {
+  0% {
+    transform: translateY(0);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateY(-20px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 0.8;
+  }
+}
+
+.storybook-cloud-divider {
+  position: relative;
+  height: 120px;
+  margin-top: -60px;
+  background: #fceedc;
+  border-top-left-radius: 50% 100%;
+  border-top-right-radius: 50% 100%;
+}
+
+.storybook-about {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  padding: 3.75rem 0;
+}
+
+.storybook-about-visual {
+  flex: 0 0 250px;
+  display: flex;
+  justify-content: center;
+}
+
+.storybook-logo-frame {
+  width: 250px;
+  padding: 1.25rem;
+}
+
+.storybook-logo-frame img {
+  width: 100%;
+}
+
+.storybook-about-copy {
+  max-width: 38rem;
+}
+
+.storybook-about-copy p,
+.storybook-promise-panel p {
+  line-height: 1.8;
+  color: #4b433d;
+}
+
+.storybook-about-copy h2,
+.storybook-centered-heading,
+.storybook-promise-panel h2,
+.storybook-cta h2 {
+  margin: 0;
+  font-size: clamp(2.1rem, 4vw, 3.2rem);
+  line-height: 1.02;
+}
+
+.storybook-lead {
+  margin: 0.85rem 0 0;
+  font-size: 1.08rem;
+  font-weight: 500;
+  color: #5a3949;
+}
+
+.storybook-mini-points {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin: 1.35rem 0 1.6rem;
+}
+
+.storybook-mini-points span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2rem;
+  padding: 0.35rem 0.8rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.5);
+  color: #5f4a42;
+  font-size: 0.92rem;
+}
+
+.storybook-services {
+  position: relative;
+  padding: 4rem 0;
+  text-align: center;
+  background: #fff;
+}
+
+.storybook-section-label {
+  color: #7a5a48;
+}
+
+.storybook-section-label--centered {
+  text-align: center;
+}
+
+.storybook-centered-heading {
+  max-width: 36rem;
+  margin-inline: auto;
+}
+
+.storybook-service-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.25rem;
+  margin-top: 2rem;
+}
+
+.storybook-card {
+  width: min(100%, 18rem);
+  padding: 1.6rem;
+  border-radius: 20px;
+  background: #fceedc;
+  text-align: left;
+}
+
+.storybook-card h3 {
+  margin: 1rem 0 0;
+  font-size: 1.55rem;
+}
+
+.storybook-card p {
+  margin: 0.75rem 0 0;
+  line-height: 1.7;
+  color: #54463c;
+}
+
+.storybook-card-icon {
+  width: 4rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.84), rgba(244, 226, 198, 0.92));
+  box-shadow: inset 0 0 0 1px rgba(180, 132, 89, 0.18);
+}
+
+.storybook-card-icon--castle {
+  background:
+    radial-gradient(circle at 52% 96%, rgba(255, 198, 157, 0.9) 0 33%, transparent 34%),
+    linear-gradient(150deg, #cad5fd 0%, #ffe8d8 60%, #ffefca 100%);
+}
+
+.storybook-card-icon--ship {
+  background:
+    radial-gradient(circle at 50% 76%, #8ec0ea 0 31%, transparent 32%),
+    linear-gradient(150deg, #ffd9d8 2%, #ffecc9 58%, #ddeaff 100%);
+}
+
+.storybook-card-icon--palms {
+  background:
+    radial-gradient(circle at 52% 78%, #f2ccaa 0 28%, transparent 29%),
+    linear-gradient(150deg, #fce2d0 2%, #fff0d1 56%, #dcefff 100%);
+}
+
+.storybook-inline-link {
+  display: inline-block;
+  margin-top: 1rem;
+  color: #b46e3d;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.storybook-promise {
+  padding: 4rem 0;
+}
+
+.storybook-promise-panel {
+  max-width: 48rem;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.storybook-cta {
+  padding: 4rem 0 4.5rem;
+  text-align: center;
+}
+
+.storybook-cta-inner {
+  display: grid;
+  gap: 1rem;
+  justify-items: center;
 }
 
 .hero {
@@ -2236,10 +2574,10 @@ summary:focus-visible {
 .site-footer {
   margin-top: 3rem;
   padding: 3rem 0 4rem;
-  border-top: 1px solid rgba(235, 217, 219, 0.92);
+  border-top: 1px solid rgba(213, 190, 159, 0.44);
   background:
-    radial-gradient(circle at 20% 0%, rgba(245, 206, 107, 0.16), transparent 20%),
-    linear-gradient(180deg, #fff7f2 0%, #fffdf8 100%);
+    radial-gradient(circle at 20% 0%, rgba(245, 206, 107, 0.14), transparent 20%),
+    linear-gradient(180deg, #fbf4ea 0%, #fffdf8 100%);
 }
 
 .footer-grid {
@@ -2262,7 +2600,7 @@ summary:focus-visible {
 }
 
 .footer-links a {
-  color: var(--ink);
+  color: #6e5a4d;
   text-decoration: none;
   font-weight: 600;
 }
@@ -2273,6 +2611,16 @@ summary:focus-visible {
 }
 
 @media (max-width: 1080px) {
+  .storybook-about {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .storybook-mini-points,
+  .storybook-actions {
+    justify-content: center;
+  }
+
   .hero-manifesto,
   .chapter-intro-shell,
   .editorial-panel-grid,
@@ -2370,6 +2718,28 @@ summary:focus-visible {
 
   .hero {
     padding-top: 2rem;
+  }
+
+  .storybook-hero {
+    min-height: 78vh;
+    padding: 2rem 0;
+  }
+
+  .storybook-cloud-divider {
+    height: 90px;
+    margin-top: -45px;
+  }
+
+  .storybook-logo-frame {
+    width: 200px;
+  }
+
+  .storybook-service-cards {
+    gap: 1rem;
+  }
+
+  .storybook-card {
+    width: 100%;
   }
 
   .hero-canvas {
