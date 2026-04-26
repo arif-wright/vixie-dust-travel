@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { trackEvent } from '../lib/analytics'
-import { merchIdeas, planningPillars, proofPoints, revenueStreams, specialties } from '../siteData'
+import { brandWelcome, merchIdeas, planningPillars, proofPoints, revenueStreams, specialties } from '../siteData'
 
 export function HomePage() {
   return (
@@ -75,6 +75,68 @@ export function HomePage() {
       </section>
 
       <section className="section">
+        <div className="shell welcome-feature">
+          <div className="mascot-stage" aria-hidden="true">
+            <div className="mascot-aura" />
+            <img src="/logo-3.png" alt="" className="welcome-mascot" />
+            <span className="mascot-spark mascot-spark--one">✦</span>
+            <span className="mascot-spark mascot-spark--two">✦</span>
+          </div>
+          <div className="welcome-story">
+            <p className="eyebrow">Brand personality</p>
+            <h2>{brandWelcome.title}</h2>
+            <p className="welcome-lead">{brandWelcome.lead}</p>
+            <p>{brandWelcome.body}</p>
+            <div className="hero-actions">
+              <Link to="/about" className="button-secondary">
+                Shape the about story
+              </Link>
+              <Link to="/inquire" className="button-primary">
+                Start planning a trip
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section section-signature">
+        <div className="shell">
+          <div className="section-head">
+            <p className="eyebrow">Signature vacations</p>
+            <h2>Bring back the category cards as the most recognizable trip paths in the brand</h2>
+            <p>
+              These cards should do two jobs at once: make the brand feel familiar and magical, and give visitors a
+              clear way to self-select into the kind of trip they want help planning.
+            </p>
+          </div>
+          <div className="signature-grid">
+            {specialties.map((item) => (
+              <article key={item.title} className="signature-card">
+                <div className={`signature-card-top signature-card-top--${item.visual}`} aria-hidden="true">
+                  <div className={`signature-icon signature-icon--${item.visual}`} />
+                </div>
+                <div className="signature-cloud-row" aria-hidden="true">
+                  <img src="/cloud-divider.png" alt="" className="signature-cloud-image" />
+                </div>
+                <div className="signature-card-body">
+                  <h3>{item.title}</h3>
+                  <p>{item.description}</p>
+                  <ul>
+                    {item.bullets.map((bullet) => (
+                      <li key={bullet}>{bullet}</li>
+                    ))}
+                  </ul>
+                  <Link to="/services" className="button-primary button-card">
+                    Explore this trip type
+                  </Link>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section">
         <div className="shell">
           <div className="section-head">
             <p className="eyebrow">Service strategy</p>
@@ -83,7 +145,7 @@ export function HomePage() {
           </div>
           <div className="card-grid three-up">
             {specialties.map((item) => (
-              <article key={item.title} className="info-card">
+              <article key={`${item.title}-strategy`} className="info-card">
                 <h3>{item.title}</h3>
                 <p>{item.description}</p>
                 <ul>

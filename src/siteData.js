@@ -4,20 +4,30 @@ export const specialties = [
     description:
       'Park strategy, resort matching, dining guidance, and pacing support for families who want the magic without the stress spiral.',
     bullets: ['Disney World and Disneyland trip design', 'Resort, ticket, and dining guidance', 'Family-first park pacing'],
+    visual: 'castle',
   },
   {
     title: 'Cruises & Group Sailings',
     description:
       'Cruises create repeat business, strong referral energy, and natural merch opportunities before and after the trip.',
     bullets: ['First-time cruiser hand-holding', 'Cabin and itinerary strategy', 'Group trip coordination'],
+    visual: 'ship',
   },
   {
     title: 'Sunny Family Escapes',
     description:
       'All-inclusives and beach getaways keep the business active year-round and offer a softer entry point for new clients.',
     bullets: ['Warm-weather resort matchmaking', 'Budget-aware trip options', 'Simple family itineraries'],
+    visual: 'palms',
   },
 ]
+
+export const brandWelcome = {
+  title: 'Welcome to Vixie Dust Travels',
+  lead: 'The fox belongs on the homepage because the brand works best when it feels personal, warm, and unmistakable.',
+  body:
+    'This business is strongest when strategy and personality show up together. The site should feel polished enough to earn trust, but still magical enough that families remember who planned the trip.',
+}
 
 export const revenueStreams = [
   {
