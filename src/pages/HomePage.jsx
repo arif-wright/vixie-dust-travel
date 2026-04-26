@@ -78,12 +78,11 @@ export function HomePage() {
             {specialties.map((item) => (
               <article key={item.title} className="signature-card storybook-signature-card">
                 <div className={`signature-card-top signature-card-top--${item.visual}`} aria-hidden="true">
-                  <img
-                    src={specialtyImages[item.visual]}
-                    alt=""
-                    className="storybook-card-photo"
-                  />
-                  <div className={`signature-icon signature-icon--${item.visual}`} />
+                  <div className={`signature-icon signature-icon--${item.visual}`}>
+                    {specialtyImages[item.visual] ? (
+                      <img src={specialtyImages[item.visual]} alt="" className="storybook-icon-photo" />
+                    ) : null}
+                  </div>
                 </div>
                 <div className="signature-cloud-row" aria-hidden="true">
                   <img src="/cloud-divider.png" alt="" className="signature-cloud-image" />
