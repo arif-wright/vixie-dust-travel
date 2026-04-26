@@ -14,94 +14,104 @@ import {
 
 export function HomePage() {
   return (
-    <main>
-      <section className="hero" aria-labelledby="hero-title">
-        <div className="hero-backdrop" aria-hidden="true" />
-        <div className="hero-atmosphere" aria-hidden="true">
-          <span className="hero-star hero-star--one" />
-          <span className="hero-star hero-star--two" />
-          <span className="hero-orbit hero-orbit--one" />
-          <span className="hero-cloud hero-cloud--one" />
-        </div>
+    <main className="home-editorial">
+      <section className="hero hero--atelier" aria-labelledby="hero-title">
+        <div className="hero-backdrop hero-backdrop--atelier" aria-hidden="true" />
+        <div className="hero-dust hero-dust--one" aria-hidden="true" />
+        <div className="hero-dust hero-dust--two" aria-hidden="true" />
 
-        <div className="hero-stage shell">
-          <div className="hero-copy hero-copy--spotlight">
-            <p className="eyebrow">Magical vacations made personal</p>
-            <h1 id="hero-title">Dreamy family trips, planned with heart and handled with care.</h1>
-            <p className="hero-subtitle">
-              Vixie Dust Travels helps families plan Disney vacations, cruises, and sunny getaways with thoughtful
-              guidance, clear next steps, and a little extra sparkle along the way.
-            </p>
-            <div className="hero-actions">
-              <Link
-                to="/inquire"
-                className="button-primary"
-                onClick={() => trackEvent('cta_click', { label: 'Start inquiry route', location: 'home_hero' })}
-              >
-                Start planning
-              </Link>
-              <Link
-                to="/services"
-                className="button-secondary"
-                onClick={() => trackEvent('cta_click', { label: 'View trip types', location: 'home_hero' })}
-              >
-                Explore trip types
-              </Link>
-            </div>
-            <p className="hero-kicker">Planning should feel exciting from the first conversation, not overwhelming.</p>
-            <div className="hero-inline-points">
-              {proofPoints.slice(0, 3).map((item) => (
-                <span key={item}>{item}</span>
-              ))}
-            </div>
-          </div>
+        <div className="shell hero-shell">
+          <div className="hero-frame">
+            <div className="hero-canvas">
+              <div className="hero-canvas-copy">
+                <p className="eyebrow">Vixie Dust Travel</p>
+                <h1 id="hero-title">A more magical way to plan the family trip everyone will remember.</h1>
+                <p className="hero-subtitle hero-subtitle--atelier">
+                  Disney vacations, cruises, and sun-soaked getaways designed with thoughtful guidance, beautiful
+                  details, and a calmer path from first idea to booked adventure.
+                </p>
+              </div>
 
-          <aside className="hero-keepsake">
-            <div className="hero-keepsake-art" aria-hidden="true">
-              <div className="hero-mascot-aura" />
-              <img src="/logo-3.png" alt="" className="hero-mascot" />
-              <span className="hero-mascot-spark hero-mascot-spark--one">✦</span>
-              <span className="hero-mascot-spark hero-mascot-spark--two">✦</span>
-            </div>
-            <p className="panel-label">Boutique planning</p>
-            <p className="hero-keepsake-copy">
-              Warm support, thoughtful recommendations, and a planning experience that feels personal from the very
-              start.
-            </p>
-          </aside>
-        </div>
-      </section>
+              <div className="hero-crest" aria-hidden="true">
+                <img src="/logo-3.png" alt="" className="hero-crest-fox" />
+              </div>
 
-      <section className="section proof-ribbon">
-        <div className="shell proof-ribbon-card">
-          <p className="eyebrow">Why families are drawn here</p>
-          <div className="proof-ribbon-points">
-            {proofPoints.map((item) => (
-              <span key={item}>{item}</span>
-            ))}
+              <div className="hero-caption">
+                <span>Storybook planning for dreamy family escapes</span>
+              </div>
+            </div>
+
+            <div className="hero-manifesto">
+              <div className="hero-manifesto-copy">
+                <p className="eyebrow">Boutique planning experience</p>
+                <h2>Graceful guidance, warm support, and just enough pixie dust.</h2>
+                <p>
+                  Vixie Dust Travels helps families feel looked after, inspired, and genuinely excited while the trip
+                  comes together.
+                </p>
+                <div className="hero-actions">
+                  <Link
+                    to="/inquire"
+                    className="button-primary"
+                    onClick={() => trackEvent('cta_click', { label: 'Start inquiry route', location: 'home_hero' })}
+                  >
+                    Start planning
+                  </Link>
+                  <Link
+                    to="/services"
+                    className="button-secondary"
+                    onClick={() => trackEvent('cta_click', { label: 'View trip types', location: 'home_hero' })}
+                  >
+                    Explore trip types
+                  </Link>
+                </div>
+              </div>
+
+              <div className="hero-manifesto-points">
+                {proofPoints.map((item) => (
+                  <span key={item}>{item}</span>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="section section-signature">
+      <section className="section chapter-intro">
+        <div className="shell chapter-intro-shell">
+          <div className="chapter-copy">
+            <p className="eyebrow">Welcome</p>
+            <h2>{brandWelcome.title}</h2>
+            <p className="welcome-lead">{brandWelcome.lead}</p>
+            <p>{brandWelcome.body}</p>
+          </div>
+          <div className="chapter-ornament" aria-hidden="true">
+            <span />
+            <span />
+            <span />
+          </div>
+        </div>
+      </section>
+
+      <section className="section section-signature section-signature--atelier">
         <div className="shell">
-          <div className="signature-head">
+          <div className="signature-head signature-head--atelier">
             <div className="section-head">
               <p className="eyebrow">Signature vacations</p>
-              <h2>Choose the kind of magic that fits your family best.</h2>
+              <h2>Choose the kind of magic that suits your season.</h2>
               <p>
-                Whether you are picturing park days, sail-away sunsets, or warm-weather downtime, we help turn the
-                idea into a trip that feels beautifully thought through.
+                From castle-day wonder to ocean breezes to warm-weather ease, each vacation type is planned with a
+                softer, more personal touch.
               </p>
             </div>
-            <div className="signature-note">
-              <p>Every recommendation is shaped around pace, budget, family style, and the memories you want to make.</p>
+            <div className="signature-note signature-note--atelier">
+              <p>Not one-size-fits-all. Not rushed. Just thoughtful recommendations shaped around your family.</p>
             </div>
           </div>
 
-          <div className="signature-grid">
+          <div className="signature-grid signature-grid--atelier">
             {specialties.map((item) => (
-              <article key={item.title} className="signature-card">
+              <article key={item.title} className="signature-card signature-card--atelier">
                 <div className={`signature-card-top signature-card-top--${item.visual}`} aria-hidden="true">
                   <div className={`signature-icon signature-icon--${item.visual}`} />
                 </div>
@@ -116,7 +126,7 @@ export function HomePage() {
                       <li key={bullet}>{bullet}</li>
                     ))}
                   </ul>
-                  <Link to="/services" className="button-primary button-card">
+                  <Link to="/services" className="button-secondary button-card">
                     Explore this trip type
                   </Link>
                 </div>
@@ -126,65 +136,81 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="section">
-        <div className="shell editorial-grid">
-          <article className="editorial-card editorial-card--story">
-            <p className="eyebrow">Welcome</p>
-            <h2>{brandWelcome.title}</h2>
-            <p className="welcome-lead">{brandWelcome.lead}</p>
-            <p>{brandWelcome.body}</p>
-            <div className="hero-actions">
-              <Link to="/about" className="button-secondary">
-                Meet Vixie Dust Travels
-              </Link>
-              <Link to="/inquire" className="button-primary">
-                Plan your trip
-              </Link>
+      <section className="section editorial-panel-section">
+        <div className="shell editorial-panel-grid">
+          <article className="editorial-panel editorial-panel--ivory">
+            <p className="eyebrow">What it feels like</p>
+            <h2>Planning that feels lighter, sweeter, and much less overwhelming.</h2>
+            <div className="editorial-pillars">
+              {planningPillars.map((item, index) => (
+                <article key={item.title} className="editorial-pillar">
+                  <strong>0{index + 1}</strong>
+                  <div>
+                    <h3>{item.title}</h3>
+                    <p>{item.detail}</p>
+                  </div>
+                </article>
+              ))}
             </div>
           </article>
 
-          <div className="editorial-stack">
-            {planningPillars.map((item, index) => (
-              <article key={item.title} className="editorial-mini-card">
-                <strong>0{index + 1}</strong>
-                <div>
+          <article className="editorial-panel editorial-panel--mist">
+            <p className="eyebrow">Why families choose Vixie Dust</p>
+            <h2>A fresh advisor can still deliver an incredibly thoughtful experience.</h2>
+            <div className="trust-grid trust-grid--atelier">
+              {trustWithoutTestimonials.map((item) => (
+                <article key={item.title} className="info-card trust-card trust-card--atelier">
                   <h3>{item.title}</h3>
                   <p>{item.detail}</p>
-                </div>
-              </article>
-            ))}
+                </article>
+              ))}
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section className="section story-spread">
+        <div className="shell story-spread-shell">
+          <div className="story-spread-visual" aria-hidden="true">
+            <div className="story-visual-frame story-visual-frame--tall">
+              <img src="/hero-2.png" alt="" />
+            </div>
+            <div className="story-visual-frame story-visual-frame--small">
+              <img src="/card-bg.png" alt="" />
+            </div>
+          </div>
+
+          <div className="story-spread-copy">
+            <p className="eyebrow">How it works</p>
+            <h2>A clear little path from wishful thinking to real plans.</h2>
+            <div className="process-river process-river--atelier">
+              {planningProcess.map((item) => (
+                <article key={item.title} className="process-card process-card--atelier">
+                  <p className="eyebrow">Step</p>
+                  <h2>{item.title}</h2>
+                  <p>{item.description}</p>
+                </article>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="section section-highlight">
-        <div className="shell">
+      <section className="section section-contrast section-contrast--atelier">
+        <div className="shell atelier-value-shell">
           <div className="section-head section-head--centered">
-            <p className="eyebrow">Why families choose Vixie Dust</p>
-            <h2>All the reassurance of expert help, with a warmer and more personal feel.</h2>
-            <p>
-              Because she is new, the trust strategy here is simple: thoughtful care, clear communication, and a
-              planning process that never makes families feel like a number.
-            </p>
+            <p className="eyebrow">What support looks like</p>
+            <h2>Practical help, elegant presentation, and room for real excitement.</h2>
           </div>
 
-          <div className="trust-grid trust-grid--editorial">
-            {trustWithoutTestimonials.map((item) => (
-              <article key={item.title} className="info-card trust-card">
-                <h3>{item.title}</h3>
-                <p>{item.detail}</p>
-              </article>
-            ))}
-          </div>
-
-          <div className="value-grid value-grid--editorial">
+          <div className="value-grid value-grid--atelier">
             {revenueStreams.map((item) => (
-              <article key={item.title} className="feature-card">
+              <article key={item.title} className="feature-card feature-card--atelier">
                 <h3>{item.title}</h3>
                 <p>{item.detail}</p>
               </article>
             ))}
-            <article className="value-panel">
+            <article className="value-panel value-panel--atelier">
               <p className="eyebrow">What families often need most</p>
               <ul className="offer-list">
                 {advisorValue.map((item) => (
@@ -196,41 +222,22 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="section">
-        <div className="shell">
-          <div className="section-head section-head--centered">
-            <p className="eyebrow">How it works</p>
-            <h2>A simple path from “we should take a trip” to “we’re actually going.”</h2>
-            <p>You do not need a perfect plan before you inquire. You just need the spark of an idea.</p>
-          </div>
-          <div className="process-river process-river--editorial">
-            {planningProcess.map((item) => (
-              <article key={item.title} className="process-card">
-                <p className="eyebrow">Step</p>
-                <h2>{item.title}</h2>
-                <p>{item.description}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section section-contrast">
-        <div className="shell split-layout split-layout--shop">
-          <div className="shop-story shop-story--editorial">
+      <section className="section atelier-shop">
+        <div className="shell atelier-shop-shell">
+          <div className="shop-story shop-story--atelier">
             <p className="eyebrow">The Vixie shop</p>
-            <h2>A playful little extension of the brand, ready for countdowns and park days.</h2>
+            <h2>Playful little keepsakes for countdowns, park days, and memory making.</h2>
             <p className="section-copy">
-              The shop adds a little extra fun to the journey with travel-inspired keepsakes, trip-ready goodies, and
-              playful extras that make the lead-up feel part of the magic.
+              The shop should feel like part of the world: a soft extra layer of fun for families who want the journey
+              to feel magical before they ever pack a bag.
             </p>
             <Link to="/shop" className="button-secondary">
               Explore the shop
             </Link>
           </div>
-          <div className="card-grid merch-grid">
+          <div className="card-grid merch-grid merch-grid--atelier">
             {merchIdeas.map((item) => (
-              <article key={item.title} className="merch-card">
+              <article key={item.title} className="merch-card merch-card--atelier">
                 <span className="pill">{item.price}</span>
                 <h3>{item.title}</h3>
                 <p>{item.description}</p>
@@ -241,12 +248,12 @@ export function HomePage() {
       </section>
 
       <section className="section">
-        <div className="shell callout-card callout-card--finale">
+        <div className="shell callout-card callout-card--finale callout-card--atelier">
           <p className="eyebrow">Ready when you are</p>
-          <h2>Your family’s next favorite memory can start with one easy conversation.</h2>
+          <h2>Your family’s next favorite memory can begin with one lovely little conversation.</h2>
           <p>
-            Whether you already know where you want to go or you are still choosing between a few dreamy possibilities,
-            Vixie Dust Travels is here to help make the next step feel simple.
+            Whether you already know where you want to go or you are still narrowing it down, Vixie Dust Travels is
+            here to make the next step feel calm, beautiful, and easy to begin.
           </p>
           <div className="hero-actions">
             <Link to="/inquire" className="button-primary">
