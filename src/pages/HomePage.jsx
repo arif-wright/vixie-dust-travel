@@ -2,6 +2,12 @@ import { Link } from 'react-router-dom'
 import { trackEvent } from '../lib/analytics'
 import { brandWelcome, planningPillars, specialties } from '../siteData'
 
+const specialtyImages = {
+  castle: '/disney.png',
+  ship: '/cruise.png',
+  palms: '/getaway.png',
+}
+
 export function HomePage() {
   return (
     <main className="home-storybook">
@@ -72,6 +78,11 @@ export function HomePage() {
             {specialties.map((item) => (
               <article key={item.title} className="signature-card storybook-signature-card">
                 <div className={`signature-card-top signature-card-top--${item.visual}`} aria-hidden="true">
+                  <img
+                    src={specialtyImages[item.visual]}
+                    alt=""
+                    className="storybook-card-photo"
+                  />
                   <div className={`signature-icon signature-icon--${item.visual}`} />
                 </div>
                 <div className="signature-cloud-row" aria-hidden="true">
