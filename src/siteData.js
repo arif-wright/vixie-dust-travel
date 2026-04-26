@@ -24,17 +24,10 @@ export const specialties = [
 
 export const brandWelcome = {
   title: 'Welcome to Vixie Dust Travels',
-  lead: 'Planning unforgettable vacations should feel exciting, not exhausting.',
+  lead: 'The best family vacations start with excitement, not information overload.',
   body:
-    'At Vixie Dust Travels, we help families plan magical getaways with thoughtful guidance, personal service, and a little extra pixie dust along the way. From theme parks to cruises to sunny escapes, we are here to make the process feel easier from the very first idea to the day you leave.',
+    'At Vixie Dust Travels, we help families plan beautiful getaways with thoughtful guidance, personal care, and a playful sense of wonder. From theme parks to cruises to sunny escapes, the goal is simple: make the planning season feel lighter, sweeter, and a lot more magical.',
 }
-
-export const whimsicalCritters = [
-  { icon: '🦋', label: 'Butterfly', className: 'whimsy-critter--butterfly' },
-  { icon: '🐦', label: 'Bluebird', className: 'whimsy-critter--bird' },
-  { icon: '✨', label: 'Sparkle', className: 'whimsy-critter--sparkle' },
-  { icon: '🪄', label: 'Magic wand', className: 'whimsy-critter--wand' },
-]
 
 export const revenueStreams = [
   {
@@ -109,10 +102,10 @@ export const faqs = [
 ]
 
 export const proofPoints = [
-  'Personalized vacation planning',
-  'Friendly, responsive support',
-  'Family-focused travel guidance',
-  'Magical touches along the way',
+  'Boutique planning support',
+  'Family-first recommendations',
+  'Friendly, responsive communication',
+  'Whimsical details with real substance',
 ]
 
 export const planningPillars = [
@@ -134,7 +127,7 @@ export const newClientPromise = [
   'A real person who listens before recommending',
   'Research tailored to your dates, budget, and travel style',
   'Clear next steps instead of information overload',
-  'A planning experience that feels warm, playful, and personal',
+  'A planning experience that feels warm, polished, and personal',
 ]
 
 export const trustWithoutTestimonials = [
