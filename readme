@@ -26,6 +26,7 @@ What is live in code now
 - CRM helper in `src/lib/crm.js` with Supabase support and local fallback
 - Dev-only CRM preview for validating the intake flow
 - Starter Supabase schema in `supabase/schema.sql`
+- Admin route with Supabase email/password sign-in for private lead review
 
 Environment setup
 -----------------
@@ -103,3 +104,9 @@ Success metrics
 - Email signup rate
 - Repeat booking rate
 - Merch attach rate per booked client
+
+Admin workflow
+--------------
+- Public site visitors can submit inquiries anonymously
+- Advisors can sign in through the `/admin` route using Supabase email/password auth
+- Authenticated users can read and update lead stages

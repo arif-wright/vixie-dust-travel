@@ -35,3 +35,11 @@ on public.leads
 for select
 to authenticated
 using (true);
+
+drop policy if exists "authenticated users can update leads" on public.leads;
+create policy "authenticated users can update leads"
+on public.leads
+for update
+to authenticated
+using (true)
+with check (true);

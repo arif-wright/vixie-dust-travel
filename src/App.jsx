@@ -1,6 +1,7 @@
 import { createHashRouter, RouterProvider } from 'react-router-dom'
 import { SiteLayout } from './components/SiteLayout'
 import { AboutPage } from './pages/AboutPage'
+import { AdminPage } from './pages/AdminPage'
 import { HomePage } from './pages/HomePage'
 import { InquiryPage } from './pages/InquiryPage'
 import { ResourcesPage } from './pages/ResourcesPage'
@@ -14,6 +15,7 @@ const router = createHashRouter([
     children: [
       { index: true, element: <HomePage /> },
       { path: 'about', element: <AboutPage /> },
+      { path: 'admin', element: <AdminPage /> },
       { path: 'services', element: <ServicesPage /> },
       { path: 'shop', element: <ShopPage /> },
       { path: 'resources', element: <ResourcesPage /> },

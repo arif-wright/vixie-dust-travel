@@ -8,6 +8,7 @@ const navItems = [
   { to: '/shop', label: 'Shop' },
   { to: '/resources', label: 'Resources' },
   { to: '/inquire', label: 'Inquire' },
+  { to: '/admin', label: 'Admin' },
 ]
 
 export function SiteLayout() {

@@ -8,8 +8,11 @@ export function InquiryForm() {
   const [submitState, setSubmitState] = useState('idle')
   const [leads, setLeads] = useState([])
   const [errorMessage, setErrorMessage] = useState('')
+  const showDevPreview = import.meta.env.DEV
 
   useEffect(() => {
+    if (!showDevPreview) return undefined
+
     let active = true
 
     async function loadLeads() {
@@ -22,7 +25,7 @@ export function InquiryForm() {
     return () => {
       active = false
     }
-  }, [])
+  }, [showDevPreview])
 
   const crmSummary = useMemo(() => {
     const merchInterested = leads.filter((lead) => lead.merchInterest === 'Yes').length
@@ -152,7 +155,7 @@ export function InquiryForm() {
         {submitState === 'error' ? <p className="form-error">{errorMessage}</p> : null}
       </form>
 
-      {import.meta.env.DEV ? (
+      {showDevPreview ? (
         <section className="section dev-console">
           <div className="section-head">
             <p className="eyebrow">Dev-only CRM preview</p>

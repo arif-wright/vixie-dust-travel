@@ -67,8 +67,15 @@ function saveLocalLeads(leads) {
   window.localStorage.setItem(STORAGE_KEY, JSON.stringify(leads))
 }
 
-export async function getLeads() {
-  if (!supabase) return getLocalLeads()
+export async function getLeads(options = {}) {
+  const { requireRemote = false } = options
+
+  if (!supabase) {
+    if (requireRemote) {
+      throw new Error('Supabase is not configured.')
+    }
+    return getLocalLeads()
+  }
 
   const { data, error } = await supabase
     .from('leads')
@@ -77,6 +84,9 @@ export async function getLeads() {
 
   if (error) {
     console.error('[crm] failed to load leads from supabase', error)
+    if (requireRemote) {
+      throw new Error(error.message || 'Unable to load leads from Supabase.')
+    }
     return getLocalLeads()
   }
 
@@ -101,6 +111,29 @@ export async function createLead(payload) {
   if (error) {
     console.error('[crm] failed to save lead to supabase', error)
     throw error
+  }
+
+  return normalizeLead(data)
+}
+
+export async function updateLeadStage(id, stage) {
+  if (!supabase) {
+    const leads = getLocalLeads()
+    const nextLeads = leads.map((lead) => (lead.id === id ? { ...lead, stage } : lead))
+    saveLocalLeads(nextLeads)
+    return nextLeads.find((lead) => lead.id === id) ?? null
+  }
+
+  const { data, error } = await supabase
+    .from('leads')
+    .update({ stage })
+    .eq('id', id)
+    .select()
+    .single()
+
+  if (error) {
+    console.error('[crm] failed to update lead stage', error)
+    throw new Error(error.message || 'Unable to update lead stage.')
   }
 
   return normalizeLead(data)

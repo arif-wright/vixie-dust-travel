@@ -1074,6 +1074,12 @@ summary:focus-visible {
   margin: 1rem 0;
 }
 
+.toolbar-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
 .crm-toolbar p {
   margin: 0;
   color: var(--ink-soft);
@@ -1112,6 +1118,48 @@ summary:focus-visible {
 
 .empty-state {
   color: var(--ink-soft);
+}
+
+.admin-auth-card {
+  max-width: 38rem;
+  padding: 1.5rem;
+  border-radius: 30px;
+  border: 1px solid rgba(235, 217, 219, 0.95);
+  background: rgba(255, 252, 248, 0.9);
+  box-shadow: var(--shadow);
+}
+
+.admin-auth-card h2 {
+  margin: 0;
+  font-family: 'Fraunces', serif;
+  font-size: clamp(1.9rem, 4vw, 3rem);
+  line-height: 1.04;
+}
+
+.admin-auth-card p {
+  color: var(--ink-soft);
+  line-height: 1.56;
+}
+
+.admin-auth-form {
+  margin-top: 1rem;
+}
+
+.admin-auth-form label {
+  display: grid;
+  gap: 0.42rem;
+  font-weight: 700;
+  color: #593848;
+}
+
+.admin-auth-form input,
+.stage-select {
+  width: 100%;
+  padding: 0.82rem 0.9rem;
+  border-radius: 16px;
+  border: 1px solid rgba(215, 182, 188, 0.9);
+  background: #fff;
+  color: var(--ink);
 }
 
 .site-footer {
