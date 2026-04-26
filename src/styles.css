@@ -199,6 +199,48 @@ button {
   background-position: center;
 }
 
+.hero-whimsy {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.whimsy-critter {
+  position: absolute;
+  z-index: 1;
+  opacity: 0.92;
+  filter: drop-shadow(0 8px 18px rgba(113, 66, 85, 0.14));
+}
+
+.whimsy-critter--butterfly {
+  left: 5%;
+  top: 20%;
+  font-size: 1.8rem;
+  animation: whimsy-butterfly 16s ease-in-out infinite;
+}
+
+.whimsy-critter--bird {
+  right: 8%;
+  top: 16%;
+  font-size: 1.6rem;
+  animation: whimsy-bird 18s linear infinite;
+}
+
+.whimsy-critter--sparkle {
+  left: 18%;
+  bottom: 18%;
+  font-size: 1.4rem;
+  animation: whimsy-sparkle 7s ease-in-out infinite;
+}
+
+.whimsy-critter--wand {
+  right: 18%;
+  bottom: 22%;
+  font-size: 1.5rem;
+  animation: whimsy-wand 10s ease-in-out infinite;
+}
+
 .hero-content {
   position: relative;
   z-index: 1;
@@ -385,6 +427,10 @@ summary:focus-visible {
 .stack-list li + li,
 .info-card li + li {
   margin-top: 0.72rem;
+}
+
+.offer-list--compact {
+  margin-top: 1.15rem;
 }
 
 .offer-list li::before,
@@ -896,6 +942,53 @@ summary:focus-visible {
     linear-gradient(180deg, #fffefd 0%, #fff6f8 100%);
 }
 
+@keyframes whimsy-butterfly {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) rotate(-6deg);
+  }
+  25% {
+    transform: translate3d(22px, -18px, 0) rotate(8deg);
+  }
+  50% {
+    transform: translate3d(54px, 12px, 0) rotate(-4deg);
+  }
+  75% {
+    transform: translate3d(18px, 26px, 0) rotate(10deg);
+  }
+}
+
+@keyframes whimsy-bird {
+  0% {
+    transform: translate3d(0, 0, 0) scale(0.96);
+  }
+  50% {
+    transform: translate3d(-110px, 20px, 0) scale(1.05);
+  }
+  100% {
+    transform: translate3d(-220px, -8px, 0) scale(0.96);
+  }
+}
+
+@keyframes whimsy-sparkle {
+  0%, 100% {
+    transform: scale(0.95);
+    opacity: 0.55;
+  }
+  50% {
+    transform: scale(1.18) rotate(10deg);
+    opacity: 1;
+  }
+}
+
+@keyframes whimsy-wand {
+  0%, 100% {
+    transform: translateY(0) rotate(-4deg);
+  }
+  50% {
+    transform: translateY(-14px) rotate(7deg);
+  }
+}
+
 .section-highlight {
   background:
     linear-gradient(180deg, #fff7f1 0%, #fffefb 100%);
@@ -936,6 +1029,13 @@ summary:focus-visible {
   max-width: 48rem;
   color: var(--ink-soft);
   line-height: 1.58;
+}
+
+.callout-card--finale {
+  background:
+    radial-gradient(circle at 20% 20%, rgba(244, 206, 110, 0.22), transparent 22%),
+    radial-gradient(circle at 80% 30%, rgba(223, 198, 255, 0.18), transparent 24%),
+    rgba(255, 252, 248, 0.94);
 }
 
 .contact-section {
@@ -1276,6 +1376,11 @@ summary:focus-visible {
     gap: 0.55rem;
   }
 
+  .whimsy-critter--bird,
+  .whimsy-critter--wand {
+    display: none;
+  }
+
   .hero {
     padding-top: 2rem;
   }
@@ -1308,6 +1413,10 @@ summary:focus-visible {
 
   .pointer-sparkle-layer {
     display: none;
+  }
+
+  .whimsy-critter {
+    animation: none;
   }
 
   .signature-card,

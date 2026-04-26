@@ -30,6 +30,17 @@ export function AboutPage() {
           </article>
         </div>
       </section>
+
+      <section className="section section-highlight">
+        <div className="shell callout-card">
+          <p className="eyebrow">The Vixie feeling</p>
+          <h2>Whimsical on purpose. Helpful where it matters.</h2>
+          <p>
+            We believe a travel brand can feel playful and polished at the same time. That means real support, warm
+            communication, and a planning experience that still leaves room for wonder.
+          </p>
+        </div>
+      </section>
     </main>
   )
 }

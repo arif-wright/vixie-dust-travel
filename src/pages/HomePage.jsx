@@ -1,21 +1,40 @@
 import { Link } from 'react-router-dom'
 import { trackEvent } from '../lib/analytics'
-import { brandWelcome, merchIdeas, planningPillars, proofPoints, revenueStreams, specialties } from '../siteData'
+import {
+  advisorValue,
+  brandWelcome,
+  merchIdeas,
+  newClientPromise,
+  planningPillars,
+  planningProcess,
+  proofPoints,
+  revenueStreams,
+  specialties,
+  trustWithoutTestimonials,
+  whimsicalCritters,
+} from '../siteData'
 
 export function HomePage() {
   return (
     <main>
       <section className="hero" aria-labelledby="hero-title">
         <div className="hero-backdrop" aria-hidden="true" />
+        <div className="hero-whimsy" aria-hidden="true">
+          {whimsicalCritters.map((item) => (
+            <span key={item.label} className={`whimsy-critter ${item.className}`}>
+              {item.icon}
+            </span>
+          ))}
+        </div>
         <div className="hero-content shell">
           <div className="hero-copy">
             <p className="eyebrow">Magical vacations made simple</p>
             <h1 id="hero-title">
-              Helping families plan unforgettable vacations with less stress and more magic.
+              Whimsical, memory-filled vacations planned with heart.
             </h1>
             <p className="hero-subtitle">
-              From Disney vacations and cruises to sunny getaways, Vixie Dust Travels is here to make planning feel
-              easier, more personal, and a whole lot more fun.
+              From Disney dreams and family cruises to sunny escapes, Vixie Dust Travels helps turn “we should plan a
+              trip” into “we cannot wait to go.”
             </p>
             <div className="hero-actions">
               <Link
@@ -26,11 +45,11 @@ export function HomePage() {
                 Start planning
               </Link>
               <Link
-                to="/shop"
+                to="/services"
                 className="button-secondary"
-                onClick={() => trackEvent('cta_click', { label: 'View merch route', location: 'home_hero' })}
+                onClick={() => trackEvent('cta_click', { label: 'View trip types', location: 'home_hero' })}
               >
-                Visit the shop
+                Explore trip types
               </Link>
             </div>
             <div className="hero-metrics">
@@ -44,12 +63,11 @@ export function HomePage() {
           </div>
 
           <aside className="hero-panel">
-            <p className="panel-label">Why families choose us</p>
+            <p className="panel-label">New client promise</p>
             <ul className="offer-list">
-              <li>Personalized trip recommendations</li>
-              <li>Family-friendly planning support</li>
-              <li>Guidance from first ideas to final details</li>
-              <li>Travel-inspired extras in the Vixie shop</li>
+              {newClientPromise.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
             </ul>
             <div className="hero-note">
               <p>Specialties</p>
@@ -139,20 +157,37 @@ export function HomePage() {
       <section className="section">
         <div className="shell">
           <div className="section-head">
-            <p className="eyebrow">Our planning style</p>
-            <h2>Thoughtful support for every step of the journey</h2>
-            <p>We believe vacation planning should feel clear, exciting, and centered around the people traveling.</p>
+            <p className="eyebrow">Why work with a travel advisor</p>
+            <h2>You bring the dream. We help shape the details.</h2>
+            <p>
+              Planning support is not about taking the fun out of travel. It is about making the decisions easier and
+              the experience feel more exciting from the start.
+            </p>
           </div>
           <div className="card-grid three-up">
-            {specialties.map((item) => (
-              <article key={`${item.title}-strategy`} className="info-card">
+            {trustWithoutTestimonials.map((item) => (
+              <article key={item.title} className="info-card">
                 <h3>{item.title}</h3>
+                <p>{item.detail}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section section-highlight">
+        <div className="shell">
+          <div className="section-head">
+            <p className="eyebrow">How it works</p>
+            <h2>A planning process that feels easy to follow and fun to be part of</h2>
+            <p>You do not need to have every detail figured out before reaching out. We can help from the very beginning.</p>
+          </div>
+          <div className="process-grid">
+            {planningProcess.map((item) => (
+              <article key={item.title} className="process-card">
+                <p className="eyebrow">{item.title}</p>
+                <h2>{item.title}</h2>
                 <p>{item.description}</p>
-                <ul>
-                  {item.bullets.map((bullet) => (
-                    <li key={bullet}>{bullet}</li>
-                  ))}
-                </ul>
               </article>
             ))}
           </div>
@@ -189,6 +224,11 @@ export function HomePage() {
             <Link to="/shop" className="button-secondary">
               Explore the shop
             </Link>
+            <ul className="offer-list offer-list--compact">
+              {advisorValue.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
           </div>
           <div className="card-grid merch-grid">
             {merchIdeas.map((item) => (
@@ -198,6 +238,25 @@ export function HomePage() {
                 <p>{item.description}</p>
               </article>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="shell callout-card callout-card--finale">
+          <p className="eyebrow">Ready when you are</p>
+          <h2>Let’s plan something magical together.</h2>
+          <p>
+            Whether you already know exactly where you want to go or you are still deciding between a few dreamy ideas,
+            Vixie Dust Travels is here to help you take the next step.
+          </p>
+          <div className="hero-actions">
+            <Link to="/inquire" className="button-primary">
+              Start your inquiry
+            </Link>
+            <Link to="/services" className="button-secondary">
+              See our services
+            </Link>
           </div>
         </div>
       </section>

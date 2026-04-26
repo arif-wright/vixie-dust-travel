@@ -29,6 +29,13 @@ export const brandWelcome = {
     'At Vixie Dust Travels, we help families plan magical getaways with thoughtful guidance, personal service, and a little extra pixie dust along the way. From theme parks to cruises to sunny escapes, we are here to make the process feel easier from the very first idea to the day you leave.',
 }
 
+export const whimsicalCritters = [
+  { icon: '🦋', label: 'Butterfly', className: 'whimsy-critter--butterfly' },
+  { icon: '🐦', label: 'Bluebird', className: 'whimsy-critter--bird' },
+  { icon: '✨', label: 'Sparkle', className: 'whimsy-critter--sparkle' },
+  { icon: '🪄', label: 'Magic wand', className: 'whimsy-critter--wand' },
+]
+
 export const revenueStreams = [
   {
     title: 'Personalized Planning',
@@ -110,17 +117,68 @@ export const proofPoints = [
 
 export const planningPillars = [
   {
-    title: 'Plan with care',
-    detail: 'Trips are tailored to your family, your style, and your budget.',
+    title: 'Thoughtful recommendations',
+    detail: 'Ideas shaped around your family, your style, and your budget.',
   },
   {
-    title: 'Travel with confidence',
-    detail: 'You get support and guidance that help the details feel much less stressful.',
+    title: 'Less planning stress',
+    detail: 'Helpful guidance that makes the details feel lighter and easier to manage.',
   },
   {
-    title: 'Make lasting memories',
-    detail: 'The goal is simple: more joy, more wonder, and more time together.',
+    title: 'More room for wonder',
+    detail: 'More time to focus on the memories you are about to make together.',
   },
+]
+
+export const newClientPromise = [
+  'A real person who listens before recommending',
+  'Research tailored to your dates, budget, and travel style',
+  'Clear next steps instead of information overload',
+  'A planning experience that feels warm, playful, and personal',
+]
+
+export const trustWithoutTestimonials = [
+  {
+    title: 'Boutique attention',
+    detail:
+      'Because this business is growing, every inquiry gets thoughtful, hands-on attention instead of feeling rushed through a system.',
+  },
+  {
+    title: 'Fresh eyes, careful planning',
+    detail:
+      'Every recommendation is built around fit, value, and family experience, not just what is easiest to sell.',
+  },
+  {
+    title: 'Friendly communication',
+    detail:
+      'Questions are welcome here. The goal is to make the process feel supportive, clear, and enjoyable from the beginning.',
+  },
+]
+
+export const planningProcess = [
+  {
+    title: 'Dream',
+    description: 'You share the trip you are imagining, the people traveling, and the kind of memories you want to make.',
+  },
+  {
+    title: 'Design',
+    description: 'We narrow the options, compare the best-fit choices, and shape a plan that feels right for your family.',
+  },
+  {
+    title: 'Book',
+    description: 'Once you are ready, we move forward with confidence and keep the details feeling organized and manageable.',
+  },
+  {
+    title: 'Celebrate',
+    description: 'From countdown excitement to travel-day magic, the whole journey should feel a little more special.',
+  },
+]
+
+export const advisorValue = [
+  'Help narrowing down resorts, routes, and vacation styles',
+  'Guidance for first-time Disney and cruise travelers',
+  'Family-friendly pacing and practical planning help',
+  'A more joyful path from “where do we start?” to “we are booked”',
 ]
 
 export const servicePackages = [
