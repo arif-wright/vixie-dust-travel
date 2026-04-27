@@ -59,12 +59,14 @@ export function SiteLayout() {
       <div ref={pointerTrailRef} className="pointer-sparkle-layer" aria-hidden="true" />
 
       <header className="topbar">
-        <NavLink to="/" className="brand-lockup">
-          <img src="/logo-face.svg" alt="" aria-hidden="true" className="brand-mark" />
-          <div>
-            <span className="brand-name">Vixie Dust Travel</span>
-            <span className="brand-tag">Disney, cruises, sunshine, and a little pixie dust</span>
-          </div>
+        <NavLink to="/" className="brand-logo" aria-label="Vixie Dust Travels Home">
+          <span className="brand-text">
+            <span className="brand-main">Vixie Dust</span>
+            <span className="brand-sub">TRAVELS</span>
+          </span>
+          <span className="brand-wand" aria-hidden="true">
+            ✦
+          </span>
         </NavLink>
 
         <nav className="topnav" aria-label="Primary">
