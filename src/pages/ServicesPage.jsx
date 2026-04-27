@@ -3,20 +3,26 @@ import { servicePackages } from '../siteData'
 
 export function ServicesPage() {
   return (
-    <main className="page-main">
-      <section className="page-hero shell">
+    <main className="page-main storybook-subpage">
+      <section className="page-hero shell storybook-page-hero">
         <p className="eyebrow">Services</p>
-        <h1>Each service page should answer “is she the right planner for my exact kind of trip?”</h1>
+        <h1>Vacation planning for the kinds of trips families ask for most.</h1>
         <p>
-          That clarity is one of the biggest levers for better lead quality. These offers are framed to help the client
-          recognize themselves immediately.
+          Whether you are dreaming of Disney, a cruise, or a sunny escape, each planning path is designed to feel
+          personal, clear, and easy to say yes to.
         </p>
       </section>
+
+      <div className="storybook-divider" aria-hidden="true">
+        <span className="storybook-divider-line" />
+        <span className="storybook-divider-burst">✦</span>
+        <span className="storybook-divider-line" />
+      </div>
 
       <section className="section">
         <div className="shell card-grid three-up">
           {servicePackages.map((item) => (
-            <article key={item.title} className="info-card">
+            <article key={item.title} className="info-card storybook-panel">
               <h3>{item.title}</h3>
               <p>{item.description}</p>
               <ul>
@@ -30,12 +36,12 @@ export function ServicesPage() {
       </section>
 
       <section className="section section-highlight">
-        <div className="shell callout-card">
-          <p className="eyebrow">Conversion path</p>
-          <h2>Every service page should end with a direct, low-friction next step.</h2>
+        <div className="shell callout-card callout-card--atelier">
+          <p className="eyebrow">Next step</p>
+          <h2>Tell us what kind of trip you are dreaming about, and we’ll help shape the details.</h2>
           <p>
-            Explain who the offer is for, what support looks like, and how quickly she responds once the inquiry comes
-            in. People convert faster when they can picture the first interaction.
+            You do not need every detail figured out before you inquire. A destination, a season, or even a rough idea
+            is enough to get started.
           </p>
           <Link to="/inquire" className="button-primary">
             Start an inquiry

@@ -1,34 +1,47 @@
 import { InquiryForm } from '../components/InquiryForm'
-import { faqs, siteMap } from '../siteData'
+import { faqs } from '../siteData'
+
+const inquiryExpectations = [
+  'A real person will review your trip details',
+  'Recommendations can be shaped around your budget and travel style',
+  'You do not need every detail figured out before reaching out',
+  'This helps make the next conversation more thoughtful and useful',
+]
 
 export function InquiryPage() {
   return (
-    <main className="page-main">
-      <section className="page-hero shell">
-        <p className="eyebrow">Inquiry funnel</p>
-        <h1>Replace email-only outreach with a form that qualifies and organizes every lead.</h1>
+    <main className="page-main storybook-subpage">
+      <section className="page-hero shell storybook-page-hero">
+        <p className="eyebrow">Inquire</p>
+        <h1>Tell us a little about your dream trip, and we’ll help you take the next step.</h1>
         <p>
-          This is the bridge from pretty website to real business system. It gives her better information, faster
-          follow-up, and cleaner lead handling from day one.
+          Whether you already know where you want to go or you are still choosing between a few magical ideas, this is
+          the easiest place to begin.
         </p>
       </section>
 
+      <div className="storybook-divider" aria-hidden="true">
+        <span className="storybook-divider-line" />
+        <span className="storybook-divider-burst">✦</span>
+        <span className="storybook-divider-line" />
+      </div>
+
       <section className="section">
         <div className="shell inquiry-layout">
-          <div className="contact-copy">
-            <p className="eyebrow">Why this matters</p>
-            <h2>A better inquiry page creates better clients.</h2>
+          <div className="contact-copy storybook-panel">
+            <p className="eyebrow">What happens next</p>
+            <h2>A few details now makes the planning feel much easier later.</h2>
             <p>
-              Good lead capture reduces back-and-forth, surfaces trip type and budget sooner, and creates a natural
-              place to ask about merch interest for future upsells.
+              Share the basics of what you are picturing, and Vixie Dust Travels can come back with more thoughtful
+              ideas, better-fit recommendations, and a clearer next step.
             </p>
             <div className="mini-stats">
-              <span>Better lead qualification</span>
-              <span>Cleaner follow-up</span>
-              <span>Merch upsell signal</span>
+              <span>Thoughtful follow-up</span>
+              <span>Better-fit ideas</span>
+              <span>Less back-and-forth</span>
             </div>
             <ul className="stack-list compact-list">
-              {siteMap.slice(0, 4).map((item) => (
+              {inquiryExpectations.map((item) => (
                 <li key={item}>{item}</li>
               ))}
             </ul>
@@ -40,9 +53,9 @@ export function InquiryPage() {
 
       <section className="section section-contrast">
         <div className="shell">
-          <div className="section-head">
+          <div className="section-head section-head--centered">
             <p className="eyebrow">FAQ</p>
-            <h2>Questions the inquiry process should answer clearly</h2>
+            <h2>Questions you might want answered before you reach out.</h2>
           </div>
           <div className="faq-list">
             {faqs.map((item) => (

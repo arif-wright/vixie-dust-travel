@@ -1321,6 +1321,10 @@ summary:focus-visible {
   padding-top: 1.5rem;
 }
 
+.storybook-subpage {
+  background: #fceedc;
+}
+
 .page-hero {
   padding: 2.8rem 1.45rem 1.1rem;
   border-radius: 32px;
@@ -1344,6 +1348,23 @@ summary:focus-visible {
   color: var(--ink-soft);
   line-height: 1.58;
   font-size: clamp(1rem, 2vw, 1.18rem);
+}
+
+.storybook-page-hero {
+  border-color: rgba(213, 190, 159, 0.42);
+  background:
+    radial-gradient(circle at top right, rgba(243, 207, 112, 0.18), transparent 28%),
+    linear-gradient(180deg, rgba(255, 251, 247, 0.96), rgba(249, 240, 230, 0.92));
+  box-shadow: 0 24px 42px -34px rgba(95, 52, 66, 0.4);
+}
+
+.storybook-page-hero h1 {
+  color: #4a2c3a;
+  font-family: 'Playfair Display', serif;
+}
+
+.storybook-page-hero p:last-child {
+  color: #5d4c41;
 }
 
 .soft-band {
@@ -1659,6 +1680,13 @@ summary:focus-visible {
   border: 1px solid rgba(235, 217, 219, 0.94);
   background: rgba(255, 255, 255, 0.86);
   box-shadow: var(--shadow);
+}
+
+.storybook-panel {
+  border-color: rgba(213, 190, 159, 0.44);
+  background:
+    linear-gradient(180deg, rgba(255, 252, 247, 0.96), rgba(248, 240, 230, 0.9));
+  box-shadow: 0 24px 42px -34px rgba(95, 52, 66, 0.38);
 }
 
 .info-card h3,
