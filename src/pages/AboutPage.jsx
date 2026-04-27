@@ -26,16 +26,22 @@ const aboutHighlights = [
 export function AboutPage() {
   return (
     <main className="page-main storybook-subpage about-storybook">
-      <section className="about-magic-hero shell" aria-labelledby="about-title">
-        <div className="about-magic-hero__copy">
-          <p className="eyebrow">About Vixie Dust Travels</p>
+      <section className="storybook-hero" aria-labelledby="about-title">
+        <div className="storybook-sparkle storybook-sparkle--one" aria-hidden="true" />
+        <div className="storybook-sparkle storybook-sparkle--two" aria-hidden="true" />
+        <div className="storybook-sparkle storybook-sparkle--three" aria-hidden="true" />
+
+        <div className="container storybook-hero-content">
+          <p className="storybook-overline">About Vixie Dust Travels</p>
           <h1 id="about-title">Where magical memories begin with thoughtful planning and a whole lot of heart.</h1>
-          <p>
+          <p className="storybook-hero-copy">
             Vixie Dust Travels was created to help families experience the excitement of a dream vacation without the
             stress and overwhelm that can come with planning every little detail alone.
           </p>
         </div>
       </section>
+
+      <div className="storybook-curve-divider" aria-hidden="true" />
 
       <section className="section about-intro">
         <div className="shell about-intro__grid">
@@ -86,7 +92,7 @@ export function AboutPage() {
       <section className="section about-personal">
         <div className="shell about-personal__grid">
           <div className="about-photo-frame">
-            <img src="/658027553_26629397506697359_3250149431792289541_n.jpg" alt="Travel advisor portrait" />
+            <img src="/profile.jpg" alt="Travel advisor portrait" />
           </div>
           <div className="about-personal__copy">
             <p className="eyebrow">A little more about me</p>
