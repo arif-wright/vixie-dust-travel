@@ -42,7 +42,7 @@ export function HomePage() {
         </div>
       </section>
 
-      <div className="storybook-cloud-divider" aria-hidden="true" />
+      <div className="storybook-curve-divider" aria-hidden="true" />
 
       <section className="storybook-about container">
         <div className="storybook-about-visual">
@@ -67,7 +67,9 @@ export function HomePage() {
       </section>
 
       <div className="storybook-divider" aria-hidden="true">
-        <img src="/cloud-divider.png" alt="" />
+        <span className="storybook-divider-line" />
+        <span className="storybook-divider-burst">✦</span>
+        <span className="storybook-divider-line" />
       </div>
 
       <section className="storybook-services section-signature storybook-services--signature">
@@ -106,7 +108,9 @@ export function HomePage() {
       </section>
 
       <div className="storybook-divider storybook-divider--gold" aria-hidden="true">
-        <img src="/cloud-divider.png" alt="" />
+        <span className="storybook-divider-line" />
+        <span className="storybook-divider-burst">✦</span>
+        <span className="storybook-divider-line" />
       </div>
 
       <section className="storybook-promise container">
@@ -121,7 +125,9 @@ export function HomePage() {
       </section>
 
       <div className="storybook-divider" aria-hidden="true">
-        <img src="/cloud-divider.png" alt="" />
+        <span className="storybook-divider-line" />
+        <span className="storybook-divider-burst">✦</span>
+        <span className="storybook-divider-line" />
       </div>
 
       <section className="storybook-cta">
